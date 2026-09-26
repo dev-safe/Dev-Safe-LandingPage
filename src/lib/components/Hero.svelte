@@ -2,9 +2,12 @@
   import { reveal } from '$lib/actions/reveal';
   import { FileText, CheckCircle2, Loader } from '@lucide/svelte';
   import { t } from '$lib/data/content';
+  import { whatsappUrl } from '$lib/config/site';
   import SectionPhoto from './SectionPhoto.svelte';
+  import BrandIcon from './BrandIcon.svelte';
 
-  const hero = $derived(t().hero);
+  const c = $derived(t());
+  const hero = $derived(c.hero);
   const report = $derived(hero.auditPreview);
   const totalFindings = $derived(report.summary.reduce((sum, s) => sum + s.count, 0));
 </script>
@@ -55,6 +58,18 @@
           {hero.cta.secondary.text}
         </a>
       </div>
+
+      <a
+        href={whatsappUrl(c.whatsapp.message)}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={c.whatsapp.ariaLabel}
+        class="mt-5 max-w-[540px] text-sm font-body text-ds-fg-muted hover:text-ds-fg transition-colors"
+        data-reveal use:reveal={{ y: 20, duration: 600, delay: 450 }}
+      >
+        <BrandIcon name="whatsapp" class="inline-block w-5 h-5 mr-1.5 -mt-0.5 align-middle text-[#25D366]" />{c.whatsapp.prompt}
+        <span class="font-mono text-ds-fg whitespace-nowrap">{c.footer.contact.whatsapp.text}</span>
+      </a>
     </div>
 
     <!-- Right — What a DevSafe audit deliverable looks like -->

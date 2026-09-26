@@ -32,6 +32,10 @@ export const site = {
   ]
 } as const;
 
+/** wa.me chat link (country code, no "+") with an optional pre-filled message. */
+export const whatsappUrl = (message?: string) =>
+  `https://wa.me/${site.telephone.replace(/\D/g, '')}${message ? `?text=${encodeURIComponent(message)}` : ''}`;
+
 /** Cameroon is officially bilingual. English is the default and lives at `/`; French lives at `/fr`. */
 export const languages = ['en', 'fr'] as const;
 export type Lang = (typeof languages)[number];

@@ -9,6 +9,7 @@
   import CTABanner from '$lib/components/CTABanner.svelte';
   import Footer from '$lib/components/Footer.svelte';
   import Seo from '$lib/components/Seo.svelte';
+  import WhatsAppButton from '$lib/components/WhatsAppButton.svelte';
   import { t } from '$lib/data/content';
   import { homeJsonLd } from '$lib/seo/schema';
 
@@ -29,3 +30,4 @@
   <CTABanner />
 </main>
 <Footer />
+<WhatsAppButton />

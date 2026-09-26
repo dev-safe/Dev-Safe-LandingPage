@@ -1,5 +1,5 @@
 import type { Component } from 'svelte';
-import { Code2, ShieldCheck, Palette, Lock, MapPin, Users, Rocket, Mail, Globe, Boxes } from '@lucide/svelte';
+import { Code2, ShieldCheck, Palette, Lock, MapPin, Rocket, Mail, Globe, Trophy, Award, Tv, BriefcaseBusiness, FileLock } from '@lucide/svelte';
 import founderImg from '$lib/assets/Founder.jpg';
 import backendImg from '$lib/assets/Backend.jpg';
 import eventraScreen from '$lib/assets/screens/eventra-home.webp';
@@ -42,7 +42,16 @@ const en = {
       label: 'FR — Voir le site en français'
     },
     specialty: 'Our specialty',
-    portraitAlt: (name: string, role: string) => `Portrait of ${name}, ${role} at DevSafe`
+    portraitAlt: (name: string, role: string) => `Portrait of ${name}, ${role} at DevSafe`,
+    profileLabel: (name: string, network: string) => `${name} on ${network} (opens in a new tab)`
+  },
+
+  whatsapp: {
+    label: 'Chat on WhatsApp',
+    short: 'WhatsApp',
+    prompt: 'Prefer to chat? Message us on WhatsApp',
+    ariaLabel: 'Chat with DevSafe on WhatsApp (opens in a new tab)',
+    message: 'Hello DevSafe, I would like to discuss a project.'
   },
 
   navigation: {
@@ -72,7 +81,7 @@ const en = {
       after: ' and cybersecurity, built in Cameroon.'
     },
     subheadline:
-      'We build websites and apps and audit your systems for schools, churches and businesses. The same team builds and runs its own products, including BookBridge.',
+      'Security audits, penetration testing and secure web & mobile apps for businesses, schools and institutions, from the award-winning team behind BookBridge.',
     cta: {
       primary: { text: 'Book a Free Consultation →', href: '#contact' },
       secondary: { text: 'See Our Work', href: '#work' }
@@ -107,36 +116,22 @@ const en = {
   trustStrip: {
     heading: 'Proof, not promises',
     proof: [
-      { icon: Rocket as unknown as Component, title: 'Shipping in production', text: 'Eventra, a live ticketing & payments platform' },
-      { icon: Boxes as unknown as Component, title: 'Product builders', text: 'We build and run our own product, BookBridge' },
-      { icon: ShieldCheck as unknown as Component, title: 'Security-reviewed', text: 'Every project is checked for vulnerabilities before handover' },
-      { icon: MapPin as unknown as Component, title: 'Based in Yaoundé', text: 'Local team, local pricing, no outsourcing' }
-    ],
-    stack: {
-      label: 'Built with',
-      items: ['SvelteKit', 'Rust', 'Go', 'gRPC', 'Flutter', 'Tailwind CSS']
-    }
+      { icon: Trophy as unknown as Component, title: '3rd place, ICT for Africa Summit', text: 'Tech Innovation Challenge: 250,000 FCFA to develop BookBridge' },
+      { icon: Award as unknown as Component, title: 'Top 5 at PROMOTE 2026', text: 'BookBridge selected among the top projects' },
+      { icon: Tv as unknown as Component, title: 'Featured on CRTV', text: 'BookBridge covered on the national news' },
+      { icon: BriefcaseBusiness as unknown as Component, title: '4 active clients', text: 'Eventra, plus 3 more under NDA' }
+    ]
   },
 
   services: {
     heading: 'Agency Services',
-    subtitle:
-      'Clean, modern, and secure software services for your organization — built by the same team that ships our own products.',
-    process: {
-      heading: 'How we work',
-      steps: [
-        { title: 'Discover', text: 'A free consultation to understand your needs and budget.' },
-        { title: 'Design & build', text: 'You review progress as we build, not just at the end.' },
-        { title: 'Security review', text: 'We check for vulnerabilities before handover.' },
-        { title: 'Launch & support', text: 'We deploy, hand over, and help you run it.' }
-      ]
-    },
+    subtitle: 'Secure software and security testing, from the team that ships its own products.',
     items: [
       {
         icon: ShieldCheck as unknown as Component,
         title: 'Cybersecurity Services',
         description:
-          'We audit your systems, test them the way an attacker would, and protect your data and clients. You get a clear report in plain language and a prioritised plan to fix what matters first.',
+          'We test your systems the way an attacker would, then hand you a plain-language report and a prioritised plan to fix what matters first.',
         tags: ['Penetration Testing', 'Security Audits', 'Vulnerability Assessment', 'Data Protection'],
         accentColor: '#3B82F6',
         featured: true,
@@ -155,8 +150,7 @@ const en = {
       {
         icon: Code2 as unknown as Component,
         title: 'Software Development',
-        description:
-          'Custom websites, mobile apps, and web platforms built for your specific needs. Clean, fast, and easy to manage.',
+        description: 'Websites, mobile apps and web platforms: fast, easy to manage and security-reviewed before launch.',
         tags: ['Websites', 'Mobile Apps', 'Web Platforms'],
         accentColor: '#22D3EE',
         visual: { type: 'pipeline', steps: ['build', 'security review', 'deploy'] }
@@ -164,8 +158,7 @@ const en = {
       {
         icon: Palette as unknown as Component,
         title: 'Design & Branding',
-        description:
-          'From logos to full brand identities — we make sure your institution looks professional and memorable.',
+        description: 'Logos, interfaces and brand identities that make your institution look professional.',
         tags: ['Logo Design', 'UI/UX', 'Brand Identity'],
         accentColor: '#34D399',
         visual: { type: 'palette', swatches: ['#0B1120', '#1D4ED8', '#22D3EE', '#34D399', '#F8FAFC'] }
@@ -180,27 +173,23 @@ const en = {
     items: [
       {
         icon: Lock as unknown as Component,
-        title: 'Security-First Approach',
-        description:
-          'Every product we build is reviewed for vulnerabilities before delivery. Your data and your clients are safe.'
+        title: 'Security-First',
+        description: 'Everything we build is checked for vulnerabilities before handover.'
+      },
+      {
+        icon: FileLock as unknown as Component,
+        title: 'Confidential by Default',
+        description: 'Most of our clients work with us under NDA. We protect your business the way we protect your data.'
       },
       {
         icon: MapPin as unknown as Component,
         title: 'Local & Affordable',
-        description:
-          'We understand the Cameroonian market. Our pricing is built for local institutions, not multinational budgets.'
-      },
-      {
-        icon: Users as unknown as Component,
-        title: 'Full-Stack Team',
-        description:
-          'Frontend, backend, design, and business strategy — all in one team. No outsourcing, no middlemen.'
+        description: 'A Yaoundé team with pricing built for local institutions, not multinational budgets.'
       },
       {
         icon: Rocket as unknown as Component,
-        title: 'Product Builders, Not Just Contractors',
-        description:
-          'We build and run our own products, so we know what it takes to launch and maintain software. Our clients benefit from that experience directly.'
+        title: 'Product Builders',
+        description: 'We launch and run our own award-winning product, so we know what it takes to keep software alive.'
       }
     ]
   },
@@ -208,13 +197,13 @@ const en = {
   clientWork: {
     eyebrow: 'Agency',
     heading: 'Client Work',
-    subtitle: 'Real-world solutions we have built for clients, designed for local impact.',
+    subtitle: 'Four active client projects. Here is the one we can show.',
     projects: [
       {
         title: 'Eventra',
         tagline: 'Event ticketing & payments platform',
         description:
-          'Full-stack platform for event organisers in Cameroon: secure QR tickets, paid voting contests and service bookings, with Mobile Money (MTN / Orange) withdrawals — built with SvelteKit and Rust/gRPC.',
+          'Event platform for organisers in Cameroon: secure QR tickets, paid voting contests and service bookings, with MTN and Orange Mobile Money payouts.',
         statusBadge: 'Live',
         isLive: true,
         tags: ['SvelteKit', 'Rust', 'gRPC', 'Mobile Money'],
@@ -227,9 +216,11 @@ const en = {
         }
       }
     ],
-    cta: {
-      text: 'Want to see what we can build for you? ',
-      link: { text: 'Get in touch →', href: '#contact' }
+    confidential: {
+      count: '+3',
+      title: 'Active client projects under NDA',
+      text: 'We keep client work confidential. Ask us about relevant experience during your free consultation.',
+      link: { text: 'Book a consultation →', href: '#contact' }
     }
   } as ProjectSection,
 
@@ -242,10 +233,11 @@ const en = {
         title: 'BookBridge',
         tagline: 'Peer-to-peer textbook marketplace',
         description:
-          'Mobile app that helps students find, buy and sell textbooks nearby, with escrow-protected payments and seller ratings — built with Flutter.',
+          'Students find, buy and sell textbooks nearby, with escrow-protected payments and seller ratings.',
+        highlights: ['3rd place · ICT for Africa Summit', 'Top 5 · PROMOTE 2026', 'Featured on CRTV'],
         statusBadge: 'Coming to Play Store',
         isLive: false,
-        tags: ['Flutter', 'Dart', 'Mobile App', 'Escrow Payments'],
+        tags: ['Flutter', 'Escrow payments', 'Android'],
         screenshot: {
           src: bookbridgeScreen,
           alt: 'BookBridge app home screen: book search, a nearby-books banner, social impact stats and nearby textbook listings priced in FCFA',
@@ -260,30 +252,46 @@ const en = {
 
   team: {
     heading: 'The Team Behind DevSafe',
-    subtitle: 'A dedicated team of security experts, software engineers, and designers in Cameroon.',
+    subtitle: 'Two engineers from Yaoundé who build, secure and ship.',
     photoAlt: 'DevSafe founders Verla Berinyuy Ndey and Engon Ken Morel',
     members: [
       {
         name: 'Verla Berinyuy Ndey',
         role: 'Founder & CEO',
-        description:
-          'Cybersecurity major, SvelteKit & Flutter developer, product visionary. Founder of DevSafe and lead architect of BookBridge.',
+        description: 'Cybersecurity builder and product lead. Leads DevSafe’s security audits and designs apps for real African problems.',
+        highlights: [
+          'Led BookBridge to 3rd place at the ICT for Africa Summit and onto CRTV national news',
+          'MTN YaMo Pitch Season 4 regional finalist, ranked #27 of 400+',
+          'GDG on Campus Lead at The ICT University; founder of DCT Lab'
+        ],
         initials: 'VB',
         bg: '#1D4ED8',
         borderCyan: false,
-        tags: ['SvelteKit', 'Flutter', 'Cybersecurity'],
-        image: founderImg
+        tags: ['Flutter', 'SvelteKit', 'Rust', 'Pen-testing'],
+        image: founderImg,
+        profiles: {
+          linkedin: 'https://www.linkedin.com/in/verla-berinyuy-ndey-15b1262a5/',
+          github: 'https://github.com/DCT-Berinyuy'
+        }
       },
       {
         name: 'Engon Ken Morel',
         role: 'Co-Founder & CTO',
-        description:
-          "Systems architect and backend engineer specialising in Rust and Go. Leads all backend infrastructure across DevSafe's products.",
+        description: 'Systems architect behind DevSafe’s backends: fast Rust services, secure databases and typed APIs.',
+        highlights: [
+          'Built BookBridge’s automated multi-party mobile payment pipeline',
+          'Hardens backends against IDOR and broken auth with layered JWT access control',
+          'PostgreSQL with Row-Level Security, ConnectRPC and Protobuf'
+        ],
         initials: 'KM',
         bg: '#131C31',
         borderCyan: true,
-        tags: ['Rust', 'Go', 'gRPC'],
-        image: backendImg
+        tags: ['Rust', 'PostgreSQL', 'ConnectRPC', 'FastAPI'],
+        image: backendImg,
+        profiles: {
+          linkedin: 'https://www.linkedin.com/in/engon-morel-8ba00a296/',
+          github: 'https://github.com/ken-morel'
+        }
       }
     ]
   },
@@ -291,8 +299,7 @@ const en = {
   ctaBanner: {
     badge: 'Free consultation',
     heading: 'Ready to Take Your Institution Digital?',
-    subtext:
-      "Hire the team behind our own products. Get a free consultation — we'll assess your needs and tell you exactly what we can build for you.",
+    subtext: "Tell us what you need. We'll reply within 24 hours with a clear plan and a free security pre-audit.",
     benefits: ['Free cybersecurity pre-audit', 'Custom architecture diagram', 'Written proposal within 24 hours'],
     action: {
       text: 'Request a Free Consultation',
@@ -345,7 +352,7 @@ const en = {
       heading: 'Get In Touch',
       email: { text: 'contact@devsafe.cm', icon: Mail as unknown as Component },
       website: { text: 'devsafe.cm', icon: Globe as unknown as Component },
-      whatsapp: { text: '+237 680 001 677', href: 'https://wa.me/237680001677' },
+      whatsapp: { text: '+237 680 001 677' },
       github: { text: 'github.com/Dev-Safe' }
     },
     bottom: {

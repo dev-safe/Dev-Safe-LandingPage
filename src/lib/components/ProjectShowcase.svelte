@@ -1,5 +1,6 @@
 <script lang="ts">
   import { reveal } from '$lib/actions/reveal';
+  import { FileLock } from '@lucide/svelte';
   import ProjectCard from './ProjectCard.svelte';
   import type { ProjectSection } from '$lib/data/content';
 
@@ -45,19 +46,26 @@
       {/each}
     </div>
 
-    <!-- Call to Action below card -->
-    {#if section.cta}
-      <div 
-        class="text-center mt-12"
-        data-reveal use:reveal={{ y: 15, duration: 500, delay: 500 }}
+    {#if section.confidential}
+      {@const nda = section.confidential}
+      <aside
+        class="mt-8 glass-card border border-dashed border-ds-border/80 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8"
+        data-reveal use:reveal={{ y: 15, duration: 500, delay: 400 }}
       >
-        <span class="text-sm text-ds-fg-muted font-body">
-          {section.cta.text}
-          <a href={section.cta.link.href} class="text-ds-cyan font-semibold hover:underline">
-            {section.cta.link.text}
-          </a>
-        </span>
-      </div>
+        <div class="flex items-center gap-4 shrink-0">
+          <span class="w-12 h-12 rounded-xl bg-ds-cyan/10 border border-ds-cyan/30 flex items-center justify-center">
+            <FileLock class="w-6 h-6 text-ds-cyan" aria-hidden="true" />
+          </span>
+          <span class="font-heading text-4xl sm:text-5xl font-bold text-ds-fg tabular-nums">{nda.count}</span>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-heading text-lg font-bold text-ds-fg">{nda.title}</h3>
+          <p class="font-body text-sm text-ds-fg-muted leading-relaxed mt-1">{nda.text}</p>
+        </div>
+        <a href={nda.link.href} class="shrink-0 text-sm text-ds-cyan font-semibold hover:underline">
+          {nda.link.text}
+        </a>
+      </aside>
     {/if}
 
   </div>

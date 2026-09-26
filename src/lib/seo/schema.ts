@@ -71,7 +71,8 @@ export function homeJsonLd(c: SiteContent) {
         founder: team.members.map((member) => ({
           '@type': 'Person',
           name: member.name,
-          jobTitle: member.role
+          jobTitle: member.role,
+          sameAs: [member.profiles.linkedin, member.profiles.github]
         })),
         contactPoint: {
           '@type': 'ContactPoint',

@@ -29,8 +29,8 @@
       </p>
     </div>
 
-    <!-- Asymmetric bento: wide/narrow on the first row, narrow/wide on the second -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Bento: the featured service spans the full width, the other two sit side by side below -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {#each services.items as item, index (item.title)}
         {@const Icon = item.icon as Component<{ class?: string }>}
         <article
@@ -123,27 +123,6 @@
           </div>
         </article>
       {/each}
-
-      <article
-        class="glass-card relative overflow-hidden border border-ds-border/70 p-7 lg:p-8 md:col-span-2"
-        data-reveal use:reveal={{ y: 30, duration: 600, delay: services.items.length * 120 + 200 }}
-      >
-        <h3 class="font-heading text-xl font-bold text-ds-fg mb-6">{services.process.heading}</h3>
-        <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {#each services.process.steps as step, i (step.title)}
-            <li class="relative">
-              <span class="flex items-center gap-3 mb-2">
-                <span class="w-7 h-7 rounded-full border border-ds-cyan/40 bg-ds-cyan/10 flex items-center justify-center font-mono text-xs font-bold text-ds-cyan">{i + 1}</span>
-                {#if i < services.process.steps.length - 1}
-                  <span class="hidden lg:block flex-1 h-px bg-gradient-to-r from-ds-cyan/40 to-transparent"></span>
-                {/if}
-              </span>
-              <p class="font-heading text-sm font-bold text-ds-fg">{step.title}</p>
-              <p class="font-body text-xs text-ds-fg-muted leading-relaxed mt-1">{step.text}</p>
-            </li>
-          {/each}
-        </ol>
-      </article>
     </div>
 
   </div>

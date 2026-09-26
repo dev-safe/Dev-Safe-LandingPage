@@ -1,6 +1,8 @@
 <script lang="ts">
   import { reveal } from '$lib/actions/reveal';
+  import { Check } from '@lucide/svelte';
   import { t } from '$lib/data/content';
+  import BrandIcon from './BrandIcon.svelte';
 
   const c = $derived(t());
   const team = $derived(c.team);
@@ -83,9 +85,33 @@
             </p>
 
             <!-- Description -->
-            <p class="font-body text-ds-fg-muted text-xs leading-relaxed mb-4">
+            <p class="font-body text-ds-fg-muted text-sm leading-relaxed mb-4">
               {member.description}
             </p>
+
+            <ul class="w-full space-y-2 mb-5 text-left">
+              {#each member.highlights as highlight (highlight)}
+                <li class="flex gap-2 font-body text-xs leading-snug text-ds-fg">
+                  <Check class="w-3.5 h-3.5 mt-0.5 text-ds-cyan shrink-0" aria-hidden="true" />
+                  <span>{highlight}</span>
+                </li>
+              {/each}
+            </ul>
+
+            <div class="flex gap-2 mb-4">
+              {#each [{ network: 'LinkedIn', brand: 'linkedin', href: member.profiles.linkedin }, { network: 'GitHub', brand: 'github', href: member.profiles.github }] as const as profile (profile.brand)}
+                <a
+                  href={profile.href}
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  aria-label={c.ui.profileLabel(member.name, profile.network)}
+                  title={profile.network}
+                  class="w-10 h-10 flex items-center justify-center rounded-full border border-ds-border/60 bg-ds-elevated/60 text-ds-fg-muted hover:text-ds-cyan hover:border-ds-cyan/60 hover:bg-ds-cyan/10 transition-colors"
+                >
+                  <BrandIcon name={profile.brand} class="w-4 h-4" />
+                </a>
+              {/each}
+            </div>
 
             <!-- Tags Row -->
             <div class="flex flex-wrap gap-1.5 justify-center mt-auto pt-3 border-t border-ds-border/30 w-full">

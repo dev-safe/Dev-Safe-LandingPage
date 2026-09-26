@@ -9,9 +9,12 @@ import {
   Rocket,
   Mail,
   Globe,
+  Boxes,
 } from '@lucide/svelte';
 import founderImg from '$lib/assets/Founder.jpg';
 import backendImg from '$lib/assets/Backend.jpg';
+import eventraScreen from '$lib/assets/screens/eventra-home.webp';
+import bookbridgeScreen from '$lib/assets/screens/bookbridge-home.webp';
 
 export const navigation = {
   logo: {
@@ -33,55 +36,118 @@ export const navigation = {
 };
 
 export const hero = {
-  badge: '🛡️ Software Agency & Product Studio',
+  badge: 'Software & Cybersecurity Agency · Cameroon',
   headline: {
-    before: 'We Build ',
-    highlight: 'Secure Software',
-    after: ' — For You, and For Ourselves'
+    before: '',
+    highlight: 'Secure software',
+    after: ' and cybersecurity, built in Cameroon.'
   },
-  subheadline: 'DevSafe is a Cameroonian software and cybersecurity agency with its own product line. We build websites, apps, and security audits for churches, schools, and businesses — and ship our own products like BookBridge.',
+  subheadline: 'We build websites and apps and audit your systems for schools, churches and businesses. The same team builds and runs its own products, including BookBridge.',
   cta: {
-    primary: { text: 'Work With Us →', href: '#contact' },
-    secondary: { text: 'Explore Our Products', href: '#products' }
+    primary: { text: 'Book a Free Consultation →', href: '#contact' },
+    secondary: { text: 'See Our Work', href: '#work' }
   },
-  trustBadges: [
-    { text: 'Agency Services, Local Pricing' },
-    { text: 'We Build & Run Our Own Products' },
-    { text: 'Security-First Approach' }
-  ],
-  projectCard: {
-    status: 'Live',
-    label: 'DevSafe Agency',
-    project: 'Eventra — Event Platform',
-    progress: 71,
-    tags: ['SvelteKit', 'Rust', 'Secured ✓']
+  auditPreview: {
+    file: 'security-audit.md',
+    label: 'Sample report',
+    title: 'Website Security Audit',
+    target: 'School portal',
+    summary: [
+      { level: 'Critical', count: 0, color: 'bg-red-500' },
+      { level: 'High', count: 2, color: 'bg-orange-500' },
+      { level: 'Medium', count: 4, color: 'bg-amber-400' },
+      { level: 'Low', count: 3, color: 'bg-slate-400' }
+    ],
+    findings: [
+      { severity: 'High', title: 'Admin login allows unlimited attempts', status: 'Fixed' },
+      { severity: 'High', title: 'Student records reachable without auth', status: 'Fixed' },
+      { severity: 'Medium', title: 'Missing HTTPS redirect & security headers', status: 'In progress' }
+    ],
+    footer: 'Every report ships with a prioritised fix plan'
   }
 };
 
-export const services = {
+export const trustStrip = {
+  heading: 'Proof, not promises',
+  proof: [
+    { icon: Rocket as unknown as Component, title: 'Shipping in production', text: 'Eventra, a live ticketing & payments platform' },
+    { icon: Boxes as unknown as Component, title: 'Product builders', text: 'We build and run our own product, BookBridge' },
+    { icon: ShieldCheck as unknown as Component, title: 'Security-reviewed', text: 'Every project is checked for vulnerabilities before handover' },
+    { icon: MapPin as unknown as Component, title: 'Based in Cameroon', text: 'Local team, local pricing, no outsourcing' }
+  ],
+  stack: {
+    label: 'Built with',
+    items: ['SvelteKit', 'Rust', 'Go', 'gRPC', 'Flutter', 'Tailwind CSS']
+  }
+};
+
+export type ServiceVisual =
+  | { type: 'checklist'; heading: string; items: string[] }
+  | { type: 'pipeline'; steps: string[] }
+  | { type: 'palette'; swatches: string[] };
+
+export type ServiceItem = {
+  icon: Component;
+  title: string;
+  description: string;
+  tags: string[];
+  accentColor: string;
+  featured?: boolean;
+  visual: ServiceVisual;
+};
+
+export const services: {
+  heading: string;
+  subtitle: string;
+  items: ServiceItem[];
+  process: { heading: string; steps: { title: string; text: string }[] };
+} = {
   heading: 'Agency Services',
   subtitle: 'Clean, modern, and secure software services for your organization — built by the same team that ships our own products.',
+  process: {
+    heading: 'How we work',
+    steps: [
+      { title: 'Discover', text: 'A free consultation to understand your needs and budget.' },
+      { title: 'Design & build', text: 'You review progress as we build, not just at the end.' },
+      { title: 'Security review', text: 'We check for vulnerabilities before handover.' },
+      { title: 'Launch & support', text: 'We deploy, hand over, and help you run it.' }
+    ]
+  },
   items: [
+    {
+      icon: ShieldCheck as unknown as Component,
+      title: 'Cybersecurity Services',
+      description: 'We audit your systems, identify vulnerabilities, and protect your data and clients. You get a clear report in plain language and a prioritised plan to fix what matters first.',
+      tags: ['Security Audits', 'Vulnerability Assessment', 'Data Protection'],
+      accentColor: '#0077FF',
+      featured: true,
+      visual: {
+        type: 'checklist',
+        heading: 'What an audit covers',
+        items: [
+          'Authentication & access control',
+          'Data protection & encryption',
+          'API & input validation',
+          'Server & hosting configuration',
+          'Prioritised fix plan'
+        ]
+      }
+    },
     {
       icon: Code2 as unknown as Component,
       title: 'Software Development',
       description: 'Custom websites, mobile apps, and web platforms built for your specific needs. Clean, fast, and easy to manage.',
       tags: ['Websites', 'Mobile Apps', 'Web Platforms'],
-      accentColor: '#00D4FF'
-    },
-    {
-      icon: ShieldCheck as unknown as Component,
-      title: 'Cybersecurity Services',
-      description: 'We audit your systems, identify vulnerabilities, and protect your data and clients. Prevention before cure.',
-      tags: ['Security Audits', 'Vulnerability Assessment', 'Data Protection'],
-      accentColor: '#0077FF'
+      accentColor: '#00D4FF',
+      visual: { type: 'pipeline', steps: ['build', 'security review', 'deploy'] }
     },
     {
       icon: Palette as unknown as Component,
       title: 'Design & Branding',
       description: 'From logos to full brand identities — we make sure your institution looks professional and memorable.',
       tags: ['Logo Design', 'UI/UX', 'Brand Identity'],
-      accentColor: '#10B981'
+      accentColor: '#10B981',
+      visual: { type: 'palette', swatches: ['#0A0F1E', '#0077FF', '#00D4FF', '#10B981', '#F8FAFC'] }
     }
   ]
 };
@@ -112,6 +178,14 @@ export const whyDevSafe = {
   ]
 };
 
+export type Screenshot = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption: string;
+};
+
 export type Project = {
   title: string;
   tagline: string;
@@ -119,6 +193,7 @@ export type Project = {
   statusBadge: string;
   isLive: boolean;
   tags: string[];
+  screenshot?: Screenshot;
   link?: { text: string; href: string };
 };
 
@@ -138,10 +213,17 @@ export const clientWork: ProjectSection = {
     {
       title: 'Eventra',
       tagline: 'Event ticketing & payments platform',
-      description: 'Full-stack platform for event organisers to sell tickets, run paid voting contests, and manage service bookings — built with SvelteKit and Rust/gRPC.',
+      description: 'Full-stack platform for event organisers in Cameroon: secure QR tickets, paid voting contests and service bookings, with Mobile Money (MTN / Orange) withdrawals — built with SvelteKit and Rust/gRPC.',
       statusBadge: 'Live',
       isLive: true,
-      tags: ['SvelteKit', 'Rust', 'gRPC', 'Tailwind CSS']
+      tags: ['SvelteKit', 'Rust', 'gRPC', 'Mobile Money'],
+      screenshot: {
+        src: eventraScreen,
+        alt: 'Eventra home screen on mobile: "Transform your events into power", with buttons to create an event or become a partner',
+        width: 540,
+        height: 1000,
+        caption: 'Eventra · live web app on mobile'
+      }
     }
   ],
   cta: {
@@ -158,10 +240,17 @@ export const products: ProjectSection = {
     {
       title: 'BookBridge',
       tagline: 'Peer-to-peer textbook marketplace',
-      description: 'Mobile-first app connecting students to buy and sell textbooks safely, with escrow-protected payments and seller ratings — built with Flutter.',
+      description: 'Mobile app that helps students find, buy and sell textbooks nearby, with escrow-protected payments and seller ratings — built with Flutter.',
       statusBadge: 'Coming to Play Store',
       isLive: false,
       tags: ['Flutter', 'Dart', 'Mobile App', 'Escrow Payments'],
+      screenshot: {
+        src: bookbridgeScreen,
+        alt: 'BookBridge app home screen: book search, a nearby-books banner, social impact stats and nearby textbook listings priced in FCFA',
+        width: 520,
+        height: 1074,
+        caption: 'BookBridge · Android app'
+      },
       link: { text: 'Visit Website', href: 'https://book-bridge-three.vercel.app/' }
     }
   ]

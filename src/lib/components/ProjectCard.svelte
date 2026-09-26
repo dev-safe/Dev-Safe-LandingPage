@@ -1,6 +1,6 @@
 <script lang="ts">
   import { reveal } from '$lib/actions/reveal';
-  import { Terminal } from '@lucide/svelte';
+  import PhoneFrame from './PhoneFrame.svelte';
   import type { Project } from '$lib/data/content';
 
   let { project, index = 0 }: { project: Project; index?: number } = $props();
@@ -65,55 +65,12 @@
                 {/if}
               </div>
 
-              <!-- Right Side: Decorative Code Block -->
-              <div class="lg:col-span-5 w-full">
-                {#if project.title === 'Eventra'}
-                  <div class="relative bg-[#112240]/40 border border-[#1E3A5F]/60 rounded-xl p-5 shadow-[0_8px_32px_rgba(0,0,0,0.4)] text-slate-300">
-                    <!-- Window control dots -->
-                    <div class="flex items-center gap-1.5 mb-4 border-b border-[#1E3A5F]/35 pb-3">
-                      <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-                      <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-                      <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-                      <span class="text-[10px] font-mono text-slate-500 ml-auto flex items-center gap-1">
-                        <Terminal class="w-3.5 h-3.5" /> main.rs
-                      </span>
-                    </div>
-
-                    <!-- Styled Code Snippet -->
-                    <div class="font-mono text-xs sm:text-sm text-slate-300 leading-relaxed overflow-x-auto whitespace-pre">
-                      <span class="text-ds-cyan">const</span> eventra = <span class="text-ds-cyan">await</span> DevSafe
-  .<span class="text-emerald-400">build</span>(&#123;
-    stack: [<span class="text-amber-400">'SvelteKit'</span>, <span class="text-amber-400">'Rust'</span>],
-    secured: <span class="text-ds-cyan">true</span>,
-    status: <span class="text-emerald-400">'live'</span>
-  &#125;);
-                    </div>
-                  </div>
-                {:else if project.title === 'BookBridge'}
-                  <div class="relative bg-[#112240]/40 border border-[#1E3A5F]/60 rounded-xl p-5 shadow-[0_8px_32px_rgba(0,0,0,0.4)] text-slate-300">
-                    <!-- Window control dots -->
-                    <div class="flex items-center gap-1.5 mb-4 border-b border-[#1E3A5F]/35 pb-3">
-                      <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-                      <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-                      <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-                      <span class="text-[10px] font-mono text-slate-500 ml-auto flex items-center gap-1">
-                        <Terminal class="w-3.5 h-3.5" /> main.dart
-                      </span>
-                    </div>
-
-                    <!-- Styled Code Snippet -->
-                    <div class="font-mono text-xs sm:text-sm text-slate-300 leading-relaxed overflow-x-auto whitespace-pre">
-                      <span class="text-ds-cyan">void</span> <span class="text-emerald-400">main</span>() => <span class="text-emerald-400">runApp</span>(
-  DevSafe.<span class="text-emerald-400">buildMobileApp</span>(&#123;
-    name: <span class="text-amber-400">'BookBridge'</span>,
-    engine: <span class="text-amber-400">'Flutter'</span>,
-    escrow: <span class="text-ds-cyan">true</span>
-  &#125;)
-);
-                    </div>
-                  </div>
-                {/if}
-              </div>
+              <!-- Right Side: Real product screenshot -->
+              {#if project.screenshot}
+                <div class="lg:col-span-5 w-full">
+                  <PhoneFrame screenshot={project.screenshot} />
+                </div>
+              {/if}
 
             </div>
           </div>

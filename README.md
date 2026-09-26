@@ -36,16 +36,19 @@ src/
 │   │   └── reveal.ts         # SSR-safe scroll reveal action
 │   ├── assets/
 │   │   ├── DevSafe_logo.jpg  # Brand logo used for layout/favicon
-│   │   └── Founder.jpg       # Profile picture for founder profile
+│   │   ├── Founder.jpg       # Profile picture for founder profile
+│   │   └── screens/          # Product screenshots (WebP)
 │   ├── components/
 │   │   ├── CTABanner.svelte  # Interactive consultation form banner
 │   │   ├── Footer.svelte     # Footer links and WhatsApp integration
-│   │   ├── Hero.svelte       # Hero layout with floating dashboard card
+│   │   ├── Hero.svelte       # Hero with sample security-audit report panel
 │   │   ├── Navbar.svelte     # Responsive glass header & mobile drawer
-│   │   ├── ProjectCard.svelte     # Single project card with mock code block
+│   │   ├── PhoneFrame.svelte      # Device frame for real product screenshots
+│   │   ├── ProjectCard.svelte     # Single project card with product screenshot
 │   │   ├── ProjectShowcase.svelte # Reusable section for client work & products
 │   │   ├── Seo.svelte        # <svelte:head> meta, canonical, OG, JSON-LD
-│   │   ├── Services.svelte   # offerings grid with cyan accent borders
+│   │   ├── Services.svelte   # Bento grid of services + "How we work" process
+│   │   ├── TrustStrip.svelte # Real proof points and tech stack under the hero
 │   │   ├── Team.svelte       # Team showcase card grids
 │   │   └── WhyDevSafe.svelte # Corporate differentiator grids
 │   ├── config/

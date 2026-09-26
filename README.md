@@ -48,6 +48,7 @@ src/
 │   │   ├── ProjectCard.svelte     # Single project card with product screenshot
 │   │   ├── ProjectShowcase.svelte # Reusable section for client work & products
 │   │   ├── SectionPhoto.svelte    # Decorative palette-tinted background photo
+│   │   ├── SectionVideo.svelte    # Silent looping background video (WhyDevSafe)
 │   │   ├── Seo.svelte        # <svelte:head> meta, canonical, OG, JSON-LD
 │   │   ├── Services.svelte   # Bento grid of services + "How we work" process
 │   │   ├── TrustStrip.svelte # Real proof points and tech stack under the hero
@@ -80,6 +81,7 @@ static/
 ├── apple-touch-icon.png      # iOS home-screen icon
 ├── favicon.jpg               # Static brand fallback icon
 ├── images/                   # Grayscale section photos (AVIF/WebP/JPEG) used by SectionPhoto.svelte
+├── videos/                   # Silent grayscale loop (WebM/MP4) + poster used by SectionVideo.svelte
 │                             #   hero-padlock-* (FLY:D, Unsplash), cta-code-* (contact section)
 ├── logo-512.png              # Logo referenced by JSON-LD
 └── og-image.png              # 1200x630 social share image
@@ -106,6 +108,13 @@ Photos stay on-palette by shipping them in grayscale and tinting them in CSS wit
 ```bash
 vips thumbnail source.jpg tmp.v 2400 && vips colourspace tmp.v gray.png b-w
 avifenc -q 50 --yuv 400 gray.png static/images/hero-padlock-2400.avif
+```
+
+Background videos (`SectionVideo.svelte`) use the same tint. They have no audio track and are skipped for visitors with reduced motion or Save-Data enabled, who see the poster instead. The video only loads near the viewport and pauses off-screen. Encode as `{name}-loop.webm|mp4` plus `{name}-poster.avif|webp|jpg`:
+
+```bash
+ffmpeg -i trimmed.mp4 -an -vf "fps=24,hue=s=0" -c:v libvpx-vp9 -crf 50 -b:v 0 static/videos/workshop-loop.webm
+ffmpeg -i trimmed.mp4 -an -vf "fps=24,hue=s=0" -c:v libx264 -crf 28 -preset veryslow -pix_fmt yuv420p -movflags +faststart static/videos/workshop-loop.mp4
 ```
 
 ## 🌍 Translations

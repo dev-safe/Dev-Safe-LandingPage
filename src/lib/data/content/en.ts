@@ -175,6 +175,8 @@ const en = {
 
   whyDevSafe: {
     heading: 'Why Clients Trust DevSafe',
+    videoCaption:
+      'In the background: Verla Berinyuy Ndey, our founder, leading a Git & GitHub workshop as GDG on Campus Lead Organizer at ICT University.',
     items: [
       {
         icon: Lock as unknown as Component,

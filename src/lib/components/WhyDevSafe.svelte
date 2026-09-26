@@ -2,6 +2,7 @@
   import { reveal } from '$lib/actions/reveal';
   import type { Component } from 'svelte';
   import { t } from '$lib/data/content';
+  import SectionVideo from './SectionVideo.svelte';
 
   const whyDevSafe = $derived(t().whyDevSafe);
 </script>
@@ -10,6 +11,8 @@
   id="about" 
   class="relative py-24 bg-ds-bg overflow-hidden"
 >
+  <SectionVideo name="workshop" width={576} height={384} />
+
   <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
     
     <!-- Centered Header -->
@@ -47,6 +50,10 @@
         </div>
       {/each}
     </div>
+
+    <p class="mt-16 max-w-2xl mx-auto text-center font-body text-xs text-ds-fg-muted leading-relaxed">
+      {whyDevSafe.videoCaption}
+    </p>
 
   </div>
 </section>

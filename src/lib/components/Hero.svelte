@@ -33,7 +33,7 @@
           class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.1] max-w-[640px]"
           transition:fly={{ y: 20, duration: 600, delay: 150 }}
         >
-          We Build <span class="gradient-text">Digital Solutions</span> Your Institution Can Trust
+          {hero.headline.before}<span class="gradient-text">{hero.headline.highlight}</span>{hero.headline.after}
         </h1>
 
         <!-- Subheadline -->
@@ -97,7 +97,7 @@
 
           <!-- Project Row -->
           <div class="py-6">
-            <span class="text-slate-400 text-xs font-mono">ACTIVE PROJECT</span>
+            <span class="text-slate-400 text-xs font-mono">ACTIVE CLIENT PROJECT</span>
             <h3 class="font-heading text-lg font-bold text-white mt-1.5 group-hover:text-ds-cyan transition-colors duration-300">
               {hero.projectCard.project}
             </h3>

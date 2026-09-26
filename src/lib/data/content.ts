@@ -21,32 +21,37 @@ export const navigation = {
   links: [
     { name: 'Services', href: '#services' },
     { name: 'About', href: '#about' },
-    { name: 'Our Work', href: '#work' },
+    { name: 'Client Work', href: '#work' },
+    { name: 'Products', href: '#products' },
     { name: 'Team', href: '#team' },
     { name: 'Contact', href: '#contact' }
   ],
   actions: {
-    ghost: { text: 'About Us', href: '#about' },
+    ghost: { text: 'Our Products', href: '#products' },
     primary: { text: 'Get in Touch', href: '#contact' }
   }
 };
 
 export const hero = {
-  badge: '🛡️ Cybersecurity & Software Development',
-  headline: 'We Build Digital Solutions Your Institution Can Trust',
-  subheadline: 'From custom websites to cybersecurity audits — DevSafe delivers professional tech services to churches, schools, and local businesses in Cameroon.',
+  badge: '🛡️ Software Agency & Product Studio',
+  headline: {
+    before: 'We Build ',
+    highlight: 'Secure Software',
+    after: ' — For You, and For Ourselves'
+  },
+  subheadline: 'DevSafe is a Cameroonian software and cybersecurity agency with its own product line. We build websites, apps, and security audits for churches, schools, and businesses — and ship our own products like BookBridge.',
   cta: {
-    primary: { text: 'Get Started →', href: '#contact' },
-    secondary: { text: 'View Our Work', href: '#work' }
+    primary: { text: 'Work With Us →', href: '#contact' },
+    secondary: { text: 'Explore Our Products', href: '#products' }
   },
   trustBadges: [
-    { text: 'Local & Affordable' },
-    { text: 'Student-Founded, Professional Quality' },
+    { text: 'Agency Services, Local Pricing' },
+    { text: 'We Build & Run Our Own Products' },
     { text: 'Security-First Approach' }
   ],
   projectCard: {
     status: 'Live',
-    label: 'DevSafe Projects',
+    label: 'DevSafe Agency',
     project: 'Eventra — Event Platform',
     progress: 71,
     tags: ['SvelteKit', 'Rust', 'Secured ✓']
@@ -54,8 +59,8 @@ export const hero = {
 };
 
 export const services = {
-  heading: 'What We Build For You',
-  subtitle: 'Clean, modern, and secure software services tailored to help your organization grow.',
+  heading: 'Agency Services',
+  subtitle: 'Clean, modern, and secure software services for your organization — built by the same team that ships our own products.',
   items: [
     {
       icon: Code2 as unknown as Component,
@@ -82,7 +87,7 @@ export const services = {
 };
 
 export const whyDevSafe = {
-  heading: 'Why Local Institutions Trust DevSafe',
+  heading: 'Why Clients Trust DevSafe',
   items: [
     {
       icon: Lock as unknown as Component,
@@ -101,15 +106,34 @@ export const whyDevSafe = {
     },
     {
       icon: Rocket as unknown as Component,
-      title: 'Real Results',
-      description: 'We are already building production-grade platforms for real clients. You benefit from that experience directly.'
+      title: 'Product Builders, Not Just Contractors',
+      description: 'We build and run our own products, so we know what it takes to launch and maintain software. Our clients benefit from that experience directly.'
     }
   ]
 };
 
-export const ourWork = {
-  heading: 'Our Featured Projects',
-  subtitle: 'Real-world solutions built for local impact',
+export type Project = {
+  title: string;
+  tagline: string;
+  description: string;
+  statusBadge: string;
+  isLive: boolean;
+  tags: string[];
+  link?: { text: string; href: string };
+};
+
+export type ProjectSection = {
+  eyebrow: string;
+  heading: string;
+  subtitle: string;
+  projects: Project[];
+  cta?: { text: string; link: { text: string; href: string } };
+};
+
+export const clientWork: ProjectSection = {
+  eyebrow: 'Agency',
+  heading: 'Client Work',
+  subtitle: 'Real-world solutions we have built for clients, designed for local impact.',
   projects: [
     {
       title: 'Eventra',
@@ -118,7 +142,19 @@ export const ourWork = {
       statusBadge: 'Live',
       isLive: true,
       tags: ['SvelteKit', 'Rust', 'gRPC', 'Tailwind CSS']
-    },
+    }
+  ],
+  cta: {
+    text: 'Want to see what we can build for you? ',
+    link: { text: 'Get in touch →', href: '#contact' }
+  }
+};
+
+export const products: ProjectSection = {
+  eyebrow: 'Owned by DevSafe',
+  heading: 'Our Products',
+  subtitle: 'Products we design, build, own, and operate ourselves.',
+  projects: [
     {
       title: 'BookBridge',
       tagline: 'Peer-to-peer textbook marketplace',
@@ -128,9 +164,7 @@ export const ourWork = {
       tags: ['Flutter', 'Dart', 'Mobile App', 'Escrow Payments'],
       link: { text: 'Visit Website', href: 'https://book-bridge-three.vercel.app/' }
     }
-  ],
-  ctaText: 'Want to see what we can build for you? ',
-  ctaLink: { text: 'Get in touch →', href: '#contact' }
+  ]
 };
 
 export const team = {
@@ -162,19 +196,20 @@ export const team = {
 
 export const ctaBanner = {
   heading: 'Ready to Take Your Institution Digital?',
-  subtext: "Get a free consultation. We'll assess your needs and tell you exactly what we can build for you.",
+  subtext: "Hire the team behind our own products. Get a free consultation — we'll assess your needs and tell you exactly what we can build for you.",
   action: { text: 'Request a Free Consultation', href: 'mailto:contact@devsafe.cm?subject=DevSafe Project Quote Inquiry' }
 };
 
 export const footer = {
   tagline: 'Build. Secure. Protect.',
-  description: 'Professional software development and cybersecurity services for local institutions in Cameroon.',
+  description: 'A software and cybersecurity agency in Cameroon that also builds its own products.',
   quickLinks: {
     heading: 'Navigation',
     links: [
       { name: 'Services', href: '#services' },
       { name: 'About', href: '#about' },
-      { name: 'Our Work', href: '#work' },
+      { name: 'Client Work', href: '#work' },
+      { name: 'Products', href: '#products' },
       { name: 'Team', href: '#team' },
       { name: 'Contact', href: '#contact' }
     ]

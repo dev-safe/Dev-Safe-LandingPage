@@ -66,7 +66,7 @@
     </a>
 
     <!-- Desktop Menu Links -->
-    <div class="hidden md:flex items-center gap-8">
+    <div class="hidden md:flex items-center gap-5 lg:gap-8">
       {#each navigation.links as link}
         <a 
           href={link.href} 

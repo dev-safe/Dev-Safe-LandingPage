@@ -3,15 +3,16 @@
   import Hero from '$lib/components/Hero.svelte';
   import Services from '$lib/components/Services.svelte';
   import WhyDevSafe from '$lib/components/WhyDevSafe.svelte';
-  import OurWork from '$lib/components/OurWork.svelte';
+  import ProjectShowcase from '$lib/components/ProjectShowcase.svelte';
   import Team from '$lib/components/Team.svelte';
   import CTABanner from '$lib/components/CTABanner.svelte';
   import Footer from '$lib/components/Footer.svelte';
+  import { clientWork, products } from '$lib/data/content';
 </script>
 
 <svelte:head>
-  <title>DevSafe — Build. Secure. Protect.</title>
-  <meta name="description" content="Professional software development and cybersecurity services for local institutions in Cameroon." />
+  <title>DevSafe — Software Agency & Product Studio</title>
+  <meta name="description" content="DevSafe is a software and cybersecurity agency in Cameroon that also builds its own products, including BookBridge." />
 </svelte:head>
 
 <Navbar />
@@ -19,7 +20,8 @@
   <Hero />
   <Services />
   <WhyDevSafe />
-  <OurWork />
+  <ProjectShowcase id="work" section={clientWork} />
+  <ProjectShowcase id="products" section={products} background="bg-ds-bg" />
   <Team />
   <CTABanner />
 </main>

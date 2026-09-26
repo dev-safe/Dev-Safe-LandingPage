@@ -35,10 +35,10 @@
 
           <!-- Text Content -->
           <div class="space-y-2">
-            <h3 class="font-heading text-lg font-bold text-white tracking-wide group-hover:text-ds-cyan transition-colors duration-200">
+            <h3 class="font-heading text-lg font-bold text-ds-fg tracking-wide group-hover:text-ds-cyan transition-colors duration-200">
               {item.title}
             </h3>
-            <p class="font-body text-slate-400 text-sm leading-relaxed">
+            <p class="font-body text-ds-fg-muted text-sm leading-relaxed">
               {item.description}
             </p>
           </div>

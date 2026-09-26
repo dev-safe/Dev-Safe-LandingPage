@@ -5,13 +5,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        'ds-bg': 'var(--color-bg-primary)',
-        'ds-surface': 'var(--color-bg-surface)',
-        'ds-elevated': 'var(--color-bg-elevated)',
-        'ds-cyan': 'var(--color-accent-cyan)',
-        'ds-blue': 'var(--color-accent-blue)',
-        'ds-border': 'var(--color-border)',
-        'ds-success': 'var(--color-success)',
+        'ds-bg': 'rgb(var(--ds-bg) / <alpha-value>)',
+        'ds-surface': 'rgb(var(--ds-surface) / <alpha-value>)',
+        'ds-elevated': 'rgb(var(--ds-elevated) / <alpha-value>)',
+        'ds-border': 'rgb(var(--ds-border) / <alpha-value>)',
+        'ds-fg': 'rgb(var(--ds-fg) / <alpha-value>)',
+        'ds-fg-muted': 'rgb(var(--ds-fg-muted) / <alpha-value>)',
+        'ds-fg-subtle': 'rgb(var(--ds-fg-subtle) / <alpha-value>)',
+        'ds-cyan': 'rgb(var(--ds-cyan) / <alpha-value>)',
+        'ds-blue': 'rgb(var(--ds-blue) / <alpha-value>)',
+        'ds-primary': 'rgb(var(--ds-primary) / <alpha-value>)',
+        'ds-primary-hover': 'rgb(var(--ds-primary-hover) / <alpha-value>)',
+        'ds-on-primary': 'rgb(var(--ds-on-primary) / <alpha-value>)',
+        'ds-success': 'rgb(var(--ds-success) / <alpha-value>)',
+        'ds-warning': 'rgb(var(--ds-warning) / <alpha-value>)',
+        'ds-danger': 'rgb(var(--ds-danger) / <alpha-value>)',
       },
       fontFamily: {
         heading: ['Plus Jakarta Sans', 'sans-serif'],

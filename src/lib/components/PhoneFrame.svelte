@@ -16,7 +16,7 @@
       class="block w-full h-auto rounded-[1.75rem]"
     />
   </div>
-  <figcaption class="mt-4 text-center text-[11px] font-mono uppercase tracking-wider text-slate-500">
+  <figcaption class="mt-4 text-center text-[11px] font-mono uppercase tracking-wider text-ds-fg-subtle">
     {screenshot.caption}
   </figcaption>
 </figure>

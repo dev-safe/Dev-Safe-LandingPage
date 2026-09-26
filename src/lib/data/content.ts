@@ -119,7 +119,7 @@ export const services: {
       title: 'Cybersecurity Services',
       description: 'We audit your systems, identify vulnerabilities, and protect your data and clients. You get a clear report in plain language and a prioritised plan to fix what matters first.',
       tags: ['Security Audits', 'Vulnerability Assessment', 'Data Protection'],
-      accentColor: '#0077FF',
+      accentColor: '#3B82F6',
       featured: true,
       visual: {
         type: 'checklist',
@@ -138,7 +138,7 @@ export const services: {
       title: 'Software Development',
       description: 'Custom websites, mobile apps, and web platforms built for your specific needs. Clean, fast, and easy to manage.',
       tags: ['Websites', 'Mobile Apps', 'Web Platforms'],
-      accentColor: '#00D4FF',
+      accentColor: '#22D3EE',
       visual: { type: 'pipeline', steps: ['build', 'security review', 'deploy'] }
     },
     {
@@ -146,8 +146,8 @@ export const services: {
       title: 'Design & Branding',
       description: 'From logos to full brand identities — we make sure your institution looks professional and memorable.',
       tags: ['Logo Design', 'UI/UX', 'Brand Identity'],
-      accentColor: '#10B981',
-      visual: { type: 'palette', swatches: ['#0A0F1E', '#0077FF', '#00D4FF', '#10B981', '#F8FAFC'] }
+      accentColor: '#34D399',
+      visual: { type: 'palette', swatches: ['#0B1120', '#1D4ED8', '#22D3EE', '#34D399', '#F8FAFC'] }
     }
   ]
 };
@@ -265,7 +265,7 @@ export const team = {
       role: 'Founder & CEO',
       description: 'Cybersecurity major, SvelteKit & Flutter developer, product visionary. Founder of DevSafe and lead architect of BookBridge.',
       initials: 'VB',
-      bg: '#0077FF',
+      bg: '#1D4ED8',
       borderCyan: false,
       tags: ['SvelteKit', 'Flutter', 'Cybersecurity'],
       image: founderImg
@@ -275,7 +275,7 @@ export const team = {
       role: 'Co-Founder & CTO',
       description: "Systems architect and backend engineer specialising in Rust and Go. Leads all backend infrastructure across DevSafe's products.",
       initials: 'KM',
-      bg: '#0D1628',
+      bg: '#131C31',
       borderCyan: true,
       tags: ['Rust', 'Go', 'gRPC'],
       image: backendImg

@@ -19,16 +19,16 @@
         class="inline-flex items-center gap-2 px-3 py-1 bg-ds-elevated border border-ds-cyan/30 rounded-full mb-6"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
-        <span class="w-1.5 h-1.5 rounded-full bg-ds-cyan animate-pulse shadow-[0_0_8px_#00D4FF]"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-ds-cyan animate-pulse shadow-[0_0_8px_rgb(var(--ds-cyan))]"></span>
         <span class="text-xs font-mono font-medium text-ds-cyan">{hero.badge}</span>
       </div>
 
-      <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.1] max-w-[640px]">
+      <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ds-fg mb-6 leading-[1.1] max-w-[640px]">
         {hero.headline.before}<span class="gradient-text">{hero.headline.highlight}</span>{hero.headline.after}
       </h1>
 
       <p
-        class="font-body text-base sm:text-lg text-slate-400 max-w-[540px] mb-8 leading-relaxed"
+        class="font-body text-base sm:text-lg text-ds-fg-muted max-w-[540px] mb-8 leading-relaxed"
         data-reveal use:reveal={{ y: 20, duration: 600, delay: 200 }}
       >
         {hero.subheadline}
@@ -40,7 +40,7 @@
       >
         <a
           href={hero.cta.primary.href}
-          class="flex items-center justify-center gap-2 bg-gradient-to-r from-ds-cyan to-ds-blue text-white px-8 py-4 rounded-full font-heading font-semibold hover:brightness-110 hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-[0_0_24px_rgba(0,212,255,0.2)]"
+          class="flex items-center justify-center gap-2 bg-ds-primary text-ds-on-primary px-8 py-4 rounded-full font-heading font-semibold hover:bg-ds-primary-hover hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-[0_0_24px_rgba(0,212,255,0.2)]"
         >
           {hero.cta.primary.text}
         </a>
@@ -66,7 +66,7 @@
           <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
           <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
           <span class="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
-          <span class="ml-3 flex items-center gap-1.5 text-[11px] font-mono text-slate-500">
+          <span class="ml-3 flex items-center gap-1.5 text-[11px] font-mono text-ds-fg-subtle">
             <FileText class="w-3.5 h-3.5" /> {report.file}
           </span>
           <span class="ml-auto px-2 py-0.5 rounded border border-ds-cyan/30 text-[10px] font-mono font-bold uppercase tracking-wider text-ds-cyan">
@@ -76,8 +76,8 @@
 
         <div class="p-5 sm:p-6 space-y-5">
           <div>
-            <p class="font-heading text-lg font-bold text-white">{report.title}</p>
-            <p class="text-xs font-mono text-slate-500 mt-1">Target: {report.target} · {totalFindings} findings</p>
+            <p class="font-heading text-lg font-bold text-ds-fg">{report.title}</p>
+            <p class="text-xs font-mono text-ds-fg-subtle mt-1">Target: {report.target} · {totalFindings} findings</p>
           </div>
 
           <!-- Severity summary -->
@@ -92,10 +92,10 @@
             <dl class="grid grid-cols-4 gap-2 mt-3">
               {#each report.summary as s (s.level)}
                 <div>
-                  <dt class="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-500">
+                  <dt class="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-ds-fg-subtle">
                     <span class="w-1.5 h-1.5 rounded-full {s.color}"></span>{s.level}
                   </dt>
-                  <dd class="font-heading text-xl font-bold text-white">{s.count}</dd>
+                  <dd class="font-heading text-xl font-bold text-ds-fg">{s.count}</dd>
                 </div>
               {/each}
             </dl>
@@ -112,7 +112,7 @@
                   class="mt-0.5 shrink-0 px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase tracking-wider">
                   {f.severity}
                 </span>
-                <span class="flex-1 text-xs text-slate-300 leading-snug">{f.title}</span>
+                <span class="flex-1 text-xs text-ds-fg-muted leading-snug">{f.title}</span>
                 {#if f.status === 'Fixed'}
                   <span class="flex items-center gap-1 shrink-0 text-[10px] font-mono font-semibold text-ds-success">
                     <CheckCircle2 class="w-3.5 h-3.5" /> {f.status}
@@ -127,7 +127,7 @@
           </ul>
         </div>
 
-        <figcaption class="px-5 sm:px-6 py-3 border-t border-ds-border/40 text-[11px] font-mono text-slate-500">
+        <figcaption class="px-5 sm:px-6 py-3 border-t border-ds-border/40 text-[11px] font-mono text-ds-fg-subtle">
           {report.footer}
         </figcaption>
       </figure>
@@ -137,13 +137,10 @@
 </section>
 
 <style>
-  .sev-high { color: #FB923C; background: rgba(249, 115, 22, 0.12); }
-  .sev-medium { color: #FBBF24; background: rgba(245, 158, 11, 0.12); }
-  .sev-low { color: #94A3B8; background: rgba(148, 163, 184, 0.12); }
-  .status-pending { color: #FBBF24; }
+  .sev-high { color: #FB923C; background: rgb(249 115 22 / 0.12); }
+  .sev-medium { color: rgb(var(--ds-warning)); background: rgb(var(--ds-warning) / 0.12); }
+  .sev-low { color: rgb(var(--ds-fg-subtle)); background: rgb(var(--ds-fg-subtle) / 0.12); }
+  .status-pending { color: rgb(var(--ds-warning)); }
 
-  :global(.light) .sev-high { color: #C2410C; }
-  :global(.light) .sev-medium,
-  :global(.light) .status-pending { color: #B45309; }
-  :global(.light) .sev-low { color: #475569; }
+  :global(.light) .sev-high { color: #9A3412; }
 </style>

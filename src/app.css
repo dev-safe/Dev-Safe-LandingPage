@@ -3,41 +3,56 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Design tokens: "Secure Navy". Values are space-separated RGB channels so Tailwind
+   opacity modifiers (bg-ds-cyan/10) work. Every text/background pairing meets WCAG AA. */
 :root {
-  --color-bg-primary: #0A0F1E;
-  --color-bg-surface: #0D1628;
-  --color-bg-elevated: #112240;
-  --color-accent-cyan: #00D4FF;
-  --color-accent-blue: #0077FF;
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #94A3B8;
-  --color-text-muted: #64748B;
-  --color-border: rgba(30, 58, 95, 0.4);
-  --color-success: #10B981;
-  --color-glass-bg: rgba(13, 22, 40, 0.7);
+  --ds-bg: 11 17 32;            /* #0B1120 */
+  --ds-surface: 19 28 49;       /* #131C31 */
+  --ds-elevated: 26 37 64;      /* #1A2540 */
+  --ds-border: 51 71 102;       /* #334766 */
+  --ds-fg: 241 245 249;         /* #F1F5F9 */
+  --ds-fg-muted: 180 192 210;   /* #B4C0D2 */
+  --ds-fg-subtle: 148 163 184;  /* #94A3B8 */
+  --ds-cyan: 34 211 238;        /* #22D3EE accent */
+  --ds-blue: 96 165 250;        /* #60A5FA */
+  --ds-primary: 34 211 238;     /* button fill */
+  --ds-primary-hover: 103 232 249;
+  --ds-on-primary: 11 17 32;
+  --ds-success: 52 211 153;     /* #34D399 */
+  --ds-warning: 251 191 36;     /* #FBBF24 */
+  --ds-danger: 248 113 113;     /* #F87171 */
+  --color-glass-bg: rgb(19 28 49 / 0.7);
   --font-heading: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  color-scheme: dark;
 }
 
 :root.light {
-  --color-bg-primary: #F8FAFC;
-  --color-bg-surface: #FFFFFF;
-  --color-bg-elevated: #F1F5F9;
-  --color-accent-cyan: #008AA8;
-  --color-accent-blue: #0050A8;
-  --color-text-primary: #0F172A;
-  --color-text-secondary: #475569;
-  --color-text-muted: #64748B;
-  --color-border: #E2E8F0;
-  --color-glass-bg: rgba(255, 255, 255, 0.7);
+  --ds-bg: 248 250 252;         /* #F8FAFC */
+  --ds-surface: 255 255 255;
+  --ds-elevated: 241 245 249;   /* #F1F5F9 */
+  --ds-border: 203 213 225;     /* #CBD5E1 */
+  --ds-fg: 15 23 42;            /* #0F172A */
+  --ds-fg-muted: 71 85 105;     /* #475569 */
+  --ds-fg-subtle: 86 101 122;   /* #56657A */
+  --ds-cyan: 11 104 130;        /* #0B6882 */
+  --ds-blue: 29 78 216;         /* #1D4ED8 */
+  --ds-primary: 29 78 216;
+  --ds-primary-hover: 30 64 175;
+  --ds-on-primary: 255 255 255;
+  --ds-success: 4 108 78;       /* #046C4E */
+  --ds-warning: 154 64 14;      /* #9A400E */
+  --ds-danger: 185 28 28;       /* #B91C1C */
+  --color-glass-bg: rgb(255 255 255 / 0.75);
+  color-scheme: light;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
+  background-color: rgb(var(--ds-bg));
+  color: rgb(var(--ds-fg));
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   transition: background-color 300ms ease, color 300ms ease;
@@ -57,7 +72,7 @@ h1, h2, h3, h4 {
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(90deg, #00D4FF, #0077FF);
+  background: linear-gradient(90deg, rgb(var(--ds-cyan)), rgb(var(--ds-blue)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -65,7 +80,7 @@ h1, h2, h3, h4 {
 
 /* Cyan glow utility */
 .cyan-glow {
-  box-shadow: 0 0 24px rgba(0, 212, 255, 0.15);
+  box-shadow: 0 0 24px rgb(var(--ds-cyan) / 0.15);
 }
 
 /* Glassmorphism card utility */
@@ -73,40 +88,14 @@ h1, h2, h3, h4 {
   background: var(--color-glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgb(var(--ds-border) / 0.6);
   border-radius: 16px;
   transition: border-color 300ms ease, box-shadow 300ms ease, background-color 300ms ease, transform 300ms ease;
 }
 
 .glass-card:hover {
-  border-color: rgba(0, 212, 255, 0.4);
-  box-shadow: 0 0 24px rgba(0, 212, 255, 0.15);
-}
-
-/* Light mode overrides for generic classes */
-.light h1.text-white,
-.light h2.text-white,
-.light h3.text-white,
-.light h4.text-white,
-.light strong.text-white,
-.light span.text-white:not(.bg-ds-blue *):not(.bg-gradient-to-r *):not(.bg-ds-elevated *),
-.light button.text-white:not(.bg-gradient-to-r *),
-.light a.text-white:not(.bg-gradient-to-r *):not(.bg-ds-blue *),
-.light .text-white.font-heading:not(.bg-gradient-to-r *):not(.bg-ds-blue *),
-.light .text-white.font-body:not(.bg-gradient-to-r *):not(.bg-ds-blue *),
-.light input.text-white,
-.light select.text-white,
-.light textarea.text-white {
-  color: var(--color-text-primary) !important;
-}
-
-.light .text-slate-400,
-.light .text-slate-300 {
-  color: var(--color-text-secondary) !important;
-}
-
-.light .text-slate-500 {
-  color: var(--color-text-muted) !important;
+  border-color: rgb(var(--ds-cyan) / 0.4);
+  box-shadow: 0 0 24px rgb(var(--ds-cyan) / 0.12);
 }
 
 /* Light mode tech grid lines */

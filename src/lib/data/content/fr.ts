@@ -13,9 +13,19 @@ const fr: SiteContent = {
   },
 
   seo: {
-    title: 'DevSafe | Agence logicielle & cybersécurité au Cameroun',
+    title: 'Cybersécurité & logiciels sécurisés au Cameroun | DevSafe',
     description:
-      'DevSafe crée des sites web, des applications mobiles et des audits de sécurité pour écoles, églises et entreprises au Cameroun, et ses propres produits.',
+      'Tests d’intrusion, audits de sécurité, applications web et Flutter sécurisées depuis Yaoundé. Créateurs de BookBridge. Consultation gratuite.',
+    keywords: [
+      'Agence de cybersécurité Cameroun',
+      'Développement logiciel sécurisé',
+      'Test d’intrusion Yaoundé',
+      'Audit de sécurité Cameroun',
+      'Développeurs SvelteKit Rust',
+      'Développement d’applications Flutter Cameroun',
+      'Application BookBridge',
+      'Plateforme de billetterie Eventra'
+    ],
     ogImageAlt: 'DevSafe : logiciels sécurisés et cybersécurité au Cameroun'
   },
 
@@ -25,7 +35,6 @@ const fr: SiteContent = {
     menuToggle: 'Ouvrir ou fermer le menu',
     languageSwitch: {
       text: 'EN',
-      href: '/',
       hreflang: 'en',
       label: 'EN — View the site in English'
     },
@@ -53,7 +62,7 @@ const fr: SiteContent = {
   },
 
   hero: {
-    badge: 'Agence logicielle & cybersécurité · Cameroun',
+    badge: 'Agence logicielle & cybersécurité · Yaoundé, Cameroun',
     headline: {
       before: '',
       highlight: 'Logiciels sécurisés',
@@ -98,7 +107,7 @@ const fr: SiteContent = {
       { icon: Rocket as unknown as Component, title: 'En production', text: 'Eventra, une plateforme de billetterie et de paiement en ligne' },
       { icon: Boxes as unknown as Component, title: 'Bâtisseurs de produits', text: 'Nous créons et exploitons notre propre produit, BookBridge' },
       { icon: ShieldCheck as unknown as Component, title: 'Vérifié en sécurité', text: 'Chaque projet est contrôlé contre les vulnérabilités avant la livraison' },
-      { icon: MapPin as unknown as Component, title: 'Basés au Cameroun', text: 'Équipe locale, tarifs locaux, aucune sous-traitance' }
+      { icon: MapPin as unknown as Component, title: 'Basés à Yaoundé', text: 'Équipe locale, tarifs locaux, aucune sous-traitance' }
     ],
     stack: {
       label: 'Conçu avec',
@@ -124,8 +133,8 @@ const fr: SiteContent = {
         icon: ShieldCheck as unknown as Component,
         title: 'Services de cybersécurité',
         description:
-          'Nous auditons vos systèmes, identifions les vulnérabilités et protégeons vos données et vos clients. Vous recevez un rapport clair, sans jargon, et un plan priorisé pour corriger l’essentiel en premier.',
-        tags: ['Audits de sécurité', 'Évaluation des vulnérabilités', 'Protection des données'],
+          'Nous auditons vos systèmes, les testons comme le ferait un attaquant et protégeons vos données et vos clients. Vous recevez un rapport clair, sans jargon, et un plan priorisé pour corriger l’essentiel en premier.',
+        tags: ['Tests d’intrusion', 'Audits de sécurité', 'Évaluation des vulnérabilités', 'Protection des données'],
         accentColor: '#3B82F6',
         featured: true,
         visual: {

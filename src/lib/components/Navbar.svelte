@@ -2,11 +2,15 @@
   import { onMount } from 'svelte';
   import { fade, fly } from 'svelte/transition';
   import { Menu, X, Sun, Moon, Languages } from '@lucide/svelte';
+  import { page } from '$app/state';
+  import { localizePath, stripLangPrefix } from '$lib/config/site';
   import { t } from '$lib/data/content';
   import logoImg from '$lib/assets/DevSafe_logo.jpg';
 
   const c = $derived(t());
   const navigation = $derived(c.navigation);
+  // Same page in the other language. Also lets the prerender crawler discover every /fr page.
+  const switchHref = $derived(localizePath(stripLangPrefix(page.url.pathname), c.ui.languageSwitch.hreflang));
 
   let scrolled = $state(false);
   let mobileOpen = $state(false);
@@ -85,7 +89,7 @@
     <div class="hidden lg:flex items-center gap-4">
       <!-- Language Toggle (a real link so crawlers find both versions) -->
       <a
-        href={c.ui.languageSwitch.href}
+        href={switchHref}
         hreflang={c.ui.languageSwitch.hreflang}
         lang={c.ui.languageSwitch.hreflang}
         aria-label={c.ui.languageSwitch.label}
@@ -128,7 +132,7 @@
     <div class="flex items-center gap-2 lg:hidden">
       <!-- Language Toggle (a real link so crawlers find both versions) -->
       <a
-        href={c.ui.languageSwitch.href}
+        href={switchHref}
         hreflang={c.ui.languageSwitch.hreflang}
         lang={c.ui.languageSwitch.hreflang}
         aria-label={c.ui.languageSwitch.label}

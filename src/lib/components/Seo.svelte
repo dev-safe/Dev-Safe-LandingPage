@@ -45,6 +45,8 @@
 <svelte:head>
   <title>{pageTitle}</title>
   <meta name="description" content={pageDescription} />
+  <!-- Ignored by Google for ranking; kept for Bing/Yandex and internal documentation of target terms. -->
+  <meta name="keywords" content={seo.keywords.join(', ')} />
   <link rel="canonical" href={canonical} />
   {#if !noindex}
     {#each alternates as alt (alt.hreflang)}
@@ -64,6 +66,7 @@
   <meta property="og:description" content={pageDescription} />
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={image} />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content={String(site.ogImage.width)} />
   <meta property="og:image:height" content={String(site.ogImage.height)} />
   <meta property="og:image:alt" content={seo.ogImageAlt} />

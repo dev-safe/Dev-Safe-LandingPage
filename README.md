@@ -20,7 +20,7 @@ The official landing page for **DevSafe**, a software development and cybersecur
 
 - **Interactive Consultation Gateway:** A custom glassmorphic request form with animated submit states ("Establishing Secure Link...") and feedback panels.
 - **Scroll-Triggered Entrance Animations:** A `use:reveal` action animates elements as they enter the viewport. Content is always server-rendered, and the hidden pre-animation state only applies when JS is running (`html.js`), so crawlers and no-JS visitors see everything.
-- **SEO:** The site is prerendered to static HTML. `Seo.svelte` handles the title, description, canonical, Open Graph and Twitter tags, `schema.ts` adds the JSON-LD graph, and `sitemap.xml` and `robots.txt` are generated from `src/lib/config/site.ts`.
+- **SEO:** The site is prerendered to static HTML. `Seo.svelte` handles the title, description, canonical, Open Graph and Twitter tags, `schema.ts` adds the JSON-LD graph (ProfessionalService in Yaoundé, plus BookBridge and Eventra), and `sitemap.xml` and `robots.txt` are generated at build time.
 - **Sticky Glassmorphism Header:** Responsive navigation bar with dynamic borders, a language toggle, and a hamburger menu below the `lg` breakpoint.
 - **Client Work vs. Owned Products:** Separate showcase sections for agency client work (e.g. **Eventra**) and DevSafe-owned products (e.g. **BookBridge**), rendered by a shared `ProjectShowcase` component.
 - **Bilingual (English / French):** English lives at `/` and French at `/fr`, with an FR/EN toggle in the header. Each version has its own `<html lang>`, canonical, `hreflang` alternates, `og:locale` and JSON-LD `inLanguage`, and both are listed in the sitemap.
@@ -60,7 +60,9 @@ src/
 │   │   ├── types.ts          # Shared content types
 │   │   └── index.ts          # t() / getContent(lang) helpers
 │   └── seo/
-│       └── schema.ts         # JSON-LD structured data
+│       ├── schema.ts         # JSON-LD structured data
+│       ├── sitemap.ts        # Sitemap XML renderer (hreflang alternates, escaping)
+│       └── sitemap-routes.ts # Static routes + dynamic collections published in the sitemap
 ├── routes/
 │   ├── +layout.svelte        # Imports global CSS & dynamic logo favicon
 │   ├── +layout.ts            # prerender = true for the whole site
@@ -68,7 +70,7 @@ src/
 │   │   ├── +page.svelte      # Main assembly page with SEO headers
 │   │   └── +page.ts          # Prerender entries for /fr
 │   ├── robots.txt/+server.ts # Prerendered robots.txt
-│   └── sitemap.xml/+server.ts# Prerendered sitemap (from indexableRoutes)
+│   └── sitemap.xml/+server.ts# Prerendered sitemap (from sitemap-routes.ts)
 ├── params/lang.ts            # Route matcher: only "fr" is a valid prefix
 ├── hooks.server.ts           # Sets <html lang> per page
 ├── app.css                   # Global styles, variables & utility classes
@@ -105,6 +107,17 @@ English (`src/lib/data/content/en.ts`) defines the content shape. The French fil
 - **French typography:** use `’` for apostrophes and a non-breaking space (U+00A0) before `: ? !` and inside `« »`.
 
 Visitors are never redirected based on browser language; they choose with the toggle, and search engines pick the right version from the `hreflang` tags.
+
+## 🗺️ Sitemap
+
+Routes are registered in `src/lib/seo/sitemap-routes.ts`:
+
+- **Static pages:** add `{ path: '/services', changefreq: 'weekly', priority: 0.8 }` to `staticRoutes`.
+- **Collections** (case studies, docs, …): add a `dynamicSources` entry with the route pattern (e.g. `/work/[slug]`) and a `load()` that returns one entry per item. `load` may be async (CMS/API).
+
+A registered route is only published once its `+page.svelte` exists, so the sitemap never lists a 404. The build log prints `[sitemap] not yet published (no page): …` for routes still waiting on a page. `/services`, `/about`, `/contact` and `/work/[slug]` are pre-registered.
+
+Pages under `src/routes/[[lang=lang]]/` are published in English and French with hreflang alternates. Pages outside it are English-only. Give each page a `<Seo path="/your-path" lang={c.meta.lang} />`; because `prerender.origin` is set in `svelte.config.js`, its hreflang links make the prerenderer build the French version too.
 
 ## 💻 Local Development
 

@@ -11,15 +11,24 @@ export const site = {
   email: 'contact@devsafe.cm',
   telephone: '+237680001677',
   country: 'CM',
+  address: {
+    locality: 'Yaoundé',
+    region: 'Centre',
+    country: 'CM'
+  },
   sameAs: ['https://github.com/Dev-Safe'],
-  keywords: [
-    'Software development',
-    'Web development',
-    'Mobile app development',
+  /** Topics the organisation is expert in (JSON-LD `knowsAbout`). */
+  expertise: [
     'Cybersecurity',
+    'Penetration testing',
     'Security audits',
     'Vulnerability assessment',
-    'Secure coding'
+    'Secure software development',
+    'Web development',
+    'Mobile app development',
+    'SvelteKit',
+    'Rust',
+    'Flutter'
   ]
 } as const;
 
@@ -38,21 +47,14 @@ export const isLang = (value: unknown): value is Lang => languages.includes(valu
 /** Resolves the language from a URL pathname (`/fr`, `/fr/...` → French, everything else → English). */
 export const langFromPath = (pathname: string): Lang => (/^\/fr(\/|$)/.test(pathname) ? 'fr' : defaultLang);
 
+/** Removes the language segment: `/fr/services` → `/services`, `/fr` → `/`. */
+export const stripLangPrefix = (pathname: string) => pathname.replace(/^\/fr(?=\/|$)/, '') || '/';
+
 /** Prefixes a language-neutral path (`/`, `/about`) with the language segment. */
 export const localizePath = (path: string, lang: Lang) => {
   const prefix = localeConfig[lang].prefix;
   if (!prefix) return path;
   return path === '/' ? prefix : `${prefix}${path}`;
 };
-
-type ChangeFreq = 'weekly' | 'monthly' | 'yearly';
-
-/**
- * Public, indexable routes as language-neutral paths. Every route is published in each language,
- * so sitemap.xml lists one URL per language with hreflang alternates.
- */
-export const indexableRoutes: { path: string; changefreq: ChangeFreq; priority: number }[] = [
-  { path: '/', changefreq: 'monthly', priority: 1.0 }
-];
 
 export const absoluteUrl = (path = '/') => new URL(path, site.url).href;

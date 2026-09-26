@@ -40,14 +40,16 @@ src/
 │   ├── components/
 │   │   ├── CTABanner.svelte  # Interactive consultation form banner
 │   │   ├── Footer.svelte     # Footer links and WhatsApp integration
-│   │   ├── Hero.svelte       # Hero layout with floating dashboard card
+│   │   ├── Hero.svelte       # Hero with sample security-audit report panel
 │   │   ├── Navbar.svelte     # Responsive glass header & mobile drawer
-│   │   ├── ProjectCard.svelte     # Single project card with mock code block
+│   │   ├── ProjectCard.svelte     # Single project card with product UI preview
 │   │   ├── ProjectShowcase.svelte # Reusable section for client work & products
 │   │   ├── Seo.svelte        # <svelte:head> meta, canonical, OG, JSON-LD
-│   │   ├── Services.svelte   # offerings grid with cyan accent borders
+│   │   ├── Services.svelte   # Bento grid of services + "How we work" process
+│   │   ├── TrustStrip.svelte # Real proof points and tech stack under the hero
 │   │   ├── Team.svelte       # Team showcase card grids
-│   │   └── WhyDevSafe.svelte # Corporate differentiator grids
+│   │   ├── WhyDevSafe.svelte # Corporate differentiator grids
+│   │   └── previews/         # Illustrative Eventra & BookBridge UI mockups
 │   ├── config/
 │   │   └── site.ts           # Site URL, SEO defaults, indexable routes
 │   ├── data/

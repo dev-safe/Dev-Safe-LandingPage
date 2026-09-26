@@ -2,6 +2,7 @@
   import { reveal } from '$lib/actions/reveal';
   import { FileText, CheckCircle2, Loader } from '@lucide/svelte';
   import { t } from '$lib/data/content';
+  import SectionPhoto from './SectionPhoto.svelte';
 
   const hero = $derived(t().hero);
   const report = $derived(hero.auditPreview);
@@ -9,35 +10,12 @@
 </script>
 
 <section class="relative flex items-center justify-center pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden bg-ds-bg grid-bg">
-  <!-- Decorative photo: grayscale source, tinted to the palette by the luminosity blend below -->
-  <div class="hero-photo absolute inset-0 lg:left-[30%] pointer-events-none z-0" aria-hidden="true">
-    <picture>
-      <source
-        type="image/avif"
-        srcset="/images/hero-padlock-1280.avif 1280w, /images/hero-padlock-2400.avif 2400w"
-        sizes="(min-width: 1024px) 70vw, 100vw"
-      />
-      <source
-        type="image/webp"
-        srcset="/images/hero-padlock-1280.webp 1280w, /images/hero-padlock-2400.webp 2400w"
-        sizes="(min-width: 1024px) 70vw, 100vw"
-      />
-      <img
-        src="/images/hero-padlock-1280.jpg"
-        alt=""
-        width="1280"
-        height="854"
-        fetchpriority="high"
-        decoding="async"
-        class="h-full w-full object-cover"
-      />
-    </picture>
-  </div>
+  <SectionPhoto name="hero-padlock" widths={[1280, 2400]} fallbackHeight={854} priority />
 
   <!-- Radial Glow Behind Headline -->
   <div class="absolute inset-0 pointer-events-none z-0" style="background: radial-gradient(ellipse 60% 40% at 50% 40%, rgba(0, 212, 255, 0.06) 0%, transparent 70%);"></div>
 
-  <div class="max-w-7xl mx-auto px-6 w-full z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+  <div class="relative max-w-7xl mx-auto px-6 w-full z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
 
     <!-- Left — Offer, audience, outcome -->
     <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -167,30 +145,6 @@
   .sev-medium { color: rgb(var(--ds-warning)); background: rgb(var(--ds-warning) / 0.12); }
   .sev-low { color: rgb(var(--ds-fg-subtle)); background: rgb(var(--ds-fg-subtle) / 0.12); }
   .status-pending { color: rgb(var(--ds-warning)); }
-
-  /* Fades out toward the text column and the next section so copy keeps its contrast. */
-  .hero-photo {
-    opacity: 0.3;
-    mix-blend-mode: luminosity;
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgb(0 0 0 / 0.5) 55%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 0%, rgb(0 0 0 / 0.5) 55%, transparent 100%);
-  }
-
-  @media (min-width: 1024px) {
-    .hero-photo {
-      opacity: 0.45;
-      -webkit-mask-image:
-        linear-gradient(to right, transparent 0%, #000 45%),
-        linear-gradient(to bottom, #000 70%, transparent 100%);
-      -webkit-mask-composite: source-in;
-      mask-image:
-        linear-gradient(to right, transparent 0%, #000 45%),
-        linear-gradient(to bottom, #000 70%, transparent 100%);
-      mask-composite: intersect;
-    }
-  }
-
-  :global(.light) .hero-photo { opacity: 0.12; }
 
   :global(.light) .sev-high { color: #9A3412; }
 </style>

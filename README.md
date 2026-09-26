@@ -47,6 +47,7 @@ src/
 │   │   ├── PhoneFrame.svelte      # Device frame for real product screenshots
 │   │   ├── ProjectCard.svelte     # Single project card with product screenshot
 │   │   ├── ProjectShowcase.svelte # Reusable section for client work & products
+│   │   ├── SectionPhoto.svelte    # Decorative palette-tinted background photo
 │   │   ├── Seo.svelte        # <svelte:head> meta, canonical, OG, JSON-LD
 │   │   ├── Services.svelte   # Bento grid of services + "How we work" process
 │   │   ├── TrustStrip.svelte # Real proof points and tech stack under the hero
@@ -78,7 +79,8 @@ src/
 static/
 ├── apple-touch-icon.png      # iOS home-screen icon
 ├── favicon.jpg               # Static brand fallback icon
-├── images/hero-padlock-*     # Hero background (grayscale AVIF/WebP/JPEG; photo by FLY:D on Unsplash)
+├── images/                   # Grayscale section photos (AVIF/WebP/JPEG) used by SectionPhoto.svelte
+│                             #   hero-padlock-* (FLY:D, Unsplash), cta-code-* (contact section)
 ├── logo-512.png              # Logo referenced by JSON-LD
 └── og-image.png              # 1200x630 social share image
 ```
@@ -99,7 +101,7 @@ Colours live as RGB-channel CSS variables in `src/app.css` (`--ds-*`, with overr
 
 Every text/background pairing meets WCAG AA (4.5:1) in both dark and light mode.
 
-Photos stay on-palette by shipping them in grayscale and tinting them in CSS with `mix-blend-mode: luminosity` over `ds-bg` (see `.hero-photo` in `Hero.svelte`). To regenerate the hero variants from a new source photo:
+Photos stay on-palette by shipping them in grayscale and tinting them in CSS with `mix-blend-mode: luminosity` over `ds-bg` (`src/lib/components/SectionPhoto.svelte`, used by the hero and contact sections). To add or replace a photo, export `{name}-{width}.avif|webp` for two widths plus `{name}-{smallWidth}.jpg`:
 
 ```bash
 vips thumbnail source.jpg tmp.v 2400 && vips colourspace tmp.v gray.png b-w

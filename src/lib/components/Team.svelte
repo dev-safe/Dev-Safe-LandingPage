@@ -38,13 +38,13 @@
           <!-- Top hover line glow -->
           <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-ds-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-          <!-- Avatar -->
+          <!-- Portrait: 240px sources, so 160px max keeps them sharp on 1.5x screens -->
           <div 
-            class="w-[60px] h-[60px] rounded-full overflow-hidden flex items-center justify-center font-heading text-lg font-bold text-[#fff] mb-4 shadow-[0_4px_12px_rgba(0,0,0,0.2)]"
+            class="w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden flex items-center justify-center font-heading text-3xl font-bold text-[#fff] mb-5 shadow-[0_8px_24px_rgba(0,0,0,0.25)] ring-1 ring-ds-border/60 group-hover:ring-ds-cyan/50 transition-shadow duration-300"
             style="background-color: {member.bg}; border: {member.borderCyan ? '2px solid rgb(var(--ds-cyan))' : 'none'};"
           >
             {#if member.image}
-              <img src={member.image} alt={c.ui.portraitAlt(member.name, member.role)} width="60" height="60" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <img src={member.image} alt={c.ui.portraitAlt(member.name, member.role)} width="160" height="160" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             {:else}
               {member.initials}
             {/if}

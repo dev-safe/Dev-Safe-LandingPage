@@ -25,13 +25,13 @@
         {section.eyebrow}
       </span>
       <h2 
-        class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4"
+        class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         {section.heading}
       </h2>
       <p 
-        class="font-body text-slate-400 text-sm sm:text-base leading-relaxed"
+        class="font-body text-ds-fg-muted text-sm sm:text-base leading-relaxed"
         data-reveal use:reveal={{ y: 20, duration: 600, delay: 150 }}
       >
         {section.subtitle}
@@ -51,7 +51,7 @@
         class="text-center mt-12"
         data-reveal use:reveal={{ y: 15, duration: 500, delay: 500 }}
       >
-        <span class="text-sm text-slate-400 font-body">
+        <span class="text-sm text-ds-fg-muted font-body">
           {section.cta.text}
           <a href={section.cta.link.href} class="text-ds-cyan font-semibold hover:underline">
             {section.cta.link.text}

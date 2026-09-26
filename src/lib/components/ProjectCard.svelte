@@ -19,14 +19,14 @@
               <div class="lg:col-span-7 space-y-6">
                 <div>
                   <!-- Status Badge -->
-                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded {project.isLive ? 'bg-ds-success/15 border border-ds-success/30 text-ds-cyan' : 'bg-ds-blue/15 border border-ds-blue/30 text-ds-blue'} text-[10px] font-mono font-bold uppercase tracking-wider mb-3">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded {project.isLive ? 'bg-ds-success/15 border border-ds-success/30 text-ds-success' : 'bg-ds-blue/15 border border-ds-blue/30 text-ds-blue'} text-[10px] font-mono font-bold uppercase tracking-wider mb-3">
                     {#if project.isLive}
                       <span class="w-1.5 h-1.5 rounded-full bg-ds-cyan animate-pulse"></span>
                     {/if}
                     {project.statusBadge}
                   </span>
                   <!-- Project Title -->
-                  <h3 class="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                  <h3 class="font-heading text-2xl sm:text-3xl font-bold text-ds-fg tracking-tight">
                     {project.title}
                   </h3>
                   <!-- Tagline -->
@@ -36,14 +36,14 @@
                 </div>
 
                 <!-- Description -->
-                <p class="font-body text-slate-400 text-sm sm:text-base leading-relaxed">
+                <p class="font-body text-ds-fg-muted text-sm sm:text-base leading-relaxed">
                   {project.description}
                 </p>
 
                 <!-- Tech Tags -->
                 <div class="flex flex-wrap gap-2 pt-2">
                   {#each project.tags as tag}
-                    <span class="px-3 py-1 bg-ds-elevated/70 border border-ds-border/50 rounded-md text-xs font-mono font-medium text-slate-300">
+                    <span class="px-3 py-1 bg-ds-elevated/70 border border-ds-border/50 rounded-md text-xs font-mono font-medium text-ds-fg-muted">
                       {tag}
                     </span>
                   {/each}

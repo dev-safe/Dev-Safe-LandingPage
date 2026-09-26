@@ -13,13 +13,13 @@
 
     <div class="text-center max-w-2xl mx-auto mb-16">
       <h2
-        class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4"
+        class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         {services.heading}
       </h2>
       <p
-        class="font-body text-slate-400 text-sm sm:text-base leading-relaxed"
+        class="font-body text-ds-fg-muted text-sm sm:text-base leading-relaxed"
         data-reveal use:reveal={{ y: 20, duration: 600, delay: 150 }}
       >
         {services.subtitle}
@@ -54,10 +54,10 @@
               {/if}
             </div>
 
-            <h3 class="font-heading {item.featured ? 'text-2xl sm:text-3xl' : 'text-xl'} font-bold text-white mb-3 group-hover:text-ds-cyan transition-colors duration-200">
+            <h3 class="font-heading {item.featured ? 'text-2xl sm:text-3xl' : 'text-xl'} font-bold text-ds-fg mb-3 group-hover:text-ds-cyan transition-colors duration-200">
               {item.title}
             </h3>
-            <p class="font-body text-slate-400 {item.featured ? 'text-base max-w-xl' : 'text-sm'} leading-relaxed mb-6">
+            <p class="font-body text-ds-fg-muted {item.featured ? 'text-base max-w-xl' : 'text-sm'} leading-relaxed mb-6">
               {item.description}
             </p>
 
@@ -75,10 +75,10 @@
             <!-- Service visual -->
             <div class="{item.featured ? '' : 'mb-6'}">
               {#if item.visual.type === 'checklist'}
-                <p class="text-[11px] font-mono uppercase tracking-wider text-slate-500 mb-3">{item.visual.heading}</p>
+                <p class="text-[11px] font-mono uppercase tracking-wider text-ds-fg-subtle mb-3">{item.visual.heading}</p>
                 <ul class="grid grid-cols-1 gap-2.5">
                   {#each item.visual.items as point (point)}
-                    <li class="flex items-center gap-2.5 rounded-lg border border-ds-border/50 bg-ds-bg/40 px-3 py-2.5 text-sm text-slate-300">
+                    <li class="flex items-center gap-2.5 rounded-lg border border-ds-border/50 bg-ds-bg/40 px-3 py-2.5 text-sm text-ds-fg-muted">
                       <CheckCircle2 class="w-4 h-4 text-ds-success shrink-0" />
                       {point}
                     </li>
@@ -86,9 +86,9 @@
                 </ul>
               {:else if item.visual.type === 'pipeline'}
                 <div class="rounded-lg border border-ds-border/50 bg-ds-bg/50 px-4 py-3 font-mono text-xs leading-6" aria-hidden="true">
-                  <p class="text-slate-500">$ devsafe ship</p>
+                  <p class="text-ds-fg-subtle">$ devsafe ship</p>
                   {#each item.visual.steps as step, i (step)}
-                    <p class="pipeline-step text-slate-300" style="--i: {i}">
+                    <p class="pipeline-step text-ds-fg-muted" style="--i: {i}">
                       <span class="text-ds-success">✓</span> {step}
                     </p>
                   {/each}
@@ -103,7 +103,7 @@
                       ></span>
                     {/each}
                   </div>
-                  <span class="font-heading text-2xl font-bold text-white">Aa</span>
+                  <span class="font-heading text-2xl font-bold text-ds-fg">Aa</span>
                 </div>
               {/if}
             </div>
@@ -125,7 +125,7 @@
         class="glass-card relative overflow-hidden border border-ds-border/70 p-7 lg:p-8 md:col-span-2"
         data-reveal use:reveal={{ y: 30, duration: 600, delay: services.items.length * 120 + 200 }}
       >
-        <h3 class="font-heading text-xl font-bold text-white mb-6">{services.process.heading}</h3>
+        <h3 class="font-heading text-xl font-bold text-ds-fg mb-6">{services.process.heading}</h3>
         <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {#each services.process.steps as step, i (step.title)}
             <li class="relative">
@@ -135,8 +135,8 @@
                   <span class="hidden lg:block flex-1 h-px bg-gradient-to-r from-ds-cyan/40 to-transparent"></span>
                 {/if}
               </span>
-              <p class="font-heading text-sm font-bold text-white">{step.title}</p>
-              <p class="font-body text-xs text-slate-400 leading-relaxed mt-1">{step.text}</p>
+              <p class="font-heading text-sm font-bold text-ds-fg">{step.title}</p>
+              <p class="font-body text-xs text-ds-fg-muted leading-relaxed mt-1">{step.text}</p>
             </li>
           {/each}
         </ol>

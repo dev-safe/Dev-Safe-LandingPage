@@ -61,7 +61,7 @@
         <img src={logoImg} alt="DevSafe logo" width="32" height="32" class="w-8 h-8 rounded-lg object-cover border border-ds-border/40 transition-transform duration-300 group-hover:scale-105" />
       </div>
       <span class="font-heading text-xl font-bold tracking-tight">
-        <span class="text-white">{navigation.logo.textDev}</span><span class="text-ds-cyan">{navigation.logo.textSafe}</span>
+        <span class="text-ds-fg">{navigation.logo.textDev}</span><span class="text-ds-cyan">{navigation.logo.textSafe}</span>
       </span>
     </a>
 
@@ -70,7 +70,7 @@
       {#each navigation.links as link}
         <a 
           href={link.href} 
-          class="text-sm font-body font-medium text-slate-300 hover:text-ds-cyan transition-colors duration-200 relative py-1.5 group/navlink"
+          class="text-sm font-body font-medium text-ds-fg-muted hover:text-ds-cyan transition-colors duration-200 relative py-1.5 group/navlink"
         >
           {link.name}
           <span class="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gradient-to-r from-ds-cyan to-ds-blue transition-all duration-300 -translate-x-1/2 group-hover/navlink:w-full"></span>
@@ -83,7 +83,7 @@
       <!-- Theme Toggle -->
       <button 
         onclick={toggleTheme}
-        class="text-slate-400 hover:text-ds-cyan p-2 rounded-full hover:bg-ds-elevated/40 transition-colors focus:outline-none"
+        class="text-ds-fg-muted hover:text-ds-cyan p-2 rounded-full hover:bg-ds-elevated/40 transition-colors focus:outline-none"
         aria-label="Toggle theme"
       >
         {#if isLight}
@@ -101,7 +101,7 @@
       </a>
       <a 
         href={navigation.actions.primary.href} 
-        class="bg-gradient-to-r from-ds-cyan to-ds-blue text-white px-5 py-2 rounded-full text-xs font-heading font-semibold hover:brightness-110 active:scale-95 transition-all duration-200 shadow-[0_0_16px_rgba(0,212,255,0.15)] hover:shadow-[0_0_24px_rgba(0,212,255,0.25)]"
+        class="bg-ds-primary text-ds-on-primary px-5 py-2 rounded-full text-xs font-heading font-semibold hover:bg-ds-primary-hover active:scale-95 transition-all duration-200 shadow-[0_0_16px_rgba(0,212,255,0.15)] hover:shadow-[0_0_24px_rgba(0,212,255,0.25)]"
       >
         {navigation.actions.primary.text}
       </a>
@@ -112,7 +112,7 @@
       <!-- Theme Toggle -->
       <button 
         onclick={toggleTheme}
-        class="text-slate-400 hover:text-ds-cyan p-2 rounded-full hover:bg-ds-elevated/40 transition-colors focus:outline-none"
+        class="text-ds-fg-muted hover:text-ds-cyan p-2 rounded-full hover:bg-ds-elevated/40 transition-colors focus:outline-none"
         aria-label="Toggle theme"
       >
         {#if isLight}
@@ -123,7 +123,7 @@
       </button>
 
       <button 
-        class="text-white hover:text-ds-cyan transition-colors focus:outline-none p-1.5 rounded-lg bg-ds-surface/50 border border-ds-border/50" 
+        class="text-ds-fg hover:text-ds-cyan transition-colors focus:outline-none p-1.5 rounded-lg bg-ds-surface/50 border border-ds-border/50" 
         onclick={toggleMobile}
         aria-label="Toggle menu"
       >
@@ -157,7 +157,7 @@
       {#each navigation.links as link}
         <a 
           href={link.href} 
-          class="text-base font-body font-medium text-slate-200 hover:text-ds-cyan transition-colors py-2 border-b border-ds-border/30"
+          class="text-base font-body font-medium text-ds-fg hover:text-ds-cyan transition-colors py-2 border-b border-ds-border/30"
           onclick={closeMobile}
         >
           {link.name}
@@ -175,7 +175,7 @@
       </a>
       <a 
         href={navigation.actions.primary.href} 
-        class="w-full text-center bg-gradient-to-r from-ds-cyan to-ds-blue text-white py-3 rounded-full text-sm font-heading font-semibold hover:brightness-110 transition-all shadow-[0_0_16px_rgba(0,212,255,0.15)]"
+        class="w-full text-center bg-ds-primary text-ds-on-primary py-3 rounded-full text-sm font-heading font-semibold hover:bg-ds-primary-hover transition-all shadow-[0_0_16px_rgba(0,212,255,0.15)]"
         onclick={closeMobile}
       >
         {navigation.actions.primary.text}

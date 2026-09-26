@@ -12,13 +12,13 @@
     <!-- Centered Header -->
     <div class="text-center max-w-2xl mx-auto mb-16">
       <h2 
-        class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4"
+        class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         {team.heading}
       </h2>
       <p 
-        class="font-body text-slate-400 text-sm sm:text-base leading-relaxed"
+        class="font-body text-ds-fg-muted text-sm sm:text-base leading-relaxed"
         data-reveal use:reveal={{ y: 20, duration: 600, delay: 150 }}
       >
         {team.subtitle}
@@ -37,8 +37,8 @@
 
           <!-- Avatar -->
           <div 
-            class="w-[60px] h-[60px] rounded-full overflow-hidden flex items-center justify-center font-heading text-lg font-bold text-white mb-4 shadow-[0_4px_12px_rgba(0,0,0,0.2)]"
-            style="background-color: {member.bg}; border: {member.borderCyan ? '2px solid #00D4FF' : 'none'};"
+            class="w-[60px] h-[60px] rounded-full overflow-hidden flex items-center justify-center font-heading text-lg font-bold text-[#fff] mb-4 shadow-[0_4px_12px_rgba(0,0,0,0.2)]"
+            style="background-color: {member.bg}; border: {member.borderCyan ? '2px solid rgb(var(--ds-cyan))' : 'none'};"
           >
             {#if member.image}
               <img src={member.image} alt="Portrait of {member.name}, {member.role} at DevSafe" width="60" height="60" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
@@ -48,7 +48,7 @@
           </div>
 
           <!-- Name -->
-          <h3 class="font-heading text-base font-bold text-white mb-1 group-hover:text-ds-cyan transition-colors duration-200">
+          <h3 class="font-heading text-base font-bold text-ds-fg mb-1 group-hover:text-ds-cyan transition-colors duration-200">
             {member.name}
           </h3>
 
@@ -58,14 +58,14 @@
           </p>
 
           <!-- Description -->
-          <p class="font-body text-slate-400 text-xs leading-relaxed mb-4">
+          <p class="font-body text-ds-fg-muted text-xs leading-relaxed mb-4">
             {member.description}
           </p>
 
           <!-- Tags Row -->
           <div class="flex flex-wrap gap-1.5 justify-center mt-auto pt-3 border-t border-ds-border/30 w-full">
             {#each member.tags as tag}
-              <span class="px-2 py-0.5 bg-ds-elevated/70 border border-ds-border/40 rounded text-[9px] font-mono font-medium text-slate-400">
+              <span class="px-2 py-0.5 bg-ds-elevated/70 border border-ds-border/40 rounded text-[9px] font-mono font-medium text-ds-fg-muted">
                 {tag}
               </span>
             {/each}

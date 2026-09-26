@@ -22,8 +22,8 @@
             <Icon class="w-5 h-5 text-ds-cyan" />
           </span>
           <div>
-            <p class="font-heading text-sm font-bold text-white">{item.title}</p>
-            <p class="font-body text-xs text-slate-400 leading-relaxed mt-0.5">{item.text}</p>
+            <p class="font-heading text-sm font-bold text-ds-fg">{item.title}</p>
+            <p class="font-body text-xs text-ds-fg-muted leading-relaxed mt-0.5">{item.text}</p>
           </div>
         </li>
       {/each}
@@ -33,10 +33,10 @@
       class="mt-10 pt-6 border-t border-ds-border/40 flex flex-col sm:flex-row items-center gap-4"
       data-reveal use:reveal={{ y: 10, duration: 500, delay: 400 }}
     >
-      <span class="text-[11px] font-mono uppercase tracking-wider text-slate-500 shrink-0">{trustStrip.stack.label}</span>
+      <span class="text-[11px] font-mono uppercase tracking-wider text-ds-fg-subtle shrink-0">{trustStrip.stack.label}</span>
       <ul class="flex flex-wrap justify-center sm:justify-start gap-x-6 gap-y-2">
         {#each trustStrip.stack.items as tech (tech)}
-          <li class="font-mono text-sm font-semibold text-slate-400 hover:text-ds-cyan transition-colors duration-200">{tech}</li>
+          <li class="font-mono text-sm font-semibold text-ds-fg-muted hover:text-ds-cyan transition-colors duration-200">{tech}</li>
         {/each}
       </ul>
     </div>

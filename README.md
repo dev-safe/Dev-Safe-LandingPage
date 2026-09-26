@@ -74,6 +74,20 @@ static/
 
 ---
 
+## 🎨 Theme Tokens
+
+Colours live as RGB-channel CSS variables in `src/app.css` (`--ds-*`, with overrides under `:root.light`) and are exposed to Tailwind as `ds-*` colours, so opacity modifiers like `bg-ds-cyan/10` work. Use the semantic classes instead of raw Tailwind colours:
+
+| Class | Use for |
+| --- | --- |
+| `text-ds-fg` / `text-ds-fg-muted` / `text-ds-fg-subtle` | headings / body copy / captions |
+| `bg-ds-bg`, `bg-ds-surface`, `bg-ds-elevated`, `border-ds-border` | page, cards, raised elements, borders |
+| `text-ds-cyan`, `text-ds-blue` | accent labels and links |
+| `bg-ds-primary text-ds-on-primary hover:bg-ds-primary-hover` | primary buttons |
+| `ds-success`, `ds-warning`, `ds-danger` | status colours |
+
+Every text/background pairing meets WCAG AA (4.5:1) in both dark and light mode.
+
 ## 💻 Local Development
 
 ### 1. Install Dependencies

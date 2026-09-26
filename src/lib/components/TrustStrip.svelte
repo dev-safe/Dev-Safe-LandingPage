@@ -1,7 +1,9 @@
 <script lang="ts">
   import { reveal } from '$lib/actions/reveal';
   import type { Component } from 'svelte';
-  import { trustStrip } from '$lib/data/content';
+  import { t } from '$lib/data/content';
+
+  const trustStrip = $derived(t().trustStrip);
 </script>
 
 <section aria-labelledby="trust-heading" class="relative bg-ds-surface border-y border-ds-border/40">

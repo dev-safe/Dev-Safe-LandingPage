@@ -2,17 +2,10 @@ export const site = {
   name: 'DevSafe',
   legalName: 'DevSafe',
   url: 'https://www.devsafe.cm',
-  locale: 'en_CM',
-  language: 'en',
-  tagline: 'Build. Secure. Protect.',
-  title: 'DevSafe | Software & Cybersecurity Agency in Cameroon',
-  description:
-    'DevSafe builds secure websites, mobile apps and security audits for schools, churches and businesses in Cameroon, and ships its own products like BookBridge.',
   ogImage: {
     path: '/og-image.png',
     width: 1200,
-    height: 630,
-    alt: 'DevSafe: secure software and cybersecurity in Cameroon'
+    height: 630
   },
   logo: '/logo-512.png',
   email: 'contact@devsafe.cm',
@@ -30,9 +23,34 @@ export const site = {
   ]
 } as const;
 
+/** Cameroon is officially bilingual. English is the default and lives at `/`; French lives at `/fr`. */
+export const languages = ['en', 'fr'] as const;
+export type Lang = (typeof languages)[number];
+export const defaultLang: Lang = 'en';
+
+export const localeConfig: Record<Lang, { htmlLang: string; ogLocale: string; prefix: string }> = {
+  en: { htmlLang: 'en', ogLocale: 'en_CM', prefix: '' },
+  fr: { htmlLang: 'fr', ogLocale: 'fr_CM', prefix: '/fr' }
+};
+
+export const isLang = (value: unknown): value is Lang => languages.includes(value as Lang);
+
+/** Resolves the language from a URL pathname (`/fr`, `/fr/...` → French, everything else → English). */
+export const langFromPath = (pathname: string): Lang => (/^\/fr(\/|$)/.test(pathname) ? 'fr' : defaultLang);
+
+/** Prefixes a language-neutral path (`/`, `/about`) with the language segment. */
+export const localizePath = (path: string, lang: Lang) => {
+  const prefix = localeConfig[lang].prefix;
+  if (!prefix) return path;
+  return path === '/' ? prefix : `${prefix}${path}`;
+};
+
 type ChangeFreq = 'weekly' | 'monthly' | 'yearly';
 
-/** Public, indexable routes. Add new pages here so they appear in sitemap.xml. */
+/**
+ * Public, indexable routes as language-neutral paths. Every route is published in each language,
+ * so sitemap.xml lists one URL per language with hreflang alternates.
+ */
 export const indexableRoutes: { path: string; changefreq: ChangeFreq; priority: number }[] = [
   { path: '/', changefreq: 'monthly', priority: 1.0 }
 ];

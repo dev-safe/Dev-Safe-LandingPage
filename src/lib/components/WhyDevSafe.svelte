@@ -1,7 +1,9 @@
 <script lang="ts">
   import { reveal } from '$lib/actions/reveal';
   import type { Component } from 'svelte';
-  import { whyDevSafe } from '$lib/data/content';
+  import { t } from '$lib/data/content';
+
+  const whyDevSafe = $derived(t().whyDevSafe);
 </script>
 
 <section 

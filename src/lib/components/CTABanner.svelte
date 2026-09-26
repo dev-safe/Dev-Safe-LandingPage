@@ -1,8 +1,10 @@
 <script lang="ts">
   import { reveal } from '$lib/actions/reveal';
   import { fade } from 'svelte/transition';
-  import { ctaBanner } from '$lib/data/content';
+  import { t } from '$lib/data/content';
 
+  const ctaBanner = $derived(t().ctaBanner);
+  const form = $derived(ctaBanner.form);
 
   // Form State
   let name = $state('');
@@ -41,11 +43,11 @@
       if (response.ok && result.success) {
         isSubmitted = true;
       } else {
-        errorMessage = result.message || 'Submission failed. Please try again.';
+        errorMessage = result.message || form.errorFailed;
       }
     } catch (error) {
       console.error('Submission error:', error);
-      errorMessage = 'Network error. Please check your connection or email us directly.';
+      errorMessage = form.errorNetwork;
     } finally {
       isSubmitting = false;
     }
@@ -66,7 +68,7 @@
       <div class="lg:col-span-5 text-left flex flex-col justify-center">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ds-cyan/10 border border-ds-cyan/30 text-ds-cyan text-xs font-mono font-medium mb-6 w-fit" data-reveal use:reveal={{ y: 0 }}>
           <span class="w-1.5 h-1.5 rounded-full bg-ds-cyan animate-pulse"></span>
-          ACTIVE CONSULTATION GATEWAY
+          {ctaBanner.badge}
         </div>
         <h2 
           class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ds-fg mb-6 leading-tight"
@@ -84,15 +86,11 @@
           class="space-y-3 pt-4 border-t border-ds-border/30 max-w-xs"
           data-reveal use:reveal={{ y: 20, duration: 600, delay: 300 }}
         >
-          <div class="flex items-center gap-2.5 text-xs font-mono text-ds-fg-muted">
-            <span class="text-ds-cyan">✓</span> Free Cybersecurity Pre-Audit
-          </div>
-          <div class="flex items-center gap-2.5 text-xs font-mono text-ds-fg-muted">
-            <span class="text-ds-cyan">✓</span> Custom Architectural Diagram
-          </div>
-          <div class="flex items-center gap-2.5 text-xs font-mono text-ds-fg-muted">
-            <span class="text-ds-cyan">✓</span> Secure Proposal in 24 Hours
-          </div>
+          {#each ctaBanner.benefits as benefit (benefit)}
+            <div class="flex items-center gap-2.5 text-xs font-mono text-ds-fg-muted">
+              <span class="text-ds-cyan" aria-hidden="true">✓</span> {benefit}
+            </div>
+          {/each}
         </div>
       </div>
 
@@ -112,95 +110,94 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 class="font-heading text-2xl font-bold text-ds-fg mb-3">Request Received</h3>
+              <h3 class="font-heading text-2xl font-bold text-ds-fg mb-3">{ctaBanner.success.heading}</h3>
               <p class="font-body text-sm text-ds-fg-muted max-w-xs leading-relaxed mb-6">
-                Thank you, <strong class="text-ds-fg">{name}</strong>. Your consultation details have been sent. We will contact you at <span class="text-ds-cyan">{email}</span> within 24 hours.
+                {ctaBanner.success.thanks} <strong class="text-ds-fg">{name}</strong>. {ctaBanner.success.sent} <span class="text-ds-cyan">{email}</span> {ctaBanner.success.within}
               </p>
               <button 
                 onclick={() => isSubmitted = false}
                 class="text-xs font-mono text-ds-fg-subtle hover:text-ds-cyan transition-colors"
               >
-                ← Send another message
+                {ctaBanner.success.again}
               </button>
             </div>
           {:else}
             <form onsubmit={handleSubmit} class="space-y-5">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label for="form-name" class="font-mono text-[10px] uppercase tracking-wider text-ds-cyan mb-1.5 block">Your Name</label>
+                  <label for="form-name" class="font-mono text-[10px] uppercase tracking-wider text-ds-cyan mb-1.5 block">{form.name.label}</label>
                   <input 
                     type="text" 
                     id="form-name" 
                     bind:value={name} 
                     required 
-                    placeholder="E.g. Verla B."
+                    placeholder={form.name.placeholder}
                     class="w-full bg-ds-bg/65 border border-ds-border focus:border-ds-cyan focus:outline-none focus:ring-1 focus:ring-ds-cyan/30 text-ds-fg placeholder:text-ds-fg-subtle rounded-lg p-3 text-sm transition-all duration-200"
                   />
                 </div>
                 <div>
-                  <label for="form-email" class="font-mono text-[10px] uppercase tracking-wider text-ds-cyan mb-1.5 block">Email Address</label>
+                  <label for="form-email" class="font-mono text-[10px] uppercase tracking-wider text-ds-cyan mb-1.5 block">{form.email.label}</label>
                   <input 
                     type="email" 
                     id="form-email" 
                     bind:value={email} 
                     required 
-                    placeholder="E.g. contact@devsafe.cm"
+                    placeholder={form.email.placeholder}
                     class="w-full bg-ds-bg/65 border border-ds-border focus:border-ds-cyan focus:outline-none focus:ring-1 focus:ring-ds-cyan/30 text-ds-fg placeholder:text-ds-fg-subtle rounded-lg p-3 text-sm transition-all duration-200"
                   />
                 </div>
               </div>
 
               <div>
-                <label for="form-service" class="font-mono text-[10px] uppercase tracking-wider text-ds-cyan mb-1.5 block">Requested Gateway Service</label>
+                <label for="form-service" class="font-mono text-[10px] uppercase tracking-wider text-ds-cyan mb-1.5 block">{form.service.label}</label>
                 <select 
                   id="form-service" 
                   bind:value={service}
                   class="w-full bg-ds-bg border border-ds-border focus:border-ds-cyan focus:outline-none focus:ring-1 focus:ring-ds-cyan/30 text-ds-fg rounded-lg p-3 text-sm transition-all duration-200 appearance-none cursor-pointer"
                   style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2300D4FF%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpolyline points=%226 9 12 15 18 9%22%3E%3C/polyline%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px;"
                 >
-                  <option value="software">Software Development</option>
-                  <option value="security">Cybersecurity Auditing</option>
-                  <option value="branding">UI/UX & Brand Design</option>
-                  <option value="general">General Digital Assessment</option>
+                  {#each form.service.options as option (option.value)}
+                    <option value={option.value}>{option.label}</option>
+                  {/each}
                 </select>
               </div>
 
               <div>
-                <label for="form-message" class="font-mono text-[10px] uppercase tracking-wider text-ds-cyan mb-1.5 block">Project Requirements</label>
+                <label for="form-message" class="font-mono text-[10px] uppercase tracking-wider text-ds-cyan mb-1.5 block">{form.message.label}</label>
                 <textarea 
                   id="form-message" 
                   bind:value={message} 
                   required 
                   rows="3" 
-                  placeholder="Briefly describe your objectives..."
+                  placeholder={form.message.placeholder}
                   class="w-full bg-ds-bg/65 border border-ds-border focus:border-ds-cyan focus:outline-none focus:ring-1 focus:ring-ds-cyan/30 text-ds-fg placeholder:text-ds-fg-subtle rounded-lg p-3 text-sm transition-all duration-200"
                 ></textarea>
               </div>
 
               {#if errorMessage}
                 <p class="text-xs font-mono text-rose-500 text-center bg-rose-500/10 border border-rose-500/20 py-2.5 rounded-lg" transition:fade>
-                  Error: {errorMessage}
+                  {form.errorPrefix} {errorMessage}
                 </p>
               {/if}
 
               <button 
                 type="submit" 
                 disabled={isSubmitting}
-                class="w-full flex items-center justify-center bg-ds-primary text-ds-on-primary py-3.5 rounded-lg font-heading text-sm font-bold hover:bg-ds-primary-hover active:scale-95 disabled:opacity-50 disabled:pointer-events-none transition-all duration-200 shadow-[0_0_20px_rgba(0,212,255,0.15)]"
+                class="w-full flex items-center justify-center bg-ds-primary text-ds-on-primary px-4 py-3.5 text-center rounded-lg font-heading text-sm font-bold hover:bg-ds-primary-hover active:scale-95 disabled:opacity-50 disabled:pointer-events-none transition-all duration-200 shadow-[0_0_20px_rgba(0,212,255,0.15)]"
               >
                 {#if isSubmitting}
                   <svg class="animate-spin -ml-1 mr-3 h-4 w-4 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Establishing Secure Link...
+                  {form.submitting}
                 {:else}
-                  Initialize Consultation Request
+                  {form.submit}
                 {/if}
               </button>
               
               <p class="text-[10px] text-center font-mono text-ds-fg-subtle">
-                Or bypass secure form: 
+                {form.altContact}
                 <a href={ctaBanner.action.href} class="text-ds-cyan hover:underline">{ctaBanner.action.text}</a>
               </p>
             </form>

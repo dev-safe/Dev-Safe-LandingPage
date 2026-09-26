@@ -2,7 +2,10 @@
   import { reveal } from '$lib/actions/reveal';
   import type { Component } from 'svelte';
   import { CheckCircle2 } from '@lucide/svelte';
-  import { services } from '$lib/data/content';
+  import { t } from '$lib/data/content';
+
+  const c = $derived(t());
+  const services = $derived(c.services);
 </script>
 
 <section
@@ -50,7 +53,7 @@
                 <Icon class="w-6 h-6 text-ds-cyan" />
               </div>
               {#if item.featured}
-                <span class="px-2.5 py-1 rounded-full border border-ds-cyan/30 text-[10px] font-mono font-bold uppercase tracking-wider text-ds-cyan">Our specialty</span>
+                <span class="px-2.5 py-1 rounded-full border border-ds-cyan/30 text-[10px] font-mono font-bold uppercase tracking-wider text-ds-cyan">{c.ui.specialty}</span>
               {/if}
             </div>
 

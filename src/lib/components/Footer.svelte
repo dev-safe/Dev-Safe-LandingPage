@@ -1,7 +1,10 @@
 <script lang="ts">
   import { Mail, Globe } from '@lucide/svelte';
-  import { footer } from '$lib/data/content';
+  import { t } from '$lib/data/content';
   import logoImg from '$lib/assets/DevSafe_logo.jpg';
+
+  const c = $derived(t());
+  const footer = $derived(c.footer);
 </script>
 
 <footer class="bg-ds-bg border-t border-ds-border/50">
@@ -10,9 +13,9 @@
       
       <!-- Column 1: Logo & Tagline -->
       <div class="md:col-span-5 space-y-4">
-        <a href="/" class="flex items-center gap-2.5 focus:outline-none">
+        <a href={c.meta.home} class="flex items-center gap-2.5 focus:outline-none">
           <div class="relative flex items-center justify-center">
-            <img src={logoImg} alt="DevSafe logo" width="28" height="28" class="w-7 h-7 rounded-lg object-cover border border-ds-border/40" />
+            <img src={logoImg} alt={c.ui.logoAlt} width="28" height="28" class="w-7 h-7 rounded-lg object-cover border border-ds-border/40" />
           </div>
           <span class="font-heading text-lg font-bold tracking-tight">
             <span class="text-ds-fg">DEV</span><span class="text-ds-cyan">SAFE</span>
@@ -56,7 +59,7 @@
             <span>{footer.contact.email.text}</span>
           </a>
           <a 
-            href="/" 
+            href={c.meta.home}
             class="flex items-center gap-2.5 text-sm text-ds-fg-muted hover:text-ds-cyan transition-colors w-fit"
           >
             <Globe class="w-4 h-4 text-ds-cyan shrink-0" />
@@ -98,7 +101,7 @@
         {footer.bottom.copyright}
       </div>
       <div class="text-xs font-mono text-ds-fg-subtle hover:text-ds-cyan transition-colors">
-        <a href="/">
+        <a href={c.meta.home}>
           {footer.bottom.domain}
         </a>
       </div>

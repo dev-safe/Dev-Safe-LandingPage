@@ -21,9 +21,10 @@ The official landing page for **DevSafe**, a software development and cybersecur
 - **Interactive Consultation Gateway:** A custom glassmorphic request form with animated submit states ("Establishing Secure Link...") and feedback panels.
 - **Scroll-Triggered Entrance Animations:** A `use:reveal` action animates elements as they enter the viewport. Content is always server-rendered, and the hidden pre-animation state only applies when JS is running (`html.js`), so crawlers and no-JS visitors see everything.
 - **SEO:** The site is prerendered to static HTML. `Seo.svelte` handles the title, description, canonical, Open Graph and Twitter tags, `schema.ts` adds the JSON-LD graph, and `sitemap.xml` and `robots.txt` are generated from `src/lib/config/site.ts`.
-- **Sticky Glassmorphism Header:** Responsive navigation bar with dynamic border borders, and a custom mobile hamburger overlay menu.
+- **Sticky Glassmorphism Header:** Responsive navigation bar with dynamic borders, a language toggle, and a hamburger menu below the `lg` breakpoint.
 - **Client Work vs. Owned Products:** Separate showcase sections for agency client work (e.g. **Eventra**) and DevSafe-owned products (e.g. **BookBridge**), rendered by a shared `ProjectShowcase` component.
-- **Centralized Data Layer:** Content and asset links are managed entirely within a single file (`src/lib/data/content.ts`), avoiding hardcoded values inside markup.
+- **Bilingual (English / French):** English lives at `/` and French at `/fr`, with an FR/EN toggle in the header. Each version has its own `<html lang>`, canonical, `hreflang` alternates, `og:locale` and JSON-LD `inLanguage`, and both are listed in the sitemap.
+- **Centralized Data Layer:** All copy lives in `src/lib/data/content/` (one file per language), avoiding hardcoded strings inside markup.
 
 ---
 
@@ -52,17 +53,24 @@ src/
 │   │   ├── Team.svelte       # Team showcase card grids
 │   │   └── WhyDevSafe.svelte # Corporate differentiator grids
 │   ├── config/
-│   │   └── site.ts           # Site URL, SEO defaults, indexable routes
-│   ├── data/
-│   │   └── content.ts        # Centralized copy, tags, and icon mapper
+│   │   └── site.ts           # Site URL, languages, locale helpers, indexable routes
+│   ├── data/content/
+│   │   ├── en.ts             # English copy (source of truth for the content shape)
+│   │   ├── fr.ts             # French copy, typed as SiteContent
+│   │   ├── types.ts          # Shared content types
+│   │   └── index.ts          # t() / getContent(lang) helpers
 │   └── seo/
 │       └── schema.ts         # JSON-LD structured data
 ├── routes/
 │   ├── +layout.svelte        # Imports global CSS & dynamic logo favicon
 │   ├── +layout.ts            # prerender = true for the whole site
-│   ├── +page.svelte          # Main assembly page with SEO headers
+│   ├── [[lang=lang]]/        # Home page for / (en) and /fr (fr)
+│   │   ├── +page.svelte      # Main assembly page with SEO headers
+│   │   └── +page.ts          # Prerender entries for /fr
 │   ├── robots.txt/+server.ts # Prerendered robots.txt
 │   └── sitemap.xml/+server.ts# Prerendered sitemap (from indexableRoutes)
+├── params/lang.ts            # Route matcher: only "fr" is a valid prefix
+├── hooks.server.ts           # Sets <html lang> per page
 ├── app.css                   # Global styles, variables & utility classes
 ├── app.html                  # HTML shell template
 static/
@@ -87,6 +95,16 @@ Colours live as RGB-channel CSS variables in `src/app.css` (`--ds-*`, with overr
 | `ds-success`, `ds-warning`, `ds-danger` | status colours |
 
 Every text/background pairing meets WCAG AA (4.5:1) in both dark and light mode.
+
+## 🌍 Translations
+
+English (`src/lib/data/content/en.ts`) defines the content shape. The French file is typed as `SiteContent`, so `npm run check` fails if a key is missing from `fr.ts`.
+
+- **Edit copy:** change the string in both `en.ts` and `fr.ts`.
+- **Add a string:** add it to `en.ts`, add the translation to `fr.ts`, then read it in a component with `const c = $derived(t())`.
+- **French typography:** use `’` for apostrophes and a non-breaking space (U+00A0) before `: ? !` and inside `« »`.
+
+Visitors are never redirected based on browser language; they choose with the toggle, and search engines pick the right version from the `hreflang` tags.
 
 ## 💻 Local Development
 

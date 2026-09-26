@@ -7,13 +7,12 @@
   import Team from '$lib/components/Team.svelte';
   import CTABanner from '$lib/components/CTABanner.svelte';
   import Footer from '$lib/components/Footer.svelte';
+  import Seo from '$lib/components/Seo.svelte';
   import { clientWork, products } from '$lib/data/content';
+  import { homeJsonLd } from '$lib/seo/schema';
 </script>
 
-<svelte:head>
-  <title>DevSafe — Software Agency & Product Studio</title>
-  <meta name="description" content="DevSafe is a software and cybersecurity agency in Cameroon that also builds its own products, including BookBridge." />
-</svelte:head>
+<Seo path="/" jsonLd={homeJsonLd()} />
 
 <Navbar />
 <main>

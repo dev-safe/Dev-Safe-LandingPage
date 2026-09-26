@@ -58,7 +58,7 @@
     <!-- Logo -->
     <a href="/" class="flex items-center gap-2.5 group focus:outline-none" onclick={closeMobile}>
       <div class="relative flex items-center justify-center">
-        <img src={logoImg} alt="DevSafe Logo" class="w-8 h-8 rounded-lg object-cover border border-ds-border/40 transition-transform duration-300 group-hover:scale-105" />
+        <img src={logoImg} alt="DevSafe logo" width="32" height="32" class="w-8 h-8 rounded-lg object-cover border border-ds-border/40 transition-transform duration-300 group-hover:scale-105" />
       </div>
       <span class="font-heading text-xl font-bold tracking-tight">
         <span class="text-white">{navigation.logo.textDev}</span><span class="text-ds-cyan">{navigation.logo.textSafe}</span>

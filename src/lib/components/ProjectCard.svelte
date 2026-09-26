@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fly } from 'svelte/transition';
+  import { reveal } from '$lib/actions/reveal';
   import { Terminal } from '@lucide/svelte';
   import type { Project } from '$lib/data/content';
 
@@ -8,7 +8,7 @@
 
           <div 
             class="bg-ds-bg/60 border border-ds-border/70 border-l-[4px] {project.isLive ? 'border-l-ds-cyan' : 'border-l-ds-blue'} rounded-2xl p-8 md:p-10 relative overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(0,212,255,0.08)] group"
-            transition:fly={{ y: 30, duration: 700, delay: index * 150 + 300 }}
+            data-reveal use:reveal={{ y: 30, duration: 700, delay: index * 150 + 300 }}
           >
             <!-- Decorative Glow in Background -->
             <div class="absolute -right-16 -top-16 w-56 h-56 {project.isLive ? 'bg-ds-cyan/5' : 'bg-ds-blue/5'} rounded-full blur-3xl pointer-events-none"></div>

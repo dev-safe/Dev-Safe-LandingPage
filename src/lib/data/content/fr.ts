@@ -172,6 +172,8 @@ const fr: SiteContent = {
 
   whyDevSafe: {
     heading: 'Pourquoi nos clients font confiance à DevSafe',
+    videoCaption:
+      "En arrière-plan : Verla Berinyuy Ndey, notre fondateur, anime un atelier Git & GitHub en tant que Lead Organizer du GDG on Campus de l'ICT University.",
     items: [
       {
         icon: Lock as unknown as Component,
@@ -256,6 +258,7 @@ const fr: SiteContent = {
   team: {
     heading: 'L’équipe derrière DevSafe',
     subtitle: 'Une équipe engagée d’experts en sécurité, d’ingénieurs logiciels et de designers au Cameroun.',
+    photoAlt: 'Les fondateurs de DevSafe, Verla Berinyuy Ndey et Engon Ken Morel',
     members: [
       {
         name: 'Verla Berinyuy Ndey',

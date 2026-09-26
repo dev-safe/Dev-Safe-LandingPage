@@ -2,6 +2,7 @@
   import { reveal } from '$lib/actions/reveal';
   import { fade } from 'svelte/transition';
   import { t } from '$lib/data/content';
+  import SectionPhoto from './SectionPhoto.svelte';
 
   const ctaBanner = $derived(t().ctaBanner);
   const form = $derived(ctaBanner.form);
@@ -58,6 +59,8 @@
   id="contact" 
   class="relative py-24 bg-ds-bg grid-bg overflow-hidden border-t border-ds-border/40"
 >
+  <SectionPhoto name="cta-code" widths={[1280, 1920]} fallbackHeight={688} class="[--photo-opacity-lg:0.35]" />
+
   <!-- Radial Accent Light -->
   <div class="absolute inset-0 pointer-events-none z-0" style="background: radial-gradient(circle at center, rgba(0, 212, 255, 0.06) 0%, transparent 65%);"></div>
 

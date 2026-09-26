@@ -2,6 +2,7 @@
   import { reveal } from '$lib/actions/reveal';
   import { FileText, CheckCircle2, Loader } from '@lucide/svelte';
   import { t } from '$lib/data/content';
+  import SectionPhoto from './SectionPhoto.svelte';
 
   const hero = $derived(t().hero);
   const report = $derived(hero.auditPreview);
@@ -9,10 +10,12 @@
 </script>
 
 <section class="relative flex items-center justify-center pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden bg-ds-bg grid-bg">
+  <SectionPhoto name="hero-padlock" widths={[1280, 2400]} fallbackHeight={854} priority />
+
   <!-- Radial Glow Behind Headline -->
   <div class="absolute inset-0 pointer-events-none z-0" style="background: radial-gradient(ellipse 60% 40% at 50% 40%, rgba(0, 212, 255, 0.06) 0%, transparent 70%);"></div>
 
-  <div class="max-w-7xl mx-auto px-6 w-full z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+  <div class="relative max-w-7xl mx-auto px-6 w-full z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
 
     <!-- Left — Offer, audience, outcome -->
     <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">

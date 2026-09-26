@@ -28,54 +28,77 @@
       </p>
     </div>
 
-    <!-- Cards Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
-      {#each team.members as member, index}
-        <div 
-          class="glass-card p-6 flex flex-col items-center text-center border border-ds-border/70 hover:border-ds-cyan/40 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(0,212,255,0.08)] transition-all duration-300 relative group"
-          data-reveal use:reveal={{ y: 30, duration: 600, delay: index * 100 + 200 }}
-        >
-          <!-- Top hover line glow -->
-          <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-ds-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center max-w-6xl mx-auto">
+      <!-- Founders photo -->
+      <figure
+        class="lg:col-span-5 w-full max-w-sm sm:max-w-md mx-auto relative rounded-2xl overflow-hidden border border-ds-border/70 shadow-[0_16px_40px_rgba(0,0,0,0.25)]"
+        data-reveal use:reveal={{ y: 30, duration: 700, delay: 150 }}
+      >
+        <picture>
+          <source type="image/avif" srcset="/images/team-founders-480.avif 480w, /images/team-founders-940.avif 940w" sizes="(min-width: 640px) 448px, 384px" />
+          <source type="image/webp" srcset="/images/team-founders-480.webp 480w, /images/team-founders-940.webp 940w" sizes="(min-width: 640px) 448px, 384px" />
+          <img
+            src="/images/team-founders-480.jpg"
+            alt={team.photoAlt}
+            width="480"
+            height="600"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-auto aspect-[4/5] object-cover"
+          />
+        </picture>
+        <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-ds-cyan to-transparent"></div>
+      </figure>
 
-          <!-- Avatar -->
+      <!-- Cards Grid -->
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+        {#each team.members as member, index}
           <div 
-            class="w-[60px] h-[60px] rounded-full overflow-hidden flex items-center justify-center font-heading text-lg font-bold text-[#fff] mb-4 shadow-[0_4px_12px_rgba(0,0,0,0.2)]"
-            style="background-color: {member.bg}; border: {member.borderCyan ? '2px solid rgb(var(--ds-cyan))' : 'none'};"
+            class="glass-card p-6 flex flex-col items-center text-center border border-ds-border/70 hover:border-ds-cyan/40 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(0,212,255,0.08)] transition-all duration-300 relative group"
+            data-reveal use:reveal={{ y: 30, duration: 600, delay: index * 100 + 200 }}
           >
-            {#if member.image}
-              <img src={member.image} alt={c.ui.portraitAlt(member.name, member.role)} width="60" height="60" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-            {:else}
-              {member.initials}
-            {/if}
+            <!-- Top hover line glow -->
+            <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-ds-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+            <!-- Portrait: 240px sources, so 160px max keeps them sharp on 1.5x screens -->
+            <div 
+              class="w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden flex items-center justify-center font-heading text-3xl font-bold text-[#fff] mb-5 shadow-[0_8px_24px_rgba(0,0,0,0.25)] ring-1 ring-ds-border/60 group-hover:ring-ds-cyan/50 transition-shadow duration-300"
+              style="background-color: {member.bg}; border: {member.borderCyan ? '2px solid rgb(var(--ds-cyan))' : 'none'};"
+            >
+              {#if member.image}
+                <img src={member.image} alt={c.ui.portraitAlt(member.name, member.role)} width="160" height="160" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              {:else}
+                {member.initials}
+              {/if}
+            </div>
+
+            <!-- Name -->
+            <h3 class="font-heading text-base font-bold text-ds-fg mb-1 group-hover:text-ds-cyan transition-colors duration-200">
+              {member.name}
+            </h3>
+
+            <!-- Role -->
+            <p class="font-body text-xs font-semibold text-ds-cyan mb-3">
+              {member.role}
+            </p>
+
+            <!-- Description -->
+            <p class="font-body text-ds-fg-muted text-xs leading-relaxed mb-4">
+              {member.description}
+            </p>
+
+            <!-- Tags Row -->
+            <div class="flex flex-wrap gap-1.5 justify-center mt-auto pt-3 border-t border-ds-border/30 w-full">
+              {#each member.tags as tag}
+                <span class="px-2 py-0.5 bg-ds-elevated/70 border border-ds-border/40 rounded text-[9px] font-mono font-medium text-ds-fg-muted">
+                  {tag}
+                </span>
+              {/each}
+            </div>
+
           </div>
-
-          <!-- Name -->
-          <h3 class="font-heading text-base font-bold text-ds-fg mb-1 group-hover:text-ds-cyan transition-colors duration-200">
-            {member.name}
-          </h3>
-
-          <!-- Role -->
-          <p class="font-body text-xs font-semibold text-ds-cyan mb-3">
-            {member.role}
-          </p>
-
-          <!-- Description -->
-          <p class="font-body text-ds-fg-muted text-xs leading-relaxed mb-4">
-            {member.description}
-          </p>
-
-          <!-- Tags Row -->
-          <div class="flex flex-wrap gap-1.5 justify-center mt-auto pt-3 border-t border-ds-border/30 w-full">
-            {#each member.tags as tag}
-              <span class="px-2 py-0.5 bg-ds-elevated/70 border border-ds-border/40 rounded text-[9px] font-mono font-medium text-ds-fg-muted">
-                {tag}
-              </span>
-            {/each}
-          </div>
-
-        </div>
-      {/each}
+        {/each}
+      </div>
     </div>
 
   </div>

@@ -78,6 +78,7 @@ src/
 static/
 ├── apple-touch-icon.png      # iOS home-screen icon
 ├── favicon.jpg               # Static brand fallback icon
+├── images/hero-padlock-*     # Hero background (grayscale AVIF/WebP/JPEG; photo by FLY:D on Unsplash)
 ├── logo-512.png              # Logo referenced by JSON-LD
 └── og-image.png              # 1200x630 social share image
 ```
@@ -97,6 +98,13 @@ Colours live as RGB-channel CSS variables in `src/app.css` (`--ds-*`, with overr
 | `ds-success`, `ds-warning`, `ds-danger` | status colours |
 
 Every text/background pairing meets WCAG AA (4.5:1) in both dark and light mode.
+
+Photos stay on-palette by shipping them in grayscale and tinting them in CSS with `mix-blend-mode: luminosity` over `ds-bg` (see `.hero-photo` in `Hero.svelte`). To regenerate the hero variants from a new source photo:
+
+```bash
+vips thumbnail source.jpg tmp.v 2400 && vips colourspace tmp.v gray.png b-w
+avifenc -q 50 --yuv 400 gray.png static/images/hero-padlock-2400.avif
+```
 
 ## 🌍 Translations
 

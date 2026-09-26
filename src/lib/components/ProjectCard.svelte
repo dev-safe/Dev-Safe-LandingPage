@@ -1,41 +1,11 @@
 <script lang="ts">
-  import { intersect } from '$lib/actions/intersect';
-  import { fly, fade } from 'svelte/transition';
-  import { Terminal, Shield } from '@lucide/svelte';
-  import { ourWork } from '$lib/data/content';
+  import { fly } from 'svelte/transition';
+  import { Terminal } from '@lucide/svelte';
+  import type { Project } from '$lib/data/content';
 
-  let visible = $state(false);
+  let { project, index = 0 }: { project: Project; index?: number } = $props();
 </script>
 
-<section 
-  id="work" 
-  class="relative py-24 bg-ds-surface grid-bg overflow-hidden border-b border-ds-border/40"
-  use:intersect={{ threshold: 0.1, onIntersect: () => { visible = true; } }}
->
-  <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
-    
-    <!-- Centered Header -->
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      {#if visible}
-        <h2 
-          class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4"
-          transition:fly={{ y: 20, duration: 600 }}
-        >
-          {ourWork.heading}
-        </h2>
-        <p 
-          class="font-body text-slate-400 text-sm sm:text-base leading-relaxed"
-          transition:fly={{ y: 20, duration: 600, delay: 150 }}
-        >
-          {ourWork.subtitle}
-        </p>
-      {/if}
-    </div>
-
-    <!-- Featured Projects Grid/List -->
-    {#if visible}
-      <div class="space-y-8">
-        {#each ourWork.projects as project, index}
           <div 
             class="bg-ds-bg/60 border border-ds-border/70 border-l-[4px] {project.isLive ? 'border-l-ds-cyan' : 'border-l-ds-blue'} rounded-2xl p-8 md:p-10 relative overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(0,212,255,0.08)] group"
             transition:fly={{ y: 30, duration: 700, delay: index * 150 + 300 }}
@@ -147,24 +117,3 @@
 
             </div>
           </div>
-        {/each}
-      </div>
-    {/if}
-
-    <!-- Call to Action below card -->
-    {#if visible}
-      <div 
-        class="text-center"
-        transition:fly={{ y: 15, duration: 500, delay: 500 }}
-      >
-        <span class="text-sm text-slate-400 font-body">
-          {ourWork.ctaText}
-          <a href={ourWork.ctaLink.href} class="text-ds-cyan font-semibold hover:underline">
-            {ourWork.ctaLink.text}
-          </a>
-        </span>
-      </div>
-    {/if}
-
-  </div>
-</section>

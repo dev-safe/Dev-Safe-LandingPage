@@ -1,6 +1,6 @@
 # DevSafe — Build. Secure. Protect.
 
-The official landing page for **DevSafe**, a professional software development and cybersecurity startup based in Cameroon. Built with **SvelteKit** and styled with **Tailwind CSS v3** to deliver a high-contrast, premium "SOC dashboard" dark tech aesthetic.
+The official landing page for **DevSafe**, a software development and cybersecurity agency based in Cameroon that also builds and owns its own products (e.g. **BookBridge**). Built with **SvelteKit** and styled with **Tailwind CSS v3** to deliver a high-contrast, premium "SOC dashboard" dark tech aesthetic.
 
 ---
 
@@ -21,7 +21,7 @@ The official landing page for **DevSafe**, a professional software development a
 - **Interactive Consultation Gateway:** A custom glassmorphic request form with animated submit states ("Establishing Secure Link...") and feedback panels.
 - **Scroll-Triggered Entrance Animations:** Staggered fly/fade transitions that trigger via a custom Svelte `IntersectionObserver` action as sections enter viewport.
 - **Sticky Glassmorphism Header:** Responsive navigation bar with dynamic border borders, and a custom mobile hamburger overlay menu.
-- **Cameroonian Showcase Platform:** Interactive mock terminal highlighting DevSafe's flagship project, **Eventra**, showing developmental progress.
+- **Client Work vs. Owned Products:** Separate showcase sections for agency client work (e.g. **Eventra**) and DevSafe-owned products (e.g. **BookBridge**), rendered by a shared `ProjectShowcase` component.
 - **Centralized Data Layer:** Content and asset links are managed entirely within a single file (`src/lib/data/content.ts`), avoiding hardcoded values inside markup.
 
 ---
@@ -41,7 +41,8 @@ src/
 │   │   ├── Footer.svelte     # Footer links and WhatsApp integration
 │   │   ├── Hero.svelte       # Hero layout with floating dashboard card
 │   │   ├── Navbar.svelte     # Responsive glass header & mobile drawer
-│   │   ├── OurWork.svelte    # Flagship project highlight
+│   │   ├── ProjectCard.svelte     # Single project card with mock code block
+│   │   ├── ProjectShowcase.svelte # Reusable section for client work & products
 │   │   ├── Services.svelte   # offerings grid with cyan accent borders
 │   │   ├── Team.svelte       # Team showcase card grids
 │   │   └── WhyDevSafe.svelte # Corporate differentiator grids

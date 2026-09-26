@@ -1,25 +1,38 @@
 <script lang="ts">
-  import { absoluteUrl, site } from '$lib/config/site';
+  import { absoluteUrl, defaultLang, languages, localeConfig, localizePath, site, type Lang } from '$lib/config/site';
+  import { getContent } from '$lib/data/content';
 
   type Props = {
     title?: string;
     description?: string;
+    /** Language-neutral path (e.g. `/`); the language prefix is added automatically. */
     path?: string;
+    lang?: Lang;
     type?: 'website' | 'article';
     noindex?: boolean;
     jsonLd?: Record<string, unknown>;
   };
 
   let {
-    title = site.title,
-    description = site.description,
+    title,
+    description,
     path = '/',
+    lang = defaultLang,
     type = 'website',
     noindex = false,
     jsonLd
   }: Props = $props();
 
-  const canonical = $derived(absoluteUrl(path));
+  const seo = $derived(getContent(lang).seo);
+  const pageTitle = $derived(title ?? seo.title);
+  const pageDescription = $derived(description ?? seo.description);
+  const canonical = $derived(absoluteUrl(localizePath(path, lang)));
+  const alternates = $derived(
+    languages.map((l) => ({ hreflang: localeConfig[l].htmlLang, href: absoluteUrl(localizePath(path, l)) }))
+  );
+  const xDefault = $derived(absoluteUrl(localizePath(path, defaultLang)));
+  const ogLocale = $derived(localeConfig[lang].ogLocale);
+  const ogLocaleAlternates = $derived(languages.filter((l) => l !== lang).map((l) => localeConfig[l].ogLocale));
   const image = absoluteUrl(site.ogImage.path);
   // Escape "<" so content can never close the script tag early.
   const jsonLdHtml = $derived(
@@ -30,27 +43,39 @@
 </script>
 
 <svelte:head>
-  <title>{title}</title>
-  <meta name="description" content={description} />
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDescription} />
+  <!-- Ignored by Google for ranking; kept for Bing/Yandex and internal documentation of target terms. -->
+  <meta name="keywords" content={seo.keywords.join(', ')} />
   <link rel="canonical" href={canonical} />
+  {#if !noindex}
+    {#each alternates as alt (alt.hreflang)}
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    {/each}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
+  {/if}
   <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
 
   <meta property="og:type" content={type} />
   <meta property="og:site_name" content={site.name} />
-  <meta property="og:locale" content={site.locale} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
+  <meta property="og:locale" content={ogLocale} />
+  {#each ogLocaleAlternates as alt (alt)}
+    <meta property="og:locale:alternate" content={alt} />
+  {/each}
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={image} />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content={String(site.ogImage.width)} />
   <meta property="og:image:height" content={String(site.ogImage.height)} />
-  <meta property="og:image:alt" content={site.ogImage.alt} />
+  <meta property="og:image:alt" content={seo.ogImageAlt} />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={pageDescription} />
   <meta name="twitter:image" content={image} />
-  <meta name="twitter:image:alt" content={site.ogImage.alt} />
+  <meta name="twitter:image:alt" content={seo.ogImageAlt} />
 
   {#if jsonLdHtml}
     {@html jsonLdHtml}

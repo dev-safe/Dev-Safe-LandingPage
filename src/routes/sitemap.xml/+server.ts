@@ -1,27 +1,20 @@
-import { absoluteUrl, indexableRoutes } from '$lib/config/site';
+import type { RequestHandler } from './$types';
+import { renderSitemap } from '$lib/seo/sitemap';
+import { collectSitemapEntries, pendingRoutes } from '$lib/seo/sitemap-routes';
 
+// Written to static /sitemap.xml at build time; re-generated on every deploy.
 export const prerender = true;
 
-export function GET() {
-  const lastmod = new Date().toISOString().split('T')[0];
-  const urls = indexableRoutes
-    .map(
-      ({ path, changefreq, priority }) => `  <url>
-    <loc>${absoluteUrl(path)}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority.toFixed(1)}</priority>
-  </url>`
-    )
-    .join('\n');
+export const GET: RequestHandler = async () => {
+  // 1. Resolve static routes + dynamic collections that have a real page behind them.
+  const entries = await collectSitemapEntries();
 
-  const body = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
-</urlset>
-`;
+  // 2. Flag registered routes that were skipped, so a missing page is noticed at build time.
+  const pending = pendingRoutes();
+  if (pending.length) console.info(`[sitemap] not yet published (no page): ${pending.join(', ')}`);
 
-  return new Response(body, {
-    headers: { 'Content-Type': 'application/xml; charset=utf-8' }
+  // 3. Render one <url> per language with hreflang alternates.
+  return new Response(renderSitemap(entries), {
+    headers: { 'Content-Type': 'application/xml' }
   });
-}
+};

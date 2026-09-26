@@ -1,6 +1,9 @@
 <script lang="ts">
   import { reveal } from '$lib/actions/reveal';
-  import { team } from '$lib/data/content';
+  import { t } from '$lib/data/content';
+
+  const c = $derived(t());
+  const team = $derived(c.team);
 </script>
 
 <section 
@@ -41,7 +44,7 @@
             style="background-color: {member.bg}; border: {member.borderCyan ? '2px solid rgb(var(--ds-cyan))' : 'none'};"
           >
             {#if member.image}
-              <img src={member.image} alt="Portrait of {member.name}, {member.role} at DevSafe" width="60" height="60" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <img src={member.image} alt={c.ui.portraitAlt(member.name, member.role)} width="60" height="60" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
             {:else}
               {member.initials}
             {/if}

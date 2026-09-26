@@ -1,10 +1,11 @@
 <script lang="ts">
   import { reveal } from '$lib/actions/reveal';
   import { FileText, CheckCircle2, Loader } from '@lucide/svelte';
-  import { hero } from '$lib/data/content';
+  import { t } from '$lib/data/content';
 
-  const report = hero.auditPreview;
-  const totalFindings = report.summary.reduce((sum, s) => sum + s.count, 0);
+  const hero = $derived(t().hero);
+  const report = $derived(hero.auditPreview);
+  const totalFindings = $derived(report.summary.reduce((sum, s) => sum + s.count, 0));
 </script>
 
 <section class="relative flex items-center justify-center pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden bg-ds-bg grid-bg">
@@ -77,7 +78,7 @@
         <div class="p-5 sm:p-6 space-y-5">
           <div>
             <p class="font-heading text-lg font-bold text-ds-fg">{report.title}</p>
-            <p class="text-xs font-mono text-ds-fg-subtle mt-1">Target: {report.target} · {totalFindings} findings</p>
+            <p class="text-xs font-mono text-ds-fg-subtle mt-1">{report.labels.target} {report.target} · {totalFindings} {report.labels.findings}</p>
           </div>
 
           <!-- Severity summary -->
@@ -106,20 +107,20 @@
             {#each report.findings as f (f.title)}
               <li class="flex items-start gap-3 rounded-lg border border-ds-border/50 bg-ds-bg/40 px-3 py-2.5">
                 <span
-                  class:sev-high={f.severity === 'High'}
-                  class:sev-medium={f.severity === 'Medium'}
-                  class:sev-low={f.severity === 'Low'}
+                  class:sev-high={f.severity === 'high'}
+                  class:sev-medium={f.severity === 'medium'}
+                  class:sev-low={f.severity === 'low'}
                   class="mt-0.5 shrink-0 px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase tracking-wider">
-                  {f.severity}
+                  {report.labels.severity[f.severity]}
                 </span>
                 <span class="flex-1 text-xs text-ds-fg-muted leading-snug">{f.title}</span>
-                {#if f.status === 'Fixed'}
+                {#if f.fixed}
                   <span class="flex items-center gap-1 shrink-0 text-[10px] font-mono font-semibold text-ds-success">
-                    <CheckCircle2 class="w-3.5 h-3.5" /> {f.status}
+                    <CheckCircle2 class="w-3.5 h-3.5" /> {report.labels.fixed}
                   </span>
                 {:else}
                   <span class="status-pending flex items-center gap-1 shrink-0 text-[10px] font-mono font-semibold">
-                    <Loader class="w-3.5 h-3.5 motion-safe:animate-spin [animation-duration:3s]" /> {f.status}
+                    <Loader class="w-3.5 h-3.5 motion-safe:animate-spin [animation-duration:3s]" /> {report.labels.inProgress}
                   </span>
                 {/if}
               </li>

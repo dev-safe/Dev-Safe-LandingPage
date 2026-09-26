@@ -9,11 +9,13 @@
   import CTABanner from '$lib/components/CTABanner.svelte';
   import Footer from '$lib/components/Footer.svelte';
   import Seo from '$lib/components/Seo.svelte';
-  import { clientWork, products } from '$lib/data/content';
+  import { t } from '$lib/data/content';
   import { homeJsonLd } from '$lib/seo/schema';
+
+  const c = $derived(t());
 </script>
 
-<Seo path="/" jsonLd={homeJsonLd()} />
+<Seo title={c.seo.title} description={c.seo.description} path="/" lang={c.meta.lang} jsonLd={homeJsonLd(c)} />
 
 <Navbar />
 <main>
@@ -21,8 +23,8 @@
   <TrustStrip />
   <Services />
   <WhyDevSafe />
-  <ProjectShowcase id="work" section={clientWork} />
-  <ProjectShowcase id="products" section={products} background="bg-ds-bg" />
+  <ProjectShowcase id="work" section={c.clientWork} />
+  <ProjectShowcase id="products" section={c.products} background="bg-ds-bg" />
   <Team />
   <CTABanner />
 </main>

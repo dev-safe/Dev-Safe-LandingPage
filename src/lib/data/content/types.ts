@@ -45,8 +45,4 @@ export type ProjectSection = {
   confidential?: { count: string; title: string; text: string; link: { text: string; href: string } };
 };
 
-export type Severity = 'high' | 'medium' | 'low';
-
-export type AuditFinding = { severity: Severity; title: string; fixed: boolean };
-
 export type ServiceOption = 'software' | 'security' | 'branding' | 'general';

@@ -5,7 +5,7 @@ import backendImg from '$lib/assets/Backend.jpg';
 import eventraScreen from '$lib/assets/screens/eventra-home.webp';
 import bookbridgeScreen from '$lib/assets/screens/bookbridge-home.webp';
 import type { Lang } from '$lib/config/site';
-import type { AuditFinding, ProjectSection, ServiceItem, ServiceOption } from './types';
+import type { ProjectSection, ServiceItem, ServiceOption } from './types';
 
 // English is the source of truth: `SiteContent` is inferred from this object and every
 // other language must match it exactly (see fr.ts), so a missing translation fails `npm run check`.
@@ -85,31 +85,6 @@ const en = {
     cta: {
       primary: { text: 'Book a Free Consultation →', href: '#contact' },
       secondary: { text: 'See Our Work', href: '#work' }
-    },
-    auditPreview: {
-      file: 'security-audit.md',
-      label: 'Sample report',
-      title: 'Website Security Audit',
-      target: 'School portal',
-      summary: [
-        { level: 'Critical', count: 0, color: 'bg-red-500' },
-        { level: 'High', count: 2, color: 'bg-orange-500' },
-        { level: 'Medium', count: 4, color: 'bg-amber-400' },
-        { level: 'Low', count: 3, color: 'bg-slate-400' }
-      ],
-      labels: {
-        target: 'Target:',
-        findings: 'findings',
-        severity: { high: 'High', medium: 'Medium', low: 'Low' },
-        fixed: 'Fixed',
-        inProgress: 'In progress'
-      },
-      findings: [
-        { severity: 'high', title: 'Admin login allows unlimited attempts', fixed: true },
-        { severity: 'high', title: 'Student records reachable without auth', fixed: true },
-        { severity: 'medium', title: 'Missing HTTPS redirect & security headers', fixed: false }
-      ] as AuditFinding[],
-      footer: 'Every report ships with a prioritised fix plan'
     }
   },
 
@@ -133,7 +108,7 @@ const en = {
         description:
           'We test your systems the way an attacker would, then hand you a plain-language report and a prioritised plan to fix what matters first.',
         tags: ['Penetration Testing', 'Security Audits', 'Vulnerability Assessment', 'Data Protection'],
-        accentColor: '#3B82F6',
+        accentColor: '#E0A020',
         featured: true,
         visual: {
           type: 'checklist',
@@ -152,7 +127,7 @@ const en = {
         title: 'Software Development',
         description: 'Websites, mobile apps and web platforms: fast, easy to manage and security-reviewed before launch.',
         tags: ['Websites', 'Mobile Apps', 'Web Platforms'],
-        accentColor: '#22D3EE',
+        accentColor: '#D9622B',
         visual: { type: 'pipeline', steps: ['build', 'security review', 'deploy'] }
       },
       {
@@ -160,8 +135,8 @@ const en = {
         title: 'Design & Branding',
         description: 'Logos, interfaces and brand identities that make your institution look professional.',
         tags: ['Logo Design', 'UI/UX', 'Brand Identity'],
-        accentColor: '#34D399',
-        visual: { type: 'palette', swatches: ['#0B1120', '#1D4ED8', '#22D3EE', '#34D399', '#F8FAFC'] }
+        accentColor: '#0E8A5F',
+        visual: { type: 'palette', swatches: ['#0F0B07', '#F5B53D', '#D9622B', '#C8102E', '#0E8A5F'] }
       }
     ] as ServiceItem[]
   },
@@ -357,7 +332,8 @@ const en = {
     },
     bottom: {
       copyright: `© ${new Date().getFullYear()} DevSafe. All rights reserved.`,
-      domain: 'devsafe.cm'
+      domain: 'devsafe.cm',
+      pride: 'Proudly built in Yaoundé, Cameroon, for Africa.'
     }
   }
 };

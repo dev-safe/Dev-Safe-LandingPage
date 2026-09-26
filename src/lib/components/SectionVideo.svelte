@@ -40,11 +40,11 @@
   });
 </script>
 
-<div bind:this={container} class="section-video absolute inset-x-0 top-0 h-[34rem] md:h-auto md:bottom-0 pointer-events-none z-0 {className}" aria-hidden="true">
+<div bind:this={container} class="section-video absolute inset-x-0 top-0 md:bottom-0 pointer-events-none z-0 {className}" aria-hidden="true">
   <picture>
     <source type="image/avif" srcset="/videos/{name}-poster.avif" />
     <source type="image/webp" srcset="/videos/{name}-poster.webp" />
-    <img src="/videos/{name}-poster.jpg" alt="" {width} {height} loading="lazy" decoding="async" class="h-full w-full object-cover" />
+    <img src="/videos/{name}-poster.jpg" alt="" {width} {height} loading="lazy" decoding="async" class="w-full h-auto md:h-full object-cover" />
   </picture>
 
   {#if playVideo}
@@ -72,7 +72,7 @@
 <style>
   /*
    * Faint and palette-tinted. Mobile: confined to the top of the stacked section so
-   * the footage isn't zoomed beyond recognition. md+: faded at every edge because
+   * the footage is shown at its natural aspect ratio, uncropped. md+: faded at every edge because
    * the copy spans the full width.
    */
   .section-video {

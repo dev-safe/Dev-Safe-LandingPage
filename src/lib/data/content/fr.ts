@@ -82,31 +82,6 @@ const fr: SiteContent = {
     cta: {
       primary: { text: 'Réserver une consultation gratuite →', href: '#contact' },
       secondary: { text: 'Voir nos réalisations', href: '#work' }
-    },
-    auditPreview: {
-      file: 'audit-securite.md',
-      label: 'Exemple de rapport',
-      title: 'Audit de sécurité du site web',
-      target: 'Portail scolaire',
-      summary: [
-        { level: 'Critique', count: 0, color: 'bg-red-500' },
-        { level: 'Élevé', count: 2, color: 'bg-orange-500' },
-        { level: 'Moyen', count: 4, color: 'bg-amber-400' },
-        { level: 'Faible', count: 3, color: 'bg-slate-400' }
-      ],
-      labels: {
-        target: 'Cible :',
-        findings: 'constats',
-        severity: { high: 'Élevé', medium: 'Moyen', low: 'Faible' },
-        fixed: 'Corrigé',
-        inProgress: 'En cours'
-      },
-      findings: [
-        { severity: 'high', title: 'Connexion admin sans limite de tentatives', fixed: true },
-        { severity: 'high', title: 'Dossiers des élèves accessibles sans authentification', fixed: true },
-        { severity: 'medium', title: 'Redirection HTTPS et en-têtes de sécurité absents', fixed: false }
-      ],
-      footer: 'Chaque rapport inclut un plan de correction priorisé'
     }
   },
 
@@ -130,7 +105,7 @@ const fr: SiteContent = {
         description:
           'Nous testons vos systèmes comme le ferait un attaquant, puis vous remettons un rapport clair et un plan priorisé pour corriger l’essentiel en premier.',
         tags: ['Tests d’intrusion', 'Audits de sécurité', 'Évaluation des vulnérabilités', 'Protection des données'],
-        accentColor: '#3B82F6',
+        accentColor: '#E0A020',
         featured: true,
         visual: {
           type: 'checklist',
@@ -149,7 +124,7 @@ const fr: SiteContent = {
         title: 'Développement logiciel',
         description: 'Sites web, applications mobiles et plateformes web : rapides, faciles à gérer et revus en sécurité avant le lancement.',
         tags: ['Sites web', 'Applications mobiles', 'Plateformes web'],
-        accentColor: '#22D3EE',
+        accentColor: '#D9622B',
         visual: { type: 'pipeline', steps: ['développement', 'revue de sécurité', 'déploiement'] }
       },
       {
@@ -157,8 +132,8 @@ const fr: SiteContent = {
         title: 'Design & identité visuelle',
         description: 'Logos, interfaces et identités de marque qui donnent à votre institution une image professionnelle.',
         tags: ['Création de logo', 'UI/UX', 'Identité de marque'],
-        accentColor: '#34D399',
-        visual: { type: 'palette', swatches: ['#0B1120', '#1D4ED8', '#22D3EE', '#34D399', '#F8FAFC'] }
+        accentColor: '#0E8A5F',
+        visual: { type: 'palette', swatches: ['#0F0B07', '#F5B53D', '#D9622B', '#C8102E', '#0E8A5F'] }
       }
     ]
   },
@@ -354,7 +329,8 @@ const fr: SiteContent = {
     },
     bottom: {
       copyright: `© ${new Date().getFullYear()} DevSafe. Tous droits réservés.`,
-      domain: 'devsafe.cm'
+      domain: 'devsafe.cm',
+      pride: 'Fièrement conçu à Yaoundé, au Cameroun, pour l’Afrique.'
     }
   }
 };

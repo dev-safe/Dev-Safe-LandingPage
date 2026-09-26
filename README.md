@@ -10,7 +10,7 @@ The official landing page for **DevSafe**, a software development and cybersecur
 - **Styling:** Tailwind CSS v3 (using fluid grids, glassmorphism, and radial glows)
 - **Icons:** @lucide/svelte (packaged with custom brand SVGs for GitHub and WhatsApp)
 - **Fonts:** 
-  - `Plus Jakarta Sans` (Headings)
+  - `Bricolage Grotesque` (Headings)
   - `Inter` (Body text)
   - `JetBrains Mono` (Code blocks, technical tags, inputs)
 
@@ -36,14 +36,15 @@ src/
 │   ├── actions/
 │   │   └── reveal.ts         # SSR-safe scroll reveal action
 │   ├── assets/
-│   │   ├── DevSafe_logo.jpg  # Brand logo used for layout/favicon
+│   │   ├── devsafe-emblem.webp       # DS mask emblem (dark theme)
+│   │   ├── devsafe-emblem-light.webp # Same emblem with dark strokes (light theme)
 │   │   ├── Founder.jpg       # Profile picture for founder profile
 │   │   └── screens/          # Product screenshots (WebP)
 │   ├── components/
 │   │   ├── BrandIcon.svelte  # GitHub / LinkedIn / WhatsApp SVG marks (Lucide has no brand icons)
 │   │   ├── CTABanner.svelte  # Consultation form banner + WhatsApp button
 │   │   ├── Footer.svelte     # Footer links and WhatsApp integration
-│   │   ├── Hero.svelte       # Hero with sample security-audit report panel
+│   │   ├── Hero.svelte       # Hero with the Cameroon hero photo (full colour)
 │   │   ├── Navbar.svelte     # Responsive glass header & mobile drawer
 │   │   ├── PhoneFrame.svelte      # Device frame for real product screenshots
 │   │   ├── ProjectCard.svelte     # Single project card with product screenshot
@@ -68,7 +69,7 @@ src/
 │       ├── sitemap.ts        # Sitemap XML renderer (hreflang alternates, escaping)
 │       └── sitemap-routes.ts # Static routes + dynamic collections published in the sitemap
 ├── routes/
-│   ├── +layout.svelte        # Imports global CSS & dynamic logo favicon
+│   ├── +layout.svelte        # Imports global CSS & favicon link
 │   ├── +layout.ts            # prerender = true for the whole site
 │   ├── [[lang=lang]]/        # Home page for / (en) and /fr (fr)
 │   │   ├── +page.svelte      # Main assembly page with SEO headers
@@ -81,10 +82,10 @@ src/
 ├── app.html                  # HTML shell template
 static/
 ├── apple-touch-icon.png      # iOS home-screen icon
-├── favicon.jpg               # Static brand fallback icon
-├── images/                   # Grayscale section photos (AVIF/WebP/JPEG) used by SectionPhoto.svelte
+├── favicon.png               # 64px emblem favicon
+├── images/                   # Hero photo + grayscale section photos (AVIF/WebP/JPEG)
 ├── videos/                   # Silent grayscale loop (WebM/MP4) + poster used by SectionVideo.svelte
-│                             #   hero-padlock-* (FLY:D, Unsplash), cta-code-* (contact section)
+│                             #   hero-cameroon-* (full-colour hero photo), cta-code-* (contact section)
 ├── logo-512.png              # Logo referenced by JSON-LD
 └── og-image.png              # 1200x630 social share image
 ```
@@ -93,23 +94,36 @@ static/
 
 ## 🎨 Theme Tokens
 
-Colours live as RGB-channel CSS variables in `src/app.css` (`--ds-*`, with overrides under `:root.light`) and are exposed to Tailwind as `ds-*` colours, so opacity modifiers like `bg-ds-cyan/10` work. Use the semantic classes instead of raw Tailwind colours:
+Colours live as RGB-channel CSS variables in `src/app.css` (`--ds-*`, with overrides under `:root.light`) and are exposed to Tailwind as `ds-*` colours, so opacity modifiers like `bg-ds-accent/10` work. Use the semantic classes instead of raw Tailwind colours:
 
 | Class | Use for |
 | --- | --- |
 | `text-ds-fg` / `text-ds-fg-muted` / `text-ds-fg-subtle` | headings / body copy / captions |
 | `bg-ds-bg`, `bg-ds-surface`, `bg-ds-elevated`, `border-ds-border` | page, cards, raised elements, borders |
-| `text-ds-cyan`, `text-ds-blue` | accent labels and links |
+| `text-ds-accent`, `text-ds-accent-2` | accent labels and links |
 | `bg-ds-primary text-ds-on-primary hover:bg-ds-primary-hover` | primary buttons |
 | `ds-success`, `ds-warning`, `ds-danger` | status colours |
 
 Every text/background pairing meets WCAG AA (4.5:1) in both dark and light mode.
 
-Photos stay on-palette by shipping them in grayscale and tinting them in CSS with `mix-blend-mode: luminosity` over `ds-bg` (`src/lib/components/SectionPhoto.svelte`, used by the hero and contact sections). To add or replace a photo, export `{name}-{width}.avif|webp` for two widths plus `{name}-{smallWidth}.jpg`:
+The palette is Cameroonian: a warm-black "Toghu night" with gold accents in dark mode, and a Sahel sand background in light mode. `app.css` also has a few cultural motif utilities, all original SVGs:
+
+| Class | What it draws |
+| --- | --- |
+| `pattern-bg` | Faint Ndop-cloth diamond lattice behind a section (content must be `relative z-10`) |
+| `toghu-band` | Toghu embroidery strip (black, red edges, gold braid) under the navbar and above the footer |
+| `cm-rule` | Green, red and yellow flag rule under section headings |
+| `cm-flag` | Tiny Cameroon flag used in the hero badge and footer |
+
+The flag colours (`--cm-green`, `--cm-red`, `--cm-yellow`) are decorative only; never use them for text.
+
+The site defaults to dark mode; light mode only applies after a visitor picks it with the theme toggle (saved in `localStorage` and applied in `app.html` before first paint).
+
+The hero photo (`hero-cameroon-*`) is shown in full colour: on mobile it sits under the navbar at its natural 3:2 ratio, on desktop it fills the right 62% of the hero with the Reunification monument and statue in view. Other photos stay on-palette by shipping them in grayscale and tinting them in CSS with `mix-blend-mode: luminosity` over `ds-bg` (`src/lib/components/SectionPhoto.svelte`, used by the contact section; on mobile it is shown at its natural ratio instead of cropped). To add or replace a photo, export `{name}-{width}.avif|webp` for two widths plus `{name}-{smallWidth}.jpg`:
 
 ```bash
 vips thumbnail source.jpg tmp.v 2400 && vips colourspace tmp.v gray.png b-w
-avifenc -q 50 --yuv 400 gray.png static/images/hero-padlock-2400.avif
+avifenc -q 50 --yuv 400 gray.png static/images/cta-code-1920.avif
 ```
 
 Background videos (`SectionVideo.svelte`) use the same tint. They have no audio track and are skipped for visitors with reduced motion or Save-Data enabled, who see the poster instead. The video only loads near the viewport and pauses off-screen. Encode as `{name}-loop.webm|mp4` plus `{name}-poster.avif|webp|jpg`:

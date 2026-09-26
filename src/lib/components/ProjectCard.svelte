@@ -8,11 +8,11 @@
 </script>
 
           <div 
-            class="bg-ds-bg/60 border border-ds-border/70 border-l-[4px] {project.isLive ? 'border-l-ds-cyan' : 'border-l-ds-blue'} rounded-2xl p-8 md:p-10 relative overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(0,212,255,0.08)] group"
+            class="bg-ds-bg/60 border border-ds-border/70 border-l-[4px] {project.isLive ? 'border-l-ds-accent' : 'border-l-ds-accent-2'} rounded-2xl p-6 sm:p-8 md:p-10 relative overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgb(var(--ds-accent)/0.08)] group"
             data-reveal use:reveal={{ y: 30, duration: 700, delay: index * 150 + 300 }}
           >
             <!-- Decorative Glow in Background -->
-            <div class="absolute -right-16 -top-16 w-56 h-56 {project.isLive ? 'bg-ds-cyan/5' : 'bg-ds-blue/5'} rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -right-16 -top-16 w-56 h-56 {project.isLive ? 'bg-ds-accent/5' : 'bg-ds-accent-2/5'} rounded-full blur-3xl pointer-events-none"></div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               
@@ -20,9 +20,9 @@
               <div class="lg:col-span-7 space-y-6">
                 <div>
                   <!-- Status Badge -->
-                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded {project.isLive ? 'bg-ds-success/15 border border-ds-success/30 text-ds-success' : 'bg-ds-blue/15 border border-ds-blue/30 text-ds-blue'} text-[10px] font-mono font-bold uppercase tracking-wider mb-3">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded {project.isLive ? 'bg-ds-success/15 border border-ds-success/30 text-ds-success' : 'bg-ds-accent-2/15 border border-ds-accent-2/30 text-ds-accent-2'} text-[10px] font-mono font-bold uppercase tracking-wider mb-3">
                     {#if project.isLive}
-                      <span class="w-1.5 h-1.5 rounded-full bg-ds-cyan animate-pulse"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-ds-accent animate-pulse"></span>
                     {/if}
                     {project.statusBadge}
                   </span>
@@ -31,7 +31,7 @@
                     {project.title}
                   </h3>
                   <!-- Tagline -->
-                  <p class="font-body text-xs text-ds-cyan mt-1.5 font-semibold tracking-wide">
+                  <p class="font-body text-xs text-ds-accent mt-1.5 font-semibold tracking-wide">
                     {project.tagline}
                   </p>
                 </div>
@@ -68,7 +68,7 @@
                       href={project.link.href} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      class="inline-flex items-center gap-2 text-sm text-ds-cyan font-semibold hover:underline group/link"
+                      class="inline-flex items-center gap-2 text-sm text-ds-accent font-semibold hover:underline group/link"
                     >
                       {project.link.text}
                       <span class="inline-block transition-transform duration-200 group-hover/link:translate-x-1">→</span>

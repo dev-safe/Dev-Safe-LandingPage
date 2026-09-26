@@ -82,31 +82,6 @@ const fr: SiteContent = {
     cta: {
       primary: { text: 'Réserver une consultation gratuite →', href: '#contact' },
       secondary: { text: 'Voir nos réalisations', href: '#work' }
-    },
-    auditPreview: {
-      file: 'audit-securite.md',
-      label: 'Exemple de rapport',
-      title: 'Audit de sécurité du site web',
-      target: 'Portail scolaire',
-      summary: [
-        { level: 'Critique', count: 0, color: 'bg-red-500' },
-        { level: 'Élevé', count: 2, color: 'bg-orange-500' },
-        { level: 'Moyen', count: 4, color: 'bg-amber-400' },
-        { level: 'Faible', count: 3, color: 'bg-slate-400' }
-      ],
-      labels: {
-        target: 'Cible :',
-        findings: 'constats',
-        severity: { high: 'Élevé', medium: 'Moyen', low: 'Faible' },
-        fixed: 'Corrigé',
-        inProgress: 'En cours'
-      },
-      findings: [
-        { severity: 'high', title: 'Connexion admin sans limite de tentatives', fixed: true },
-        { severity: 'high', title: 'Dossiers des élèves accessibles sans authentification', fixed: true },
-        { severity: 'medium', title: 'Redirection HTTPS et en-têtes de sécurité absents', fixed: false }
-      ],
-      footer: 'Chaque rapport inclut un plan de correction priorisé'
     }
   },
 

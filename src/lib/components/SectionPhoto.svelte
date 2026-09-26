@@ -19,7 +19,7 @@
   const srcset = (ext: string) => widths.map((w) => `/images/${name}-${w}.${ext} ${w}w`).join(', ');
 </script>
 
-<div class="section-photo absolute inset-0 lg:left-[30%] pointer-events-none z-0 {className}" aria-hidden="true">
+<div class="section-photo absolute inset-x-0 top-0 lg:bottom-0 lg:left-[30%] pointer-events-none z-0 {className}" aria-hidden="true">
   <picture>
     <source type="image/avif" srcset={srcset('avif')} {sizes} />
     <source type="image/webp" srcset={srcset('webp')} {sizes} />
@@ -31,13 +31,14 @@
       loading={priority ? 'eager' : 'lazy'}
       fetchpriority={priority ? 'high' : 'auto'}
       decoding="async"
-      class="h-full w-full object-cover"
+      class="w-full h-auto lg:h-full object-cover"
     />
   </picture>
 </div>
 
 <style>
-  /* Fades out toward the text column and the section edges so copy keeps its contrast. */
+  /* Mobile: full width at its natural aspect ratio (no zoom), fading out downwards.
+     lg+: fills the right side and fades toward the text column and section edges. */
   .section-photo {
     opacity: var(--photo-opacity, 0.3);
     mix-blend-mode: luminosity;

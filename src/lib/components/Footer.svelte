@@ -99,8 +99,8 @@
     <div class="border-t border-ds-border/40 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
       <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-3 text-xs font-body text-ds-fg-subtle text-center">
         <span>{footer.bottom.copyright}</span>
-        <span class="inline-flex items-center gap-2">
-          <span class="cm-flag" aria-hidden="true"></span>{footer.bottom.pride}
+        <span>
+          <span class="cm-flag align-[-1px] mr-1.5" aria-hidden="true"></span>{footer.bottom.pride}
         </span>
       </div>
       <div class="text-xs font-mono text-ds-fg-subtle hover:text-ds-accent transition-colors">

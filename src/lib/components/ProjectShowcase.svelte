@@ -13,7 +13,7 @@
 
 <section 
   {id}
-  class="relative py-24 {background} pattern-bg overflow-hidden border-b border-ds-border/40"
+  class="relative py-16 sm:py-24 {background} pattern-bg overflow-hidden border-b border-ds-border/40"
 >
   <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
     
@@ -26,7 +26,7 @@
         {section.eyebrow}
       </span>
       <h2 
-        class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
+        class="font-heading text-[1.75rem] sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         {section.heading}

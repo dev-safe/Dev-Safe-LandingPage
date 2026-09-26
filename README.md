@@ -44,7 +44,7 @@ src/
 │   │   ├── BrandIcon.svelte  # GitHub / LinkedIn / WhatsApp SVG marks (Lucide has no brand icons)
 │   │   ├── CTABanner.svelte  # Consultation form banner + WhatsApp button
 │   │   ├── Footer.svelte     # Footer links and WhatsApp integration
-│   │   ├── Hero.svelte       # Hero with sample security-audit report panel
+│   │   ├── Hero.svelte       # Hero with the Cameroon hero photo (full colour)
 │   │   ├── Navbar.svelte     # Responsive glass header & mobile drawer
 │   │   ├── PhoneFrame.svelte      # Device frame for real product screenshots
 │   │   ├── ProjectCard.svelte     # Single project card with product screenshot
@@ -83,9 +83,9 @@ src/
 static/
 ├── apple-touch-icon.png      # iOS home-screen icon
 ├── favicon.png               # 64px emblem favicon
-├── images/                   # Grayscale section photos (AVIF/WebP/JPEG) used by SectionPhoto.svelte
+├── images/                   # Hero photo + grayscale section photos (AVIF/WebP/JPEG)
 ├── videos/                   # Silent grayscale loop (WebM/MP4) + poster used by SectionVideo.svelte
-│                             #   hero-padlock-* (FLY:D, Unsplash), cta-code-* (contact section)
+│                             #   hero-cameroon-* (full-colour hero photo), cta-code-* (contact section)
 ├── logo-512.png              # Logo referenced by JSON-LD
 └── og-image.png              # 1200x630 social share image
 ```
@@ -117,11 +117,13 @@ The palette is Cameroonian: a warm-black "Toghu night" with gold accents in dark
 
 The flag colours (`--cm-green`, `--cm-red`, `--cm-yellow`) are decorative only; never use them for text.
 
-Photos stay on-palette by shipping them in grayscale and tinting them in CSS with `mix-blend-mode: luminosity` over `ds-bg` (`src/lib/components/SectionPhoto.svelte`, used by the hero and contact sections). To add or replace a photo, export `{name}-{width}.avif|webp` for two widths plus `{name}-{smallWidth}.jpg`:
+The site defaults to dark mode; light mode only applies after a visitor picks it with the theme toggle (saved in `localStorage` and applied in `app.html` before first paint).
+
+The hero photo (`hero-cameroon-*`) is shown in full colour: on mobile it sits under the navbar at its natural 3:2 ratio, on desktop it fills the right 62% of the hero with the Reunification monument and statue in view. Other photos stay on-palette by shipping them in grayscale and tinting them in CSS with `mix-blend-mode: luminosity` over `ds-bg` (`src/lib/components/SectionPhoto.svelte`, used by the contact section; on mobile it is shown at its natural ratio instead of cropped). To add or replace a photo, export `{name}-{width}.avif|webp` for two widths plus `{name}-{smallWidth}.jpg`:
 
 ```bash
 vips thumbnail source.jpg tmp.v 2400 && vips colourspace tmp.v gray.png b-w
-avifenc -q 50 --yuv 400 gray.png static/images/hero-padlock-2400.avif
+avifenc -q 50 --yuv 400 gray.png static/images/cta-code-1920.avif
 ```
 
 Background videos (`SectionVideo.svelte`) use the same tint. They have no audio track and are skipped for visitors with reduced motion or Save-Data enabled, who see the poster instead. The video only loads near the viewport and pauses off-screen. Encode as `{name}-loop.webm|mp4` plus `{name}-poster.avif|webp|jpg`:

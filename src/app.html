@@ -7,6 +7,9 @@
 		<meta name="theme-color" content="#0F0B07" />
 		<script>
 			document.documentElement.classList.add('js');
+			try {
+				if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light');
+			} catch (e) {}
 		</script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

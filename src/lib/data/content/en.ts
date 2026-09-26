@@ -5,7 +5,7 @@ import backendImg from '$lib/assets/Backend.jpg';
 import eventraScreen from '$lib/assets/screens/eventra-home.webp';
 import bookbridgeScreen from '$lib/assets/screens/bookbridge-home.webp';
 import type { Lang } from '$lib/config/site';
-import type { AuditFinding, ProjectSection, ServiceItem, ServiceOption } from './types';
+import type { ProjectSection, ServiceItem, ServiceOption } from './types';
 
 // English is the source of truth: `SiteContent` is inferred from this object and every
 // other language must match it exactly (see fr.ts), so a missing translation fails `npm run check`.
@@ -85,31 +85,6 @@ const en = {
     cta: {
       primary: { text: 'Book a Free Consultation →', href: '#contact' },
       secondary: { text: 'See Our Work', href: '#work' }
-    },
-    auditPreview: {
-      file: 'security-audit.md',
-      label: 'Sample report',
-      title: 'Website Security Audit',
-      target: 'School portal',
-      summary: [
-        { level: 'Critical', count: 0, color: 'bg-red-500' },
-        { level: 'High', count: 2, color: 'bg-orange-500' },
-        { level: 'Medium', count: 4, color: 'bg-amber-400' },
-        { level: 'Low', count: 3, color: 'bg-slate-400' }
-      ],
-      labels: {
-        target: 'Target:',
-        findings: 'findings',
-        severity: { high: 'High', medium: 'Medium', low: 'Low' },
-        fixed: 'Fixed',
-        inProgress: 'In progress'
-      },
-      findings: [
-        { severity: 'high', title: 'Admin login allows unlimited attempts', fixed: true },
-        { severity: 'high', title: 'Student records reachable without auth', fixed: true },
-        { severity: 'medium', title: 'Missing HTTPS redirect & security headers', fixed: false }
-      ] as AuditFinding[],
-      footer: 'Every report ships with a prioritised fix plan'
     }
   },
 

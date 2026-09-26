@@ -60,7 +60,7 @@
 
 <section 
   id="contact" 
-  class="relative py-24 bg-ds-bg pattern-bg overflow-hidden border-t border-ds-border/40"
+  class="relative py-16 sm:py-24 bg-ds-bg pattern-bg overflow-hidden border-t border-ds-border/40"
 >
   <SectionPhoto name="cta-code" widths={[1280, 1920]} fallbackHeight={688} class="[--photo-opacity-lg:0.35]" />
 
@@ -77,7 +77,7 @@
           {ctaBanner.badge}
         </div>
         <h2 
-          class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ds-fg mb-6 leading-tight"
+          class="font-heading text-[1.75rem] sm:text-4xl lg:text-5xl font-bold tracking-tight text-ds-fg mb-6 leading-tight"
           data-reveal use:reveal={{ y: 20, duration: 600 }}
         >
           {ctaBanner.heading}
@@ -105,12 +105,12 @@
           target="_blank"
           rel="noopener noreferrer"
           aria-label={c.whatsapp.ariaLabel}
-          class="mt-8 inline-flex items-center justify-center gap-3 w-full sm:w-fit px-6 py-3.5 rounded-full bg-[#25D366] text-[#052e1c] font-heading font-semibold hover:bg-[#1ebe5b] hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-[0_8px_24px_rgba(37,211,102,0.25)]"
+          class="mt-8 inline-flex items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-fit px-5 py-3 sm:px-6 sm:py-3.5 rounded-full bg-[#25D366] text-[#052e1c] font-heading text-[15px] sm:text-base font-semibold hover:bg-[#1ebe5b] hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-[0_8px_24px_rgba(37,211,102,0.25)]"
           data-reveal use:reveal={{ y: 20, duration: 600, delay: 400 }}
         >
           <BrandIcon name="whatsapp" class="w-5 h-5" />
           <span>{c.whatsapp.label}</span>
-          <span class="font-mono text-sm font-medium opacity-80 whitespace-nowrap">{c.footer.contact.whatsapp.text}</span>
+          <span class="hidden min-[420px]:inline font-mono text-sm font-medium opacity-80 whitespace-nowrap">{c.footer.contact.whatsapp.text}</span>
         </a>
       </div>
 

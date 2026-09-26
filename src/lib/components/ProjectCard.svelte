@@ -8,7 +8,7 @@
 </script>
 
           <div 
-            class="bg-ds-bg/60 border border-ds-border/70 border-l-[4px] {project.isLive ? 'border-l-ds-accent' : 'border-l-ds-accent-2'} rounded-2xl p-8 md:p-10 relative overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgb(var(--ds-accent)/0.08)] group"
+            class="bg-ds-bg/60 border border-ds-border/70 border-l-[4px] {project.isLive ? 'border-l-ds-accent' : 'border-l-ds-accent-2'} rounded-2xl p-6 sm:p-8 md:p-10 relative overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgb(var(--ds-accent)/0.08)] group"
             data-reveal use:reveal={{ y: 30, duration: 700, delay: index * 150 + 300 }}
           >
             <!-- Decorative Glow in Background -->

@@ -10,14 +10,14 @@
 
 <section 
   id="team" 
-  class="relative py-24 bg-ds-bg overflow-hidden"
+  class="relative py-16 sm:py-24 bg-ds-bg overflow-hidden"
 >
   <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
     
     <!-- Centered Header -->
     <div class="text-center max-w-2xl mx-auto mb-16">
       <h2 
-        class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
+        class="font-heading text-[1.75rem] sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         {team.heading}

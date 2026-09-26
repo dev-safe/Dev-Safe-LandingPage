@@ -10,13 +10,13 @@
 
 <section
   id="services"
-  class="relative py-24 bg-ds-surface pattern-bg overflow-hidden border-b border-ds-border/40"
+  class="relative py-16 sm:py-24 bg-ds-surface pattern-bg overflow-hidden border-b border-ds-border/40"
 >
   <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
 
     <div class="text-center max-w-2xl mx-auto mb-16">
       <h2
-        class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
+        class="font-heading text-[1.75rem] sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         {services.heading}
@@ -35,7 +35,7 @@
       {#each services.items as item, index (item.title)}
         {@const Icon = item.icon as Component<{ class?: string }>}
         <article
-          class="glass-card relative overflow-hidden flex flex-col border border-ds-border/70 hover:border-ds-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgb(var(--ds-accent)/0.08)] group {item.featured ? 'md:col-span-2 p-8 lg:p-10' : 'p-7'}"
+          class="glass-card relative overflow-hidden flex flex-col border border-ds-border/70 hover:border-ds-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgb(var(--ds-accent)/0.08)] group {item.featured ? 'md:col-span-2 p-6 sm:p-8 lg:p-10' : 'p-6 sm:p-7'}"
           data-reveal use:reveal={{ y: 30, duration: 600, delay: index * 120 + 200 }}
         >
           <div
@@ -58,10 +58,10 @@
               {/if}
             </div>
 
-            <h3 class="font-heading {item.featured ? 'text-2xl sm:text-3xl' : 'text-xl'} font-bold text-ds-fg mb-3 group-hover:text-ds-accent transition-colors duration-200">
+            <h3 class="font-heading {item.featured ? 'text-[1.4rem] sm:text-3xl' : 'text-lg sm:text-xl'} font-bold text-ds-fg mb-3 group-hover:text-ds-accent transition-colors duration-200">
               {item.title}
             </h3>
-            <p class="font-body text-ds-fg-muted {item.featured ? 'text-base max-w-xl' : 'text-sm'} leading-relaxed mb-6">
+            <p class="font-body text-ds-fg-muted {item.featured ? 'text-[15px] sm:text-base max-w-xl' : 'text-sm'} leading-relaxed mb-6">
               {item.description}
             </p>
 

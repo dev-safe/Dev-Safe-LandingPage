@@ -25,16 +25,8 @@
     window.addEventListener('scroll', handleScroll);
     handleScroll();
 
-    // Set initial theme
-    const saved = localStorage.getItem('theme');
-    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-    if (saved === 'light' || (!saved && systemPrefersLight)) {
-      isLight = true;
-      document.documentElement.classList.add('light');
-    } else {
-      isLight = false;
-      document.documentElement.classList.remove('light');
-    }
+    // Dark is the default; light only applies once a visitor has chosen it (see app.html).
+    isLight = document.documentElement.classList.contains('light');
 
     return () => {
       window.removeEventListener('scroll', handleScroll);

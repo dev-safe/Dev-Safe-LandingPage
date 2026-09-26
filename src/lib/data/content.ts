@@ -13,6 +13,8 @@ import {
 } from '@lucide/svelte';
 import founderImg from '$lib/assets/Founder.jpg';
 import backendImg from '$lib/assets/Backend.jpg';
+import eventraScreen from '$lib/assets/screens/eventra-home.webp';
+import bookbridgeScreen from '$lib/assets/screens/bookbridge-home.webp';
 
 export const navigation = {
   logo: {
@@ -176,6 +178,14 @@ export const whyDevSafe = {
   ]
 };
 
+export type Screenshot = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption: string;
+};
+
 export type Project = {
   title: string;
   tagline: string;
@@ -183,7 +193,7 @@ export type Project = {
   statusBadge: string;
   isLive: boolean;
   tags: string[];
-  preview?: 'eventra' | 'bookbridge';
+  screenshot?: Screenshot;
   link?: { text: string; href: string };
 };
 
@@ -203,11 +213,17 @@ export const clientWork: ProjectSection = {
     {
       title: 'Eventra',
       tagline: 'Event ticketing & payments platform',
-      description: 'Full-stack platform for event organisers to sell tickets, run paid voting contests, and manage service bookings — built with SvelteKit and Rust/gRPC.',
+      description: 'Full-stack platform for event organisers in Cameroon: secure QR tickets, paid voting contests and service bookings, with Mobile Money (MTN / Orange) withdrawals — built with SvelteKit and Rust/gRPC.',
       statusBadge: 'Live',
       isLive: true,
-      tags: ['SvelteKit', 'Rust', 'gRPC', 'Tailwind CSS'],
-      preview: 'eventra'
+      tags: ['SvelteKit', 'Rust', 'gRPC', 'Mobile Money'],
+      screenshot: {
+        src: eventraScreen,
+        alt: 'Eventra home screen on mobile: "Transform your events into power", with buttons to create an event or become a partner',
+        width: 540,
+        height: 1000,
+        caption: 'Eventra · live web app on mobile'
+      }
     }
   ],
   cta: {
@@ -224,11 +240,17 @@ export const products: ProjectSection = {
     {
       title: 'BookBridge',
       tagline: 'Peer-to-peer textbook marketplace',
-      description: 'Mobile-first app connecting students to buy and sell textbooks safely, with escrow-protected payments and seller ratings — built with Flutter.',
+      description: 'Mobile app that helps students find, buy and sell textbooks nearby, with escrow-protected payments and seller ratings — built with Flutter.',
       statusBadge: 'Coming to Play Store',
       isLive: false,
       tags: ['Flutter', 'Dart', 'Mobile App', 'Escrow Payments'],
-      preview: 'bookbridge',
+      screenshot: {
+        src: bookbridgeScreen,
+        alt: 'BookBridge app home screen: book search, a nearby-books banner, social impact stats and nearby textbook listings priced in FCFA',
+        width: 520,
+        height: 1074,
+        caption: 'BookBridge · Android app'
+      },
       link: { text: 'Visit Website', href: 'https://book-bridge-three.vercel.app/' }
     }
   ]

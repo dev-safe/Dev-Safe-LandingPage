@@ -1,7 +1,6 @@
 <script lang="ts">
   import { reveal } from '$lib/actions/reveal';
-  import EventraPreview from './previews/EventraPreview.svelte';
-  import BookBridgePreview from './previews/BookBridgePreview.svelte';
+  import PhoneFrame from './PhoneFrame.svelte';
   import type { Project } from '$lib/data/content';
 
   let { project, index = 0 }: { project: Project; index?: number } = $props();
@@ -66,18 +65,11 @@
                 {/if}
               </div>
 
-              <!-- Right Side: Product interface preview -->
-              {#if project.preview}
-                <figure class="lg:col-span-5 w-full">
-                  {#if project.preview === 'eventra'}
-                    <EventraPreview />
-                  {:else if project.preview === 'bookbridge'}
-                    <BookBridgePreview />
-                  {/if}
-                  <figcaption class="mt-3 text-center text-[10px] font-mono uppercase tracking-wider text-slate-500">
-                    Illustrative interface preview
-                  </figcaption>
-                </figure>
+              <!-- Right Side: Real product screenshot -->
+              {#if project.screenshot}
+                <div class="lg:col-span-5 w-full">
+                  <PhoneFrame screenshot={project.screenshot} />
+                </div>
               {/if}
 
             </div>

@@ -259,6 +259,7 @@ const en = {
   team: {
     heading: 'The Team Behind DevSafe',
     subtitle: 'A dedicated team of security experts, software engineers, and designers in Cameroon.',
+    photoAlt: 'DevSafe founders Verla Berinyuy Ndey and Engon Ken Morel',
     members: [
       {
         name: 'Verla Berinyuy Ndey',

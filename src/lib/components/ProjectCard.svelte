@@ -1,5 +1,6 @@
 <script lang="ts">
   import { reveal } from '$lib/actions/reveal';
+  import { Trophy } from '@lucide/svelte';
   import PhoneFrame from './PhoneFrame.svelte';
   import type { Project } from '$lib/data/content';
 
@@ -39,6 +40,17 @@
                 <p class="font-body text-ds-fg-muted text-sm sm:text-base leading-relaxed">
                   {project.description}
                 </p>
+
+                {#if project.highlights?.length}
+                  <ul class="flex flex-wrap gap-2">
+                    {#each project.highlights as highlight (highlight)}
+                      <li class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-ds-warning/10 border border-ds-warning/40 text-xs font-heading font-semibold text-ds-fg">
+                        <Trophy class="w-3.5 h-3.5 text-ds-warning shrink-0" aria-hidden="true" />
+                        {highlight}
+                      </li>
+                    {/each}
+                  </ul>
+                {/if}
 
                 <!-- Tech Tags -->
                 <div class="flex flex-wrap gap-2 pt-2">

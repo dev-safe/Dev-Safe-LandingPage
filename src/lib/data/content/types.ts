@@ -30,6 +30,8 @@ export type Project = {
   statusBadge: string;
   isLive: boolean;
   tags: string[];
+  /** Awards or press, shown as badges on the card. */
+  highlights?: string[];
   screenshot?: Screenshot;
   link?: { text: string; href: string };
 };
@@ -39,7 +41,8 @@ export type ProjectSection = {
   heading: string;
   subtitle: string;
   projects: Project[];
-  cta?: { text: string; link: { text: string; href: string } };
+  /** Client work that can't be shown (NDA), summarised as a count. */
+  confidential?: { count: string; title: string; text: string; link: { text: string; href: string } };
 };
 
 export type Severity = 'high' | 'medium' | 'low';

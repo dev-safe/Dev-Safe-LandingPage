@@ -2,9 +2,12 @@
   import { reveal } from '$lib/actions/reveal';
   import { fade } from 'svelte/transition';
   import { t } from '$lib/data/content';
+  import { whatsappUrl } from '$lib/config/site';
   import SectionPhoto from './SectionPhoto.svelte';
+  import BrandIcon from './BrandIcon.svelte';
 
-  const ctaBanner = $derived(t().ctaBanner);
+  const c = $derived(t());
+  const ctaBanner = $derived(c.ctaBanner);
   const form = $derived(ctaBanner.form);
 
   // Form State
@@ -95,6 +98,19 @@
             </div>
           {/each}
         </div>
+
+        <a
+          href={whatsappUrl(c.whatsapp.message)}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={c.whatsapp.ariaLabel}
+          class="mt-8 inline-flex items-center justify-center gap-3 w-full sm:w-fit px-6 py-3.5 rounded-full bg-[#25D366] text-[#052e1c] font-heading font-semibold hover:bg-[#1ebe5b] hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-[0_8px_24px_rgba(37,211,102,0.25)]"
+          data-reveal use:reveal={{ y: 20, duration: 600, delay: 400 }}
+        >
+          <BrandIcon name="whatsapp" class="w-5 h-5" />
+          <span>{c.whatsapp.label}</span>
+          <span class="font-mono text-sm font-medium opacity-80 whitespace-nowrap">{c.footer.contact.whatsapp.text}</span>
+        </a>
       </div>
 
       <!-- Form Column (Right) -->

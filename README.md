@@ -40,19 +40,21 @@ src/
 │   │   ├── Founder.jpg       # Profile picture for founder profile
 │   │   └── screens/          # Product screenshots (WebP)
 │   ├── components/
-│   │   ├── CTABanner.svelte  # Interactive consultation form banner
+│   │   ├── BrandIcon.svelte  # GitHub / LinkedIn / WhatsApp SVG marks (Lucide has no brand icons)
+│   │   ├── CTABanner.svelte  # Consultation form banner + WhatsApp button
 │   │   ├── Footer.svelte     # Footer links and WhatsApp integration
 │   │   ├── Hero.svelte       # Hero with sample security-audit report panel
 │   │   ├── Navbar.svelte     # Responsive glass header & mobile drawer
 │   │   ├── PhoneFrame.svelte      # Device frame for real product screenshots
 │   │   ├── ProjectCard.svelte     # Single project card with product screenshot
-│   │   ├── ProjectShowcase.svelte # Reusable section for client work & products
+│   │   ├── ProjectShowcase.svelte # Client work & products sections (+ NDA client card)
 │   │   ├── SectionPhoto.svelte    # Decorative palette-tinted background photo
 │   │   ├── SectionVideo.svelte    # Silent looping background video (WhyDevSafe)
 │   │   ├── Seo.svelte        # <svelte:head> meta, canonical, OG, JSON-LD
-│   │   ├── Services.svelte   # Bento grid of services + "How we work" process
-│   │   ├── TrustStrip.svelte # Real proof points and tech stack under the hero
-│   │   ├── Team.svelte       # Team showcase card grids
+│   │   ├── Services.svelte   # Bento grid of services
+│   │   ├── TrustStrip.svelte # Awards and client proof points under the hero
+│   │   ├── Team.svelte       # Founders photo, bios, highlights, LinkedIn/GitHub
+│   │   ├── WhatsAppButton.svelte  # Floating WhatsApp chat button
 │   │   └── WhyDevSafe.svelte # Corporate differentiator grids
 │   ├── config/
 │   │   └── site.ts           # Site URL, languages, locale helpers, indexable routes

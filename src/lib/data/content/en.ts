@@ -133,7 +133,7 @@ const en = {
         description:
           'We test your systems the way an attacker would, then hand you a plain-language report and a prioritised plan to fix what matters first.',
         tags: ['Penetration Testing', 'Security Audits', 'Vulnerability Assessment', 'Data Protection'],
-        accentColor: '#3B82F6',
+        accentColor: '#E0A020',
         featured: true,
         visual: {
           type: 'checklist',
@@ -152,7 +152,7 @@ const en = {
         title: 'Software Development',
         description: 'Websites, mobile apps and web platforms: fast, easy to manage and security-reviewed before launch.',
         tags: ['Websites', 'Mobile Apps', 'Web Platforms'],
-        accentColor: '#22D3EE',
+        accentColor: '#D9622B',
         visual: { type: 'pipeline', steps: ['build', 'security review', 'deploy'] }
       },
       {
@@ -160,8 +160,8 @@ const en = {
         title: 'Design & Branding',
         description: 'Logos, interfaces and brand identities that make your institution look professional.',
         tags: ['Logo Design', 'UI/UX', 'Brand Identity'],
-        accentColor: '#34D399',
-        visual: { type: 'palette', swatches: ['#0B1120', '#1D4ED8', '#22D3EE', '#34D399', '#F8FAFC'] }
+        accentColor: '#0E8A5F',
+        visual: { type: 'palette', swatches: ['#0F0B07', '#F5B53D', '#D9622B', '#C8102E', '#0E8A5F'] }
       }
     ] as ServiceItem[]
   },
@@ -357,7 +357,8 @@ const en = {
     },
     bottom: {
       copyright: `© ${new Date().getFullYear()} DevSafe. All rights reserved.`,
-      domain: 'devsafe.cm'
+      domain: 'devsafe.cm',
+      pride: 'Proudly built in Yaoundé, Cameroon, for Africa.'
     }
   }
 };

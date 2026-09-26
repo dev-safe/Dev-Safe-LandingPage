@@ -18,11 +18,12 @@
     <!-- Centered Header -->
     <div class="text-center max-w-3xl mx-auto mb-20">
       <h2 
-        class="font-heading text-3xl sm:text-4xl font-bold tracking-tight mb-4"
+        class="font-heading text-3xl sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
-        <span class="gradient-text">{whyDevSafe.heading}</span>
+        {whyDevSafe.heading}
       </h2>
+      <span class="cm-rule mx-auto" aria-hidden="true"></span>
     </div>
 
     <!-- 2x2 Grid of Reasons -->
@@ -34,13 +35,13 @@
           data-reveal use:reveal={{ y: 35, duration: 600, delay: index * 100 + 200 }}
         >
           <!-- Icon Box -->
-          <div class="w-[60px] h-[60px] shrink-0 bg-ds-elevated border border-ds-border/60 rounded-xl flex items-center justify-center shadow-[0_0_16px_rgba(0,212,255,0.04)] transition-all duration-300 group-hover:scale-105 group-hover:border-ds-cyan/40">
-            <Icon class="w-7 h-7 text-ds-cyan transition-transform duration-300 group-hover:rotate-3" />
+          <div class="w-[60px] h-[60px] shrink-0 bg-ds-elevated border border-ds-border/60 rounded-xl flex items-center justify-center shadow-[0_0_16px_rgb(var(--ds-accent)/0.04)] transition-all duration-300 group-hover:scale-105 group-hover:border-ds-accent/40">
+            <Icon class="w-7 h-7 text-ds-accent transition-transform duration-300 group-hover:rotate-3" />
           </div>
 
           <!-- Text Content -->
           <div class="space-y-2">
-            <h3 class="font-heading text-lg font-bold text-ds-fg tracking-wide group-hover:text-ds-cyan transition-colors duration-200">
+            <h3 class="font-heading text-lg font-bold text-ds-fg tracking-wide group-hover:text-ds-accent transition-colors duration-200">
               {item.title}
             </h3>
             <p class="font-body text-ds-fg-muted text-sm leading-relaxed">

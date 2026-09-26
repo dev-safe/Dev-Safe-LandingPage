@@ -13,14 +13,14 @@
 
 <section 
   {id}
-  class="relative py-24 {background} grid-bg overflow-hidden border-b border-ds-border/40"
+  class="relative py-24 {background} pattern-bg overflow-hidden border-b border-ds-border/40"
 >
   <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
     
     <!-- Centered Header -->
     <div class="text-center max-w-2xl mx-auto mb-16">
       <span
-        class="inline-block font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ds-cyan mb-3"
+        class="inline-block font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ds-accent mb-3"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         {section.eyebrow}
@@ -31,6 +31,7 @@
       >
         {section.heading}
       </h2>
+      <span class="cm-rule mx-auto mb-5" aria-hidden="true"></span>
       <p 
         class="font-body text-ds-fg-muted text-sm sm:text-base leading-relaxed"
         data-reveal use:reveal={{ y: 20, duration: 600, delay: 150 }}
@@ -53,8 +54,8 @@
         data-reveal use:reveal={{ y: 15, duration: 500, delay: 400 }}
       >
         <div class="flex items-center gap-4 shrink-0">
-          <span class="w-12 h-12 rounded-xl bg-ds-cyan/10 border border-ds-cyan/30 flex items-center justify-center">
-            <FileLock class="w-6 h-6 text-ds-cyan" aria-hidden="true" />
+          <span class="w-12 h-12 rounded-xl bg-ds-accent/10 border border-ds-accent/30 flex items-center justify-center">
+            <FileLock class="w-6 h-6 text-ds-accent" aria-hidden="true" />
           </span>
           <span class="font-heading text-4xl sm:text-5xl font-bold text-ds-fg tabular-nums">{nda.count}</span>
         </div>
@@ -62,7 +63,7 @@
           <h3 class="font-heading text-lg font-bold text-ds-fg">{nda.title}</h3>
           <p class="font-body text-sm text-ds-fg-muted leading-relaxed mt-1">{nda.text}</p>
         </div>
-        <a href={nda.link.href} class="shrink-0 text-sm text-ds-cyan font-semibold hover:underline">
+        <a href={nda.link.href} class="shrink-0 text-sm text-ds-accent font-semibold hover:underline">
           {nda.link.text}
         </a>
       </aside>

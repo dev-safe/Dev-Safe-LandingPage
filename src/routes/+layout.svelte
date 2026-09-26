@@ -1,5 +1,4 @@
 <script lang="ts">
-	import favicon from '$lib/assets/DevSafe_logo.jpg';
 	import '../app.css';
 	import { localeConfig } from '$lib/config/site';
 	import { currentLang } from '$lib/data/content';
@@ -13,7 +12,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" type="image/jpeg" href={favicon} />
+	<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 </svelte:head>
 

@@ -3,48 +3,56 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design tokens: "Secure Navy". Values are space-separated RGB channels so Tailwind
-   opacity modifiers (bg-ds-cyan/10) work. Every text/background pairing meets WCAG AA. */
+/* Design tokens: "Toghu Night" (dark) and "Sahel Sand" (light), drawn from the Cameroonian
+   Toghu: black velvet embroidered in gold, sunset orange, red and green. Values are
+   space-separated RGB channels so Tailwind opacity modifiers (bg-ds-accent/10) work.
+   Every text/background pairing meets WCAG AA (lowest pair 5.3:1). */
 :root {
-  --ds-bg: 11 17 32;            /* #0B1120 */
-  --ds-surface: 19 28 49;       /* #131C31 */
-  --ds-elevated: 26 37 64;      /* #1A2540 */
-  --ds-border: 51 71 102;       /* #334766 */
-  --ds-fg: 241 245 249;         /* #F1F5F9 */
-  --ds-fg-muted: 180 192 210;   /* #B4C0D2 */
-  --ds-fg-subtle: 148 163 184;  /* #94A3B8 */
-  --ds-cyan: 34 211 238;        /* #22D3EE accent */
-  --ds-blue: 96 165 250;        /* #60A5FA */
-  --ds-primary: 34 211 238;     /* button fill */
-  --ds-primary-hover: 103 232 249;
-  --ds-on-primary: 11 17 32;
-  --ds-success: 52 211 153;     /* #34D399 */
+  --ds-bg: 15 11 7;             /* #0F0B07 warm black */
+  --ds-surface: 26 20 14;       /* #1A140E */
+  --ds-elevated: 37 28 20;      /* #251C14 */
+  --ds-border: 78 62 44;        /* #4E3E2C */
+  --ds-fg: 251 245 234;         /* #FBF5EA ivory */
+  --ds-fg-muted: 217 203 181;   /* #D9CBB5 */
+  --ds-fg-subtle: 176 160 138;  /* #B0A08A */
+  --ds-accent: 245 181 61;      /* #F5B53D Toghu gold */
+  --ds-accent-2: 242 133 90;    /* #F2855A sunset terracotta */
+  --ds-primary: 245 181 61;     /* button fill */
+  --ds-primary-hover: 250 203 110;
+  --ds-on-primary: 28 18 8;
+  --ds-success: 76 195 138;     /* #4CC38A */
   --ds-warning: 251 191 36;     /* #FBBF24 */
   --ds-danger: 248 113 113;     /* #F87171 */
-  --color-glass-bg: rgb(19 28 49 / 0.7);
-  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  /* Cameroon flag, for decorative motifs only (never as text colours) */
+  --cm-green: #007a5e;
+  --cm-red: #ce1126;
+  --cm-yellow: #fcd116;
+  --pattern-alpha: 0.07;
+  --color-glass-bg: rgb(26 20 14 / 0.72);
+  --font-heading: 'Bricolage Grotesque', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   color-scheme: dark;
 }
 
 :root.light {
-  --ds-bg: 248 250 252;         /* #F8FAFC */
+  --ds-bg: 251 246 238;         /* #FBF6EE sand */
   --ds-surface: 255 255 255;
-  --ds-elevated: 241 245 249;   /* #F1F5F9 */
-  --ds-border: 203 213 225;     /* #CBD5E1 */
-  --ds-fg: 15 23 42;            /* #0F172A */
-  --ds-fg-muted: 71 85 105;     /* #475569 */
-  --ds-fg-subtle: 86 101 122;   /* #56657A */
-  --ds-cyan: 11 104 130;        /* #0B6882 */
-  --ds-blue: 29 78 216;         /* #1D4ED8 */
-  --ds-primary: 29 78 216;
-  --ds-primary-hover: 30 64 175;
+  --ds-elevated: 243 234 219;   /* #F3EADB */
+  --ds-border: 221 204 178;     /* #DDCCB2 */
+  --ds-fg: 30 21 12;            /* #1E150C */
+  --ds-fg-muted: 87 72 56;      /* #574838 */
+  --ds-fg-subtle: 106 90 71;    /* #6A5A47 */
+  --ds-accent: 138 83 0;        /* #8A5300 ochre */
+  --ds-accent-2: 162 59 22;     /* #A23B16 terracotta */
+  --ds-primary: 138 83 0;
+  --ds-primary-hover: 110 66 0;
   --ds-on-primary: 255 255 255;
   --ds-success: 4 108 78;       /* #046C4E */
   --ds-warning: 154 64 14;      /* #9A400E */
   --ds-danger: 185 28 28;       /* #B91C1C */
-  --color-glass-bg: rgb(255 255 255 / 0.75);
+  --pattern-alpha: 0.1;
+  --color-glass-bg: rgb(255 255 255 / 0.78);
   color-scheme: light;
 }
 
@@ -53,34 +61,56 @@
 body {
   background-color: rgb(var(--ds-bg));
   color: rgb(var(--ds-fg));
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   transition: background-color 300ms ease, color 300ms ease;
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
 }
 
-/* Tech grid background utility */
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+/* Ndop lattice: a faint diamond grid with ringed nodes, after the indigo Ndop cloth of the
+   Grassfields (and a nod to circuit nodes). Drawn on ::before so it follows the accent
+   colour; the host needs position: relative, and content above it needs a z-index. */
+.pattern-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: rgb(var(--ds-accent) / var(--pattern-alpha));
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='%23000'%3E%3Cpath d='M28 0 56 28 28 56 0 28Z'/%3E%3Ccircle cx='28' cy='28' r='5'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='28' cy='0' r='2'/%3E%3Ccircle cx='56' cy='28' r='2'/%3E%3Ccircle cx='28' cy='56' r='2'/%3E%3Ccircle cx='0' cy='28' r='2'/%3E%3Ccircle cx='28' cy='28' r='1.5'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 56px 56px repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='%23000'%3E%3Cpath d='M28 0 56 28 28 56 0 28Z'/%3E%3Ccircle cx='28' cy='28' r='5'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='28' cy='0' r='2'/%3E%3Ccircle cx='56' cy='28' r='2'/%3E%3Ccircle cx='28' cy='56' r='2'/%3E%3Ccircle cx='0' cy='28' r='2'/%3E%3Ccircle cx='28' cy='28' r='1.5'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 56px 56px repeat;
 }
 
-/* Gradient text utility */
-.gradient-text {
-  background: linear-gradient(90deg, rgb(var(--ds-cyan)), rgb(var(--ds-blue)));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Toghu band: black velvet with red borders and a gold/orange braid, after the embroidered
+   Toghu of the North-West Grassfields. Decorative border strip; same in both themes. */
+.toghu-band {
+  height: 12px;
+  background: #0f0b07 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='12'%3E%3Crect width='36' height='1.5' fill='%23CE1126'/%3E%3Crect y='10.5' width='36' height='1.5' fill='%23CE1126'/%3E%3Cg fill='none' stroke-width='1.2'%3E%3Cpath d='M0 6Q9 1.5 18 6T36 6' stroke='%23F5B53D'/%3E%3Cpath d='M0 6Q9 10.5 18 6T36 6' stroke='%23F2855A'/%3E%3C/g%3E%3Ccircle cx='9' cy='6' r='1.3' fill='%23F5B53D'/%3E%3Ccircle cx='27' cy='6' r='1.3' fill='%23F5B53D'/%3E%3C/svg%3E") 0 0 / 36px 12px repeat-x;
 }
 
-/* Cyan glow utility */
-.cyan-glow {
-  box-shadow: 0 0 24px rgb(var(--ds-cyan) / 0.15);
+/* Short green | red | yellow rule under section headings (Cameroon flag). */
+.cm-rule {
+  display: block;
+  width: 72px;
+  height: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--cm-green) 0 33.33%, var(--cm-red) 33.33% 66.66%, var(--cm-yellow) 66.66%);
+}
+
+/* Tiny Cameroon flag (green | red with a yellow star | yellow) for badges. */
+.cm-flag {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-1 -1 2 2'%3E%3Cpath fill='%23FCD116' d='M0.00%20-0.95L0.22%20-0.31L0.90%20-0.29L0.36%200.12L0.56%200.77L0.00%200.38L-0.56%200.77L-0.36%200.12L-0.90%20-0.29L-0.22%20-0.31Z'/%3E%3C/svg%3E") center / 7px 7px no-repeat,
+    linear-gradient(90deg, var(--cm-green) 0 33.33%, var(--cm-red) 33.33% 66.66%, var(--cm-yellow) 66.66%);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15);
 }
 
 /* Glassmorphism card utility */
@@ -94,15 +124,14 @@ h1, h2, h3, h4 {
 }
 
 .glass-card:hover {
-  border-color: rgb(var(--ds-cyan) / 0.4);
-  box-shadow: 0 0 24px rgb(var(--ds-cyan) / 0.12);
+  border-color: rgb(var(--ds-accent) / 0.4);
+  box-shadow: 0 0 24px rgb(var(--ds-accent) / 0.12);
 }
 
-/* Light mode tech grid lines */
-.light .grid-bg {
-  background-image:
-    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+/* Theme-specific logo files (the emblem has white strokes that vanish on sand). */
+.light .logo-on-dark,
+:root:not(.light) .logo-on-light {
+  display: none;
 }
 
 /* Scroll reveal (see $lib/actions/reveal.ts). Scoped to html.js so content stays visible

@@ -22,6 +22,7 @@
       >
         {team.heading}
       </h2>
+      <span class="cm-rule mx-auto mb-5" aria-hidden="true"></span>
       <p 
         class="font-body text-ds-fg-muted text-sm sm:text-base leading-relaxed"
         data-reveal use:reveal={{ y: 20, duration: 600, delay: 150 }}
@@ -49,23 +50,23 @@
             class="w-full h-auto aspect-[4/5] object-cover"
           />
         </picture>
-        <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-ds-cyan to-transparent"></div>
+        <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-ds-accent to-transparent"></div>
       </figure>
 
       <!-- Cards Grid -->
       <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
         {#each team.members as member, index}
           <div 
-            class="glass-card p-6 flex flex-col items-center text-center border border-ds-border/70 hover:border-ds-cyan/40 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(0,212,255,0.08)] transition-all duration-300 relative group"
+            class="glass-card p-6 flex flex-col items-center text-center border border-ds-border/70 hover:border-ds-accent/40 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgb(var(--ds-accent)/0.08)] transition-all duration-300 relative group"
             data-reveal use:reveal={{ y: 30, duration: 600, delay: index * 100 + 200 }}
           >
             <!-- Top hover line glow -->
-            <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-ds-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-ds-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
             <!-- Portrait: 240px sources, so 160px max keeps them sharp on 1.5x screens -->
             <div 
-              class="w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden flex items-center justify-center font-heading text-3xl font-bold text-[#fff] mb-5 shadow-[0_8px_24px_rgba(0,0,0,0.25)] ring-1 ring-ds-border/60 group-hover:ring-ds-cyan/50 transition-shadow duration-300"
-              style="background-color: {member.bg}; border: {member.borderCyan ? '2px solid rgb(var(--ds-cyan))' : 'none'};"
+              class="w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden flex items-center justify-center font-heading text-3xl font-bold text-[#fff] mb-5 shadow-[0_8px_24px_rgba(0,0,0,0.25)] ring-1 ring-ds-border/60 group-hover:ring-ds-accent/50 transition-shadow duration-300"
+              style="background-color: {member.bg}; border: {member.borderCyan ? '2px solid rgb(var(--ds-accent))' : 'none'};"
             >
               {#if member.image}
                 <img src={member.image} alt={c.ui.portraitAlt(member.name, member.role)} width="160" height="160" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -75,12 +76,12 @@
             </div>
 
             <!-- Name -->
-            <h3 class="font-heading text-base font-bold text-ds-fg mb-1 group-hover:text-ds-cyan transition-colors duration-200">
+            <h3 class="font-heading text-base font-bold text-ds-fg mb-1 group-hover:text-ds-accent transition-colors duration-200">
               {member.name}
             </h3>
 
             <!-- Role -->
-            <p class="font-body text-xs font-semibold text-ds-cyan mb-3">
+            <p class="font-body text-xs font-semibold text-ds-accent mb-3">
               {member.role}
             </p>
 
@@ -92,7 +93,7 @@
             <ul class="w-full space-y-2 mb-5 text-left">
               {#each member.highlights as highlight (highlight)}
                 <li class="flex gap-2 font-body text-xs leading-snug text-ds-fg">
-                  <Check class="w-3.5 h-3.5 mt-0.5 text-ds-cyan shrink-0" aria-hidden="true" />
+                  <Check class="w-3.5 h-3.5 mt-0.5 text-ds-accent shrink-0" aria-hidden="true" />
                   <span>{highlight}</span>
                 </li>
               {/each}
@@ -106,7 +107,7 @@
                   rel="noopener noreferrer me"
                   aria-label={c.ui.profileLabel(member.name, profile.network)}
                   title={profile.network}
-                  class="w-10 h-10 flex items-center justify-center rounded-full border border-ds-border/60 bg-ds-elevated/60 text-ds-fg-muted hover:text-ds-cyan hover:border-ds-cyan/60 hover:bg-ds-cyan/10 transition-colors"
+                  class="w-10 h-10 flex items-center justify-center rounded-full border border-ds-border/60 bg-ds-elevated/60 text-ds-fg-muted hover:text-ds-accent hover:border-ds-accent/60 hover:bg-ds-accent/10 transition-colors"
                 >
                   <BrandIcon name={profile.brand} class="w-4 h-4" />
                 </a>

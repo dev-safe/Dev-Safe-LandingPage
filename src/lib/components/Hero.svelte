@@ -12,26 +12,26 @@
   const totalFindings = $derived(report.summary.reduce((sum, s) => sum + s.count, 0));
 </script>
 
-<section class="relative flex items-center justify-center pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden bg-ds-bg grid-bg">
+<section class="relative flex items-center justify-center pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden bg-ds-bg pattern-bg">
   <SectionPhoto name="hero-padlock" widths={[1280, 2400]} fallbackHeight={854} priority />
 
   <!-- Radial Glow Behind Headline -->
-  <div class="absolute inset-0 pointer-events-none z-0" style="background: radial-gradient(ellipse 60% 40% at 50% 40%, rgba(0, 212, 255, 0.06) 0%, transparent 70%);"></div>
+  <div class="absolute inset-0 pointer-events-none z-0" style="background: radial-gradient(ellipse 60% 40% at 50% 40%, rgb(var(--ds-accent)/0.06) 0%, transparent 70%);"></div>
 
   <div class="relative max-w-7xl mx-auto px-6 w-full z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
 
     <!-- Left — Offer, audience, outcome -->
     <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
       <div
-        class="inline-flex items-center gap-2 px-3 py-1 bg-ds-elevated border border-ds-cyan/30 rounded-full mb-6"
+        class="inline-flex items-center gap-2 px-3 py-1 bg-ds-elevated border border-ds-accent/30 rounded-full mb-6"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
-        <span class="w-1.5 h-1.5 rounded-full bg-ds-cyan animate-pulse shadow-[0_0_8px_rgb(var(--ds-cyan))]"></span>
-        <span class="text-xs font-mono font-medium text-ds-cyan">{hero.badge}</span>
+        <span class="cm-flag" aria-hidden="true"></span>
+        <span class="text-xs font-mono font-medium text-ds-accent">{hero.badge}</span>
       </div>
 
       <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ds-fg mb-6 leading-[1.1] max-w-[640px]">
-        {hero.headline.before}<span class="gradient-text">{hero.headline.highlight}</span>{hero.headline.after}
+        {hero.headline.before}<span class="text-ds-accent">{hero.headline.highlight}</span>{hero.headline.after}
       </h1>
 
       <p
@@ -47,13 +47,13 @@
       >
         <a
           href={hero.cta.primary.href}
-          class="flex items-center justify-center gap-2 bg-ds-primary text-ds-on-primary px-8 py-4 rounded-full font-heading font-semibold hover:bg-ds-primary-hover hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-[0_0_24px_rgba(0,212,255,0.2)]"
+          class="flex items-center justify-center gap-2 bg-ds-primary text-ds-on-primary px-8 py-4 rounded-full font-heading font-semibold hover:bg-ds-primary-hover hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-[0_0_24px_rgb(var(--ds-accent)/0.2)]"
         >
           {hero.cta.primary.text}
         </a>
         <a
           href={hero.cta.secondary.href}
-          class="flex items-center justify-center border border-ds-cyan text-ds-cyan hover:bg-ds-cyan/10 px-8 py-4 rounded-full font-heading font-semibold active:scale-95 transition-all duration-200"
+          class="flex items-center justify-center border border-ds-accent text-ds-accent hover:bg-ds-accent/10 px-8 py-4 rounded-full font-heading font-semibold active:scale-95 transition-all duration-200"
         >
           {hero.cta.secondary.text}
         </a>
@@ -78,7 +78,7 @@
         class="w-full max-w-[440px] glass-card relative border border-ds-border/80 overflow-hidden text-left"
         data-reveal use:reveal={{ y: 0, duration: 800, delay: 250 }}
       >
-        <div class="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-ds-cyan to-transparent"></div>
+        <div class="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-ds-accent to-transparent"></div>
 
         <!-- Window bar -->
         <div class="flex items-center gap-1.5 px-5 py-3 border-b border-ds-border/40 bg-ds-elevated/40">
@@ -88,7 +88,7 @@
           <span class="ml-3 flex items-center gap-1.5 text-[11px] font-mono text-ds-fg-subtle">
             <FileText class="w-3.5 h-3.5" /> {report.file}
           </span>
-          <span class="ml-auto px-2 py-0.5 rounded border border-ds-cyan/30 text-[10px] font-mono font-bold uppercase tracking-wider text-ds-cyan">
+          <span class="ml-auto px-2 py-0.5 rounded border border-ds-accent/30 text-[10px] font-mono font-bold uppercase tracking-wider text-ds-accent">
             {report.label}
           </span>
         </div>

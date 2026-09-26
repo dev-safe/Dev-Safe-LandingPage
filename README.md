@@ -19,7 +19,8 @@ The official landing page for **DevSafe**, a software development and cybersecur
 ## ✨ Features
 
 - **Interactive Consultation Gateway:** A custom glassmorphic request form with animated submit states ("Establishing Secure Link...") and feedback panels.
-- **Scroll-Triggered Entrance Animations:** Staggered fly/fade transitions that trigger via a custom Svelte `IntersectionObserver` action as sections enter viewport.
+- **Scroll-Triggered Entrance Animations:** A `use:reveal` action animates elements as they enter the viewport. Content is always server-rendered, and the hidden pre-animation state only applies when JS is running (`html.js`), so crawlers and no-JS visitors see everything.
+- **SEO:** The site is prerendered to static HTML. `Seo.svelte` handles the title, description, canonical, Open Graph and Twitter tags, `schema.ts` adds the JSON-LD graph, and `sitemap.xml` and `robots.txt` are generated from `src/lib/config/site.ts`.
 - **Sticky Glassmorphism Header:** Responsive navigation bar with dynamic border borders, and a custom mobile hamburger overlay menu.
 - **Client Work vs. Owned Products:** Separate showcase sections for agency client work (e.g. **Eventra**) and DevSafe-owned products (e.g. **BookBridge**), rendered by a shared `ProjectShowcase` component.
 - **Centralized Data Layer:** Content and asset links are managed entirely within a single file (`src/lib/data/content.ts`), avoiding hardcoded values inside markup.
@@ -32,7 +33,7 @@ The official landing page for **DevSafe**, a software development and cybersecur
 src/
 ├── lib/
 │   ├── actions/
-│   │   └── intersect.ts      # Scroll interaction observer action
+│   │   └── reveal.ts         # SSR-safe scroll reveal action
 │   ├── assets/
 │   │   ├── DevSafe_logo.jpg  # Brand logo used for layout/favicon
 │   │   └── Founder.jpg       # Profile picture for founder profile
@@ -43,19 +44,29 @@ src/
 │   │   ├── Navbar.svelte     # Responsive glass header & mobile drawer
 │   │   ├── ProjectCard.svelte     # Single project card with mock code block
 │   │   ├── ProjectShowcase.svelte # Reusable section for client work & products
+│   │   ├── Seo.svelte        # <svelte:head> meta, canonical, OG, JSON-LD
 │   │   ├── Services.svelte   # offerings grid with cyan accent borders
 │   │   ├── Team.svelte       # Team showcase card grids
 │   │   └── WhyDevSafe.svelte # Corporate differentiator grids
-│   └── data/
-│       └── content.ts        # Centralized copy, tags, and icon mapper
+│   ├── config/
+│   │   └── site.ts           # Site URL, SEO defaults, indexable routes
+│   ├── data/
+│   │   └── content.ts        # Centralized copy, tags, and icon mapper
+│   └── seo/
+│       └── schema.ts         # JSON-LD structured data
 ├── routes/
 │   ├── +layout.svelte        # Imports global CSS & dynamic logo favicon
-│   └── +page.svelte          # Main assembly page with SEO headers
+│   ├── +layout.ts            # prerender = true for the whole site
+│   ├── +page.svelte          # Main assembly page with SEO headers
+│   ├── robots.txt/+server.ts # Prerendered robots.txt
+│   └── sitemap.xml/+server.ts# Prerendered sitemap (from indexableRoutes)
 ├── app.css                   # Global styles, variables & utility classes
 ├── app.html                  # HTML shell template
 static/
+├── apple-touch-icon.png      # iOS home-screen icon
 ├── favicon.jpg               # Static brand fallback icon
-└── robots.txt                # Bot indexing config
+├── logo-512.png              # Logo referenced by JSON-LD
+└── og-image.png              # 1200x630 social share image
 ```
 
 ---

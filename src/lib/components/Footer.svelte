@@ -12,7 +12,7 @@
       <div class="md:col-span-5 space-y-4">
         <a href="/" class="flex items-center gap-2.5 focus:outline-none">
           <div class="relative flex items-center justify-center">
-            <img src={logoImg} alt="DevSafe Logo" class="w-7 h-7 rounded-lg object-cover border border-ds-border/40" />
+            <img src={logoImg} alt="DevSafe logo" width="28" height="28" class="w-7 h-7 rounded-lg object-cover border border-ds-border/40" />
           </div>
           <span class="font-heading text-lg font-bold tracking-tight">
             <span class="text-white">DEV</span><span class="text-ds-cyan">SAFE</span>
@@ -28,9 +28,9 @@
 
       <!-- Column 2: Navigation Links -->
       <div class="md:col-span-3 space-y-4">
-        <h4 class="font-heading text-sm font-bold text-white uppercase tracking-wider">
+        <h2 class="font-heading text-sm font-bold text-white uppercase tracking-wider">
           {footer.quickLinks.heading}
-        </h4>
+        </h2>
         <ul class="font-body text-sm space-y-2.5">
           {#each footer.quickLinks.links as link}
             <li>
@@ -44,9 +44,9 @@
 
       <!-- Column 3: Contact Info -->
       <div class="md:col-span-4 space-y-4">
-        <h4 class="font-heading text-sm font-bold text-white uppercase tracking-wider">
+        <h2 class="font-heading text-sm font-bold text-white uppercase tracking-wider">
           {footer.contact.heading}
-        </h4>
+        </h2>
         <div class="flex flex-col gap-3">
           <a 
             href="mailto:{footer.contact.email.text}" 
@@ -56,9 +56,7 @@
             <span>{footer.contact.email.text}</span>
           </a>
           <a 
-            href="https://{footer.contact.website.text}" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+            href="/" 
             class="flex items-center gap-2.5 text-sm text-slate-400 hover:text-ds-cyan transition-colors w-fit"
           >
             <Globe class="w-4 h-4 text-ds-cyan shrink-0" />
@@ -100,7 +98,7 @@
         {footer.bottom.copyright}
       </div>
       <div class="text-xs font-mono text-slate-500 hover:text-ds-cyan transition-colors">
-        <a href="https://{footer.bottom.domain}" target="_blank" rel="noopener noreferrer">
+        <a href="/">
           {footer.bottom.domain}
         </a>
       </div>

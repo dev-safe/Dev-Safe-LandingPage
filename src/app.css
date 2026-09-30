@@ -43,8 +43,8 @@
   --ls-near: #1d1a2b;
   --ls-cloud: #bf92ec;
   --font-heading: 'IBM Plex Serif', Georgia, Cambria, serif;
-  --font-body: 'Inter', -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: 'Inter Variable', 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
   color-scheme: dark;
 }
 
@@ -116,10 +116,17 @@ h3, h4 {
 }
 
 /* Toghu band: a purple-dusk take on the embroidered Toghu of the North-West Grassfields,
-   with a lilac braid and green, red and yellow stitches. Used once, above the footer. */
+   with a lilac braid and green, red and yellow stitches. Frames the page: under the navbar and above the footer. */
 .toghu-band {
   height: 14px;
   background: #13111C url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='54' height='14'%3E%3Cg fill='%23A667E4' fill-opacity='.6'%3E%3Crect width='54' height='1.5'/%3E%3Crect y='12.5' width='54' height='1.5'/%3E%3C/g%3E%3Cg fill='none' stroke-width='1.2'%3E%3Cpath d='M0 7Q4.5 2.5 9 7T18 7T27 7T36 7T45 7T54 7' stroke='%23BF92EC'/%3E%3Cpath d='M0 7Q4.5 11.5 9 7T18 7T27 7T36 7T45 7T54 7' stroke='%23A667E4' stroke-opacity='.8'/%3E%3C/g%3E%3Ccircle cx='9' cy='7' r='1.6' fill='%2318A36F'/%3E%3Ccircle cx='27' cy='7' r='1.6' fill='%23E0303F'/%3E%3Ccircle cx='45' cy='7' r='1.6' fill='%23FCD116'/%3E%3C/svg%3E") 0 0 / 54px 14px repeat-x;
+}
+
+/* Slimmer band under the navbar; picks up the page background so it also works in light mode. */
+.toghu-band--nav {
+  height: 10px;
+  background-color: rgb(var(--ds-bg));
+  background-size: auto 10px;
 }
 
 /* Section heading rule: a lilac line ending in a small green | red | yellow tick. Where

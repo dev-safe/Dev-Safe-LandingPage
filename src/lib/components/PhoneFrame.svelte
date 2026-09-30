@@ -1,7 +1,8 @@
 <script lang="ts">
   import type { Screenshot } from '$lib/data/content';
 
-  let { screenshot }: { screenshot: Screenshot } = $props();
+  // priority: the screenshot is the largest thing above the fold, so load it eagerly.
+  let { screenshot, priority = false }: { screenshot: Screenshot; priority?: boolean } = $props();
 </script>
 
 <figure class="w-full flex flex-col items-center">
@@ -11,7 +12,8 @@
       alt={screenshot.alt}
       width={screenshot.width}
       height={screenshot.height}
-      loading="lazy"
+      loading={priority ? 'eager' : 'lazy'}
+      fetchpriority={priority ? 'high' : 'auto'}
       decoding="async"
       class="block w-full h-auto rounded-[1.75rem]"
     />

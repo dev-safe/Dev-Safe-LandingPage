@@ -49,6 +49,7 @@ const fr: SiteContent = {
     short: 'WhatsApp',
     prompt: 'Vous préférez discuter ? Écrivez-nous sur WhatsApp',
     ariaLabel: 'Discuter avec DevSafe sur WhatsApp (nouvel onglet)',
+    newTab: '(nouvel onglet)',
     message: 'Bonjour DevSafe, j’aimerais discuter d’un projet.'
   },
 

@@ -53,8 +53,8 @@
   }
 </script>
 
-<nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300 {scrolled ? 'bg-ds-bg/90 backdrop-blur-md py-3 border-b border-ds-border/50' : 'bg-transparent py-5 border-b border-transparent'}">
-  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+<nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300 {scrolled ? 'bg-ds-bg/90 backdrop-blur-md' : 'bg-transparent'}">
+  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center transition-all duration-300 {scrolled ? 'py-3' : 'py-5'}">
     <!-- Logo -->
     <a href={c.meta.home} class="flex items-center gap-2.5 group focus:outline-none" onclick={closeMobile}>
       <div class="relative flex items-center justify-center">
@@ -165,7 +165,7 @@
       </button>
     </div>
   </div>
-  <div class="absolute top-full left-0 w-full h-px bg-gradient-to-r from-transparent via-ds-accent/50 to-transparent" aria-hidden="true"></div>
+  <div class="toghu-band toghu-band--nav" aria-hidden="true"></div>
 </nav>
 
 <!-- Mobile Navigation Menu Overlay -->
@@ -181,7 +181,7 @@
 
   <!-- Menu Drawer -->
   <div 
-    class="fixed top-[68px] left-0 w-full bg-ds-surface/95 backdrop-blur-lg border-b border-ds-border z-40 lg:hidden p-6 flex flex-col gap-6"
+    class="fixed top-[78px] left-0 w-full bg-ds-surface/95 backdrop-blur-lg border-b border-ds-border z-40 lg:hidden p-6 flex flex-col gap-6"
     transition:fly={{ y: -20, duration: 250 }}
   >
     <div class="flex flex-col gap-4">

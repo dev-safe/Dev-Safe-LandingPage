@@ -23,7 +23,7 @@
 </script>
 
 <!-- Same inset dusk panel as the homepage hero, sized for an interior page. -->
-<section class="px-2.5 sm:px-4 pt-[72px] sm:pt-[84px] bg-ds-bg">
+<section class="px-2.5 sm:px-4 pt-[82px] sm:pt-[94px] bg-ds-bg">
   <div class="panel relative max-w-[1600px] mx-auto rounded-2xl overflow-hidden bg-ds-surface">
     <div class="sky relative">
       <div class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 py-10 sm:py-16 lg:py-20 grid gap-10 {aside ? 'lg:grid-cols-[1fr_auto] lg:items-center' : ''}">

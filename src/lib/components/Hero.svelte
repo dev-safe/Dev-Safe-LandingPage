@@ -89,7 +89,7 @@
       </div>
     </div>
 
-    <div class="toghu-band" aria-hidden="true"></div>
+    <div class="h-px bg-ds-border" aria-hidden="true"></div>
     <TrustStrip />
   </div>
 </section>

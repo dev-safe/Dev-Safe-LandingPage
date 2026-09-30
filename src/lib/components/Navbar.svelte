@@ -164,7 +164,7 @@
       </button>
     </div>
   </div>
-  <div class="toghu-band absolute top-full left-0 w-full" aria-hidden="true"></div>
+  <div class="absolute top-full left-0 w-full h-px bg-gradient-to-r from-transparent via-ds-accent/50 to-transparent" aria-hidden="true"></div>
 </nav>
 
 <!-- Mobile Navigation Menu Overlay -->

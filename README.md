@@ -121,7 +121,7 @@ The flag colours (`--cm-green`, `--cm-red`, `--cm-yellow`) are decorative only; 
 
 The site defaults to dark mode; light mode only applies after a visitor picks it with the theme toggle (saved in `localStorage` and applied in `app.html` before first paint).
 
-The hero photo (`hero-cameroon-*`) is shown in full colour below the painted horizon: 3:2 on mobile and 16:8 on desktop, with the Reunification monument and statue in view. Other photos stay on-palette by shipping them in grayscale and tinting them in CSS with `mix-blend-mode: luminosity` over `ds-bg` (`src/lib/components/SectionPhoto.svelte`, used by the contact section; on mobile it is shown at its natural ratio instead of cropped). To add or replace a photo, export `{name}-{width}.avif|webp` for two widths plus `{name}-{smallWidth}.jpg`:
+The hero photo (`hero-cameroon-*`) sits below the painted horizon: 3:2 on mobile and 16:8 on desktop, with the Reunification monument and statue in view. CSS colour-grades it to dusk (a soft-light purple wash, a warm glow on the sun side and darker top and bottom edges; gentler in light mode), so the original files stay untouched. Other photos stay on-palette by shipping them in grayscale and tinting them in CSS with `mix-blend-mode: luminosity` over `ds-bg` (`src/lib/components/SectionPhoto.svelte`, used by the contact section; on mobile it is shown at its natural ratio instead of cropped). To add or replace a photo, export `{name}-{width}.avif|webp` for two widths plus `{name}-{smallWidth}.jpg`:
 
 ```bash
 vips thumbnail source.jpg tmp.v 2400 && vips colourspace tmp.v gray.png b-w

@@ -3,56 +3,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design tokens: "Toghu Night" (dark) and "Sahel Sand" (light), drawn from the Cameroonian
-   Toghu: black velvet embroidered in gold, sunset orange, red and green. Values are
-   space-separated RGB channels so Tailwind opacity modifiers (bg-ds-accent/10) work.
-   Every text/background pairing meets WCAG AA (lowest pair 5.3:1). */
+/* Design tokens: "Yaoundé Dusk". A deep purple night (after railway.com) over the Cameroon
+   skyline: lilac accents, a sun-yellow second accent, and the flag kept for motifs. Values
+   are space-separated RGB channels so Tailwind opacity modifiers (bg-ds-accent/10) work.
+   Every text/background pairing meets WCAG AA. */
 :root {
-  --ds-bg: 15 11 7;             /* #0F0B07 warm black */
-  --ds-surface: 26 20 14;       /* #1A140E */
-  --ds-elevated: 37 28 20;      /* #251C14 */
-  --ds-border: 78 62 44;        /* #4E3E2C */
-  --ds-fg: 251 245 234;         /* #FBF5EA ivory */
-  --ds-fg-muted: 217 203 181;   /* #D9CBB5 */
-  --ds-fg-subtle: 176 160 138;  /* #B0A08A */
-  --ds-accent: 245 181 61;      /* #F5B53D Toghu gold */
-  --ds-accent-2: 242 133 90;    /* #F2855A sunset terracotta */
-  --ds-primary: 245 181 61;     /* button fill */
-  --ds-primary-hover: 250 203 110;
-  --ds-on-primary: 28 18 8;
-  --ds-success: 76 195 138;     /* #4CC38A */
-  --ds-warning: 251 191 36;     /* #FBBF24 */
+  --ds-bg: 19 17 28;            /* #13111C */
+  --ds-surface: 24 22 34;       /* #181622 */
+  --ds-elevated: 31 29 44;      /* #1F1D2C */
+  --ds-border: 51 50 62;        /* #33323E */
+  --ds-fg: 247 247 248;         /* #F7F7F8 */
+  --ds-fg-muted: 186 185 199;   /* #BAB9C7 */
+  --ds-fg-subtle: 150 148 166;  /* #9694A6 */
+  --ds-accent: 191 146 236;     /* #BF92EC lilac */
+  --ds-accent-2: 246 200 95;    /* #F6C85F sun yellow */
+  --ds-primary: 85 63 131;      /* #553F83 button fill */
+  --ds-primary-hover: 107 80 163;
+  --ds-on-primary: 255 255 255;
+  --ds-success: 102 196 150;    /* #66C496 */
+  --ds-warning: 246 200 95;
   --ds-danger: 248 113 113;     /* #F87171 */
   /* Cameroon flag, for decorative motifs only (never as text colours) */
   --cm-green: #007a5e;
   --cm-red: #ce1126;
   --cm-yellow: #fcd116;
-  --pattern-alpha: 0.07;
-  --color-glass-bg: rgb(26 20 14 / 0.72);
-  --font-heading: 'Bricolage Grotesque', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --dot: rgb(255 255 255 / 0.06);
+  --pattern-alpha: 0.05;
+  --color-glass-bg: rgb(24 22 34 / 0.78);
+  /* Hero sky: night at the top, a warm glow at the horizon. */
+  --sky-top: #0d0c14;
+  --sky-mid: #231c3a;
+  --sky-low: #4a3257;
+  --star-alpha: 1;
+  --font-heading: 'IBM Plex Serif', Georgia, Cambria, serif;
+  --font-body: 'Inter', -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   color-scheme: dark;
 }
 
 :root.light {
-  --ds-bg: 251 246 238;         /* #FBF6EE sand */
-  --ds-surface: 255 255 255;
-  --ds-elevated: 243 234 219;   /* #F3EADB */
-  --ds-border: 221 204 178;     /* #DDCCB2 */
-  --ds-fg: 30 21 12;            /* #1E150C */
-  --ds-fg-muted: 87 72 56;      /* #574838 */
-  --ds-fg-subtle: 106 90 71;    /* #6A5A47 */
-  --ds-accent: 138 83 0;        /* #8A5300 ochre */
-  --ds-accent-2: 162 59 22;     /* #A23B16 terracotta */
-  --ds-primary: 138 83 0;
-  --ds-primary-hover: 110 66 0;
+  --ds-bg: 241 240 239;         /* #F1F0EF oatmeal */
+  --ds-surface: 250 250 250;
+  --ds-elevated: 232 230 228;   /* #E8E6E4 */
+  --ds-border: 216 214 220;     /* #D8D6DC */
+  --ds-fg: 28 26 40;            /* #1C1A28 */
+  --ds-fg-muted: 72 70 86;      /* #484656 */
+  --ds-fg-subtle: 96 94 110;    /* #605E6E */
+  --ds-accent: 89 73 122;       /* #59497A */
+  --ds-accent-2: 138 90 0;      /* #8A5A00 deep sun */
+  --ds-primary: 89 73 122;
+  --ds-primary-hover: 70 56 99;
   --ds-on-primary: 255 255 255;
-  --ds-success: 4 108 78;       /* #046C4E */
-  --ds-warning: 154 64 14;      /* #9A400E */
+  --ds-success: 46 108 79;      /* #2E6C4F */
+  --ds-warning: 138 90 0;
   --ds-danger: 185 28 28;       /* #B91C1C */
-  --pattern-alpha: 0.1;
-  --color-glass-bg: rgb(255 255 255 / 0.78);
+  --dot: rgb(0 0 0 / 0.07);
+  --pattern-alpha: 0.08;
+  --color-glass-bg: rgb(255 255 255 / 0.82);
+  --sky-top: #cfd6ea;
+  --sky-mid: #e7ddea;
+  --sky-low: #f3dccb;
+  --star-alpha: 0;
   color-scheme: light;
 }
 
@@ -63,11 +74,18 @@ body {
   color: rgb(var(--ds-fg));
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   transition: background-color 300ms ease, color 300ms ease;
 }
 
-h1, h2, h3, h4 {
+h1, h2 {
   font-family: var(--font-heading);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+h3, h4 {
+  font-family: var(--font-body);
   letter-spacing: -0.01em;
 }
 
@@ -84,11 +102,11 @@ h1, h2, h3, h4 {
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='%23000'%3E%3Cpath d='M28 0 56 28 28 56 0 28Z'/%3E%3Ccircle cx='28' cy='28' r='5'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='28' cy='0' r='2'/%3E%3Ccircle cx='56' cy='28' r='2'/%3E%3Ccircle cx='28' cy='56' r='2'/%3E%3Ccircle cx='0' cy='28' r='2'/%3E%3Ccircle cx='28' cy='28' r='1.5'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 56px 56px repeat;
 }
 
-/* Toghu band: black velvet with red borders and a gold/orange braid, after the embroidered
+/* Toghu band: black velvet with red borders and a yellow/green braid, after the embroidered
    Toghu of the North-West Grassfields. Decorative border strip; same in both themes. */
 .toghu-band {
   height: 12px;
-  background: #0f0b07 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='12'%3E%3Crect width='36' height='1.5' fill='%23CE1126'/%3E%3Crect y='10.5' width='36' height='1.5' fill='%23CE1126'/%3E%3Cg fill='none' stroke-width='1.2'%3E%3Cpath d='M0 6Q9 1.5 18 6T36 6' stroke='%23F5B53D'/%3E%3Cpath d='M0 6Q9 10.5 18 6T36 6' stroke='%23F2855A'/%3E%3C/g%3E%3Ccircle cx='9' cy='6' r='1.3' fill='%23F5B53D'/%3E%3Ccircle cx='27' cy='6' r='1.3' fill='%23F5B53D'/%3E%3C/svg%3E") 0 0 / 36px 12px repeat-x;
+  background: #13111C url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='12'%3E%3Crect width='36' height='1.5' fill='%23CE1126'/%3E%3Crect y='10.5' width='36' height='1.5' fill='%23CE1126'/%3E%3Cg fill='none' stroke-width='1.2'%3E%3Cpath d='M0 6Q9 1.5 18 6T36 6' stroke='%23F6C85F'/%3E%3Cpath d='M0 6Q9 10.5 18 6T36 6' stroke='%233DC66C'/%3E%3C/g%3E%3Ccircle cx='9' cy='6' r='1.3' fill='%23F6C85F'/%3E%3Ccircle cx='27' cy='6' r='1.3' fill='%23F6C85F'/%3E%3C/svg%3E") 0 0 / 36px 12px repeat-x;
 }
 
 /* Short green | red | yellow rule under section headings (Cameroon flag). */
@@ -119,13 +137,136 @@ h1, h2, h3, h4 {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgb(var(--ds-border) / 0.6);
-  border-radius: 16px;
+  border-radius: 10px;
   transition: border-color 300ms ease, box-shadow 300ms ease, background-color 300ms ease, transform 300ms ease;
 }
 
 .glass-card:hover {
   border-color: rgb(var(--ds-accent) / 0.4);
   box-shadow: 0 0 24px rgb(var(--ds-accent) / 0.12);
+}
+
+/* Eyebrow label: numbered mono caps with a small glowing lilac dot. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgb(var(--ds-accent));
+}
+
+.eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: rgb(var(--ds-accent));
+  box-shadow: 0 0 12px rgb(var(--ds-accent) / 0.8);
+}
+
+/* Dot grid, as inside railway.com's canvas. */
+.dot-grid {
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Hero sky: dusk gradient with two layers of twinkling stars (hidden in light mode). */
+.sky {
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 38%, var(--sky-low) 70%, var(--sky-low) 100%);
+}
+
+.sky::before,
+.sky::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--star-alpha);
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 27% 42%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 41% 12%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 58% 30%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 73% 8%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 86% 36%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 94% 16%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 5% 52%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 66% 55%, #fff 50%, transparent 51%);
+  background-size: 420px 420px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 75%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 75%);
+}
+
+.sky::after {
+  background-size: 260px 260px;
+  background-position: 130px 70px;
+  animation: twinkle 5s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: calc(var(--star-alpha) * 0.15); }
+  to { opacity: calc(var(--star-alpha) * 0.9); }
+}
+
+/* Infinite marquee: the track holds the list twice and slides by half its width. */
+.marquee {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sky::after,
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Section divider: glowing lilac node + a flag-coloured line fading out. */
+.ds-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ds-divider::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  background: rgb(var(--ds-accent));
+  box-shadow: 0 0 18px rgb(var(--ds-accent) / 0.8);
+}
+
+.ds-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cm-green) 0%, var(--cm-red) 30%, var(--cm-yellow) 55%, transparent 95%);
+  opacity: 0.6;
 }
 
 /* Theme-specific logo files (the emblem has white strokes that vanish on sand). */

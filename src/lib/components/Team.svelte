@@ -16,8 +16,9 @@
     
     <!-- Centered Header -->
     <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="eyebrow mb-3" data-reveal use:reveal={{ y: 20, duration: 600 }}>{team.eyebrow}</span>
       <h2 
-        class="font-heading text-[1.75rem] sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
+        class="font-heading text-[1.75rem] sm:text-4xl font-medium tracking-tight text-ds-fg mb-4"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         {team.heading}
@@ -34,7 +35,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center max-w-6xl mx-auto">
       <!-- Founders photo -->
       <figure
-        class="lg:col-span-5 w-full max-w-sm sm:max-w-md mx-auto relative rounded-2xl overflow-hidden border border-ds-border/70 shadow-[0_16px_40px_rgba(0,0,0,0.25)]"
+        class="lg:col-span-5 w-full max-w-sm sm:max-w-md mx-auto relative rounded-xl overflow-hidden border border-ds-border/70 shadow-[0_16px_40px_rgba(0,0,0,0.25)]"
         data-reveal use:reveal={{ y: 30, duration: 700, delay: 150 }}
       >
         <picture>
@@ -65,7 +66,7 @@
 
             <!-- Portrait: 240px sources, so 160px max keeps them sharp on 1.5x screens -->
             <div 
-              class="w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden flex items-center justify-center font-heading text-3xl font-bold text-[#fff] mb-5 shadow-[0_8px_24px_rgba(0,0,0,0.25)] ring-1 ring-ds-border/60 group-hover:ring-ds-accent/50 transition-shadow duration-300"
+              class="w-36 h-36 sm:w-40 sm:h-40 rounded-xl overflow-hidden flex items-center justify-center font-heading text-3xl font-medium text-[#fff] mb-5 shadow-[0_8px_24px_rgba(0,0,0,0.25)] ring-1 ring-ds-border/60 group-hover:ring-ds-accent/50 transition-shadow duration-300"
               style="background-color: {member.bg}; border: {member.borderCyan ? '2px solid rgb(var(--ds-accent))' : 'none'};"
             >
               {#if member.image}
@@ -76,7 +77,7 @@
             </div>
 
             <!-- Name -->
-            <h3 class="font-heading text-base font-bold text-ds-fg mb-1 group-hover:text-ds-accent transition-colors duration-200">
+            <h3 class="font-body text-base font-bold text-ds-fg mb-1 group-hover:text-ds-accent transition-colors duration-200">
               {member.name}
             </h3>
 
@@ -107,7 +108,7 @@
                   rel="noopener noreferrer me"
                   aria-label={c.ui.profileLabel(member.name, profile.network)}
                   title={profile.network}
-                  class="w-10 h-10 flex items-center justify-center rounded-full border border-ds-border/60 bg-ds-elevated/60 text-ds-fg-muted hover:text-ds-accent hover:border-ds-accent/60 hover:bg-ds-accent/10 transition-colors"
+                  class="w-10 h-10 flex items-center justify-center rounded-lg border border-ds-border/60 bg-ds-elevated/60 text-ds-fg-muted hover:text-ds-accent hover:border-ds-accent/60 hover:bg-ds-accent/10 transition-colors"
                 >
                   <BrandIcon name={profile.brand} class="w-4 h-4" />
                 </a>

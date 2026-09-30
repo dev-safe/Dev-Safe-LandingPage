@@ -1,34 +1,43 @@
 <script lang="ts">
-  import { reveal } from '$lib/actions/reveal';
   import type { Component } from 'svelte';
   import { t } from '$lib/data/content';
 
-  const trustStrip = $derived(t().trustStrip);
+  const c = $derived(t());
+  const trustStrip = $derived(c.trustStrip);
+
+  // Tools we actually ship with (see the projects and founder bios).
+  const stack = ['SvelteKit', 'Flutter', 'Rust', 'PostgreSQL', 'ConnectRPC', 'Protobuf', 'FastAPI', 'TypeScript', 'Tailwind CSS'];
 </script>
 
-<section aria-labelledby="trust-heading" class="relative bg-ds-surface border-y border-ds-border/40">
-  <div class="max-w-7xl mx-auto px-6 py-12">
-    <h2
-      id="trust-heading"
-      class="text-center lg:text-left font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ds-accent mb-8"
-      data-reveal use:reveal={{ y: 10, duration: 500 }}
-    >
-      {trustStrip.heading}
-    </h2>
+<!-- Bordered proof grid at the foot of the hero panel, like railway.com's logo wall. -->
+<section aria-labelledby="trust-heading" class="relative">
+  <h2 id="trust-heading" class="eyebrow justify-center w-full py-5 border-b border-ds-border">
+    {trustStrip.heading}
+  </h2>
 
-    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-      {#each trustStrip.proof as item, index (item.title)}
-        {@const Icon = item.icon as Component<{ class?: string }>}
-        <li class="flex items-start gap-3" data-reveal use:reveal={{ y: 15, duration: 500, delay: index * 100 }}>
-          <span class="shrink-0 w-11 h-11 rounded-xl bg-ds-accent/10 border border-ds-accent/30 flex items-center justify-center">
-            <Icon class="w-5 h-5 text-ds-accent" />
-          </span>
-          <div>
-            <p class="font-heading text-base font-bold text-ds-fg leading-snug">{item.title}</p>
-            <p class="font-body text-sm text-ds-fg-muted leading-relaxed mt-1">{item.text}</p>
-          </div>
-        </li>
-      {/each}
-    </ul>
+  <ul class="grid grid-cols-1 min-[480px]:grid-cols-2 lg:grid-cols-4 gap-px bg-ds-border">
+    {#each trustStrip.proof as item (item.title)}
+      {@const Icon = item.icon as Component<{ class?: string }>}
+      <li class="flex items-start gap-3 bg-ds-surface p-5 sm:p-6 hover:bg-ds-elevated transition-colors">
+        <span class="shrink-0 w-10 h-10 rounded-lg bg-ds-accent/10 border border-ds-accent/25 flex items-center justify-center">
+          <Icon class="w-5 h-5 text-ds-accent" />
+        </span>
+        <div>
+          <p class="text-[15px] font-semibold text-ds-fg leading-snug">{item.title}</p>
+          <p class="text-sm text-ds-fg-muted leading-relaxed mt-1">{item.text}</p>
+        </div>
+      </li>
+    {/each}
+  </ul>
+
+  <div class="flex items-center gap-4 border-t border-ds-border px-5 py-4">
+    <span class="shrink-0 font-mono text-[11px] uppercase tracking-wider text-ds-fg-subtle">{c.hero.demo.stackLabel}</span>
+    <div class="marquee overflow-hidden flex-1">
+      <ul class="marquee-track">
+        {#each [...stack, ...stack] as tool, i (i)}
+          <li class="px-5 font-mono text-sm text-ds-fg-muted whitespace-nowrap" aria-hidden={i >= stack.length}>{tool}</li>
+        {/each}
+      </ul>
+    </div>
   </div>
 </section>

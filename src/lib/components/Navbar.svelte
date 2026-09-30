@@ -61,7 +61,7 @@
         <img src={emblemDark} alt={c.ui.logoAlt} width="120" height="168" class="logo-on-dark h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
         <img src={emblemLight} alt={c.ui.logoAlt} width="120" height="168" class="logo-on-light h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
       </div>
-      <span class="font-heading text-xl font-bold tracking-tight">
+      <span class="font-body text-xl font-bold tracking-tight">
         <span class="text-ds-fg">{navigation.logo.textDev}</span><span class="text-ds-accent">{navigation.logo.textSafe}</span>
       </span>
     </a>
@@ -89,7 +89,7 @@
         aria-label={c.ui.languageSwitch.label}
         title={c.ui.languageSwitch.label}
         data-sveltekit-noscroll
-        class="inline-flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full border border-ds-border text-xs font-mono font-bold text-ds-fg-muted hover:text-ds-accent hover:border-ds-accent/60 transition-colors"
+        class="inline-flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-md border border-ds-border text-xs font-mono font-medium text-ds-fg-muted hover:text-ds-accent hover:border-ds-accent/60 transition-colors"
       >
         <Languages class="w-3.5 h-3.5" aria-hidden="true" />
         {c.ui.languageSwitch.text}
@@ -98,7 +98,7 @@
       <!-- Theme Toggle -->
       <button 
         onclick={toggleTheme}
-        class="text-ds-fg-muted hover:text-ds-accent p-2 rounded-full hover:bg-ds-elevated/40 transition-colors focus:outline-none"
+        class="text-ds-fg-muted hover:text-ds-accent p-2 rounded-md hover:bg-ds-elevated/40 transition-colors focus:outline-none"
         aria-label={c.ui.themeToggle}
       >
         {#if isLight}
@@ -110,13 +110,13 @@
 
       <a 
         href={navigation.actions.ghost.href} 
-        class="hidden xl:inline-flex whitespace-nowrap border border-ds-accent/60 text-ds-accent px-5 py-2 rounded-full text-xs font-heading font-semibold hover:bg-ds-accent/10 transition-all duration-200"
+        class="hidden xl:inline-flex whitespace-nowrap border border-ds-accent/60 text-ds-accent px-5 py-2 rounded-lg text-xs font-medium hover:bg-ds-accent/10 transition-all duration-200"
       >
         {navigation.actions.ghost.text}
       </a>
       <a 
         href={navigation.actions.primary.href} 
-        class="whitespace-nowrap bg-ds-primary text-ds-on-primary px-5 py-2 rounded-full text-xs font-heading font-semibold hover:bg-ds-primary-hover active:scale-95 transition-all duration-200 shadow-[0_0_16px_rgb(var(--ds-accent)/0.15)] hover:shadow-[0_0_24px_rgb(var(--ds-accent)/0.25)]"
+        class="whitespace-nowrap bg-ds-primary text-ds-on-primary px-5 py-2 rounded-lg text-sm font-medium hover:bg-ds-primary-hover active:scale-95 transition-all duration-200 shadow-[0_0_16px_rgb(var(--ds-accent)/0.15)] hover:shadow-[0_0_24px_rgb(var(--ds-accent)/0.25)]"
       >
         {navigation.actions.primary.text}
       </a>
@@ -133,7 +133,7 @@
         title={c.ui.languageSwitch.label}
         data-sveltekit-noscroll
         onclick={closeMobile}
-        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-ds-border text-xs font-mono font-bold text-ds-fg-muted hover:text-ds-accent hover:border-ds-accent/60 transition-colors"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-ds-border text-xs font-mono font-medium text-ds-fg-muted hover:text-ds-accent hover:border-ds-accent/60 transition-colors"
       >
         <Languages class="w-3.5 h-3.5" aria-hidden="true" />
         {c.ui.languageSwitch.text}
@@ -142,7 +142,7 @@
       <!-- Theme Toggle -->
       <button 
         onclick={toggleTheme}
-        class="text-ds-fg-muted hover:text-ds-accent p-2 rounded-full hover:bg-ds-elevated/40 transition-colors focus:outline-none"
+        class="text-ds-fg-muted hover:text-ds-accent p-2 rounded-md hover:bg-ds-elevated/40 transition-colors focus:outline-none"
         aria-label={c.ui.themeToggle}
       >
         {#if isLight}
@@ -200,14 +200,14 @@
     <div class="flex flex-col gap-3 pt-2">
       <a 
         href={navigation.actions.ghost.href} 
-        class="w-full text-center border border-ds-accent text-ds-accent py-3 rounded-full text-sm font-heading font-semibold hover:bg-ds-accent/10 transition-colors"
+        class="w-full text-center border border-ds-accent text-ds-accent py-3 rounded-lg text-sm font-medium hover:bg-ds-accent/10 transition-colors"
         onclick={closeMobile}
       >
         {navigation.actions.ghost.text}
       </a>
       <a 
         href={navigation.actions.primary.href} 
-        class="w-full text-center bg-ds-primary text-ds-on-primary py-3 rounded-full text-sm font-heading font-semibold hover:bg-ds-primary-hover transition-all shadow-[0_0_16px_rgb(var(--ds-accent)/0.15)]"
+        class="w-full text-center bg-ds-primary text-ds-on-primary py-3 rounded-lg text-sm font-medium hover:bg-ds-primary-hover transition-all shadow-[0_0_16px_rgb(var(--ds-accent)/0.15)]"
         onclick={closeMobile}
       >
         {navigation.actions.primary.text}

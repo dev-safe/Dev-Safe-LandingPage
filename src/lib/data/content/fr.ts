@@ -82,6 +82,46 @@ const fr: SiteContent = {
     cta: {
       primary: { text: 'Réserver une consultation gratuite →', href: '#contact' },
       secondary: { text: 'Voir nos réalisations', href: '#work' }
+    },
+    demo: {
+      windowTitle: 'devsafe / votre-projet',
+      label: 'Aperçu animé de la conduite d’un projet chez DevSafe : audit, développement, mise en ligne, protection',
+      tabsLabel: 'Étapes du projet',
+      live: 'En ligne',
+      secure: 'sécurisé',
+      play: 'Lancer l’animation',
+      pause: 'Mettre l’animation en pause',
+      stackLabel: 'Notre stack',
+      stages: [
+        {
+          id: 'audit',
+          tab: 'Audit',
+          command: 'devsafe audit ./votre-app',
+          lines: ['Authentification & contrôle d’accès', 'Protection & chiffrement des données', 'API & validation des entrées', 'Configuration serveur & hébergement'],
+          result: 'Rapport clair + plan de correction priorisé'
+        },
+        {
+          id: 'build',
+          tab: 'Développer',
+          command: 'devsafe build --secure',
+          lines: ['Site web', 'App mobile', 'API', 'Base de données'],
+          result: 'La sécurité pensée dès le premier jour'
+        },
+        {
+          id: 'ship',
+          tab: 'Livrer',
+          command: 'devsafe ship',
+          lines: ['Build', 'Revue de sécurité', 'Déploiement'],
+          result: 'Vérifié contre les vulnérabilités avant la livraison'
+        },
+        {
+          id: 'protect',
+          tab: 'Protéger',
+          command: 'devsafe protect',
+          lines: ['Données chiffrées', 'Accès au strict nécessaire', 'Secrets protégés', 'Confidentialité par défaut (NDA)'],
+          result: 'Nous protégeons votre entreprise comme vos données'
+        }
+      ]
     }
   },
 
@@ -96,6 +136,7 @@ const fr: SiteContent = {
   },
 
   services: {
+    eyebrow: '01 / Services',
     heading: 'Services de l’agence',
     subtitle: 'Logiciels sécurisés et tests de sécurité, par l’équipe qui lance ses propres produits.',
     items: [
@@ -105,7 +146,7 @@ const fr: SiteContent = {
         description:
           'Nous testons vos systèmes comme le ferait un attaquant, puis vous remettons un rapport clair et un plan priorisé pour corriger l’essentiel en premier.',
         tags: ['Tests d’intrusion', 'Audits de sécurité', 'Évaluation des vulnérabilités', 'Protection des données'],
-        accentColor: '#E0A020',
+        accentColor: '#A667E4',
         featured: true,
         visual: {
           type: 'checklist',
@@ -124,7 +165,7 @@ const fr: SiteContent = {
         title: 'Développement logiciel',
         description: 'Sites web, applications mobiles et plateformes web : rapides, faciles à gérer et revus en sécurité avant le lancement.',
         tags: ['Sites web', 'Applications mobiles', 'Plateformes web'],
-        accentColor: '#D9622B',
+        accentColor: '#F6C85F',
         visual: { type: 'pipeline', steps: ['développement', 'revue de sécurité', 'déploiement'] }
       },
       {
@@ -132,13 +173,14 @@ const fr: SiteContent = {
         title: 'Design & identité visuelle',
         description: 'Logos, interfaces et identités de marque qui donnent à votre institution une image professionnelle.',
         tags: ['Création de logo', 'UI/UX', 'Identité de marque'],
-        accentColor: '#0E8A5F',
-        visual: { type: 'palette', swatches: ['#0F0B07', '#F5B53D', '#D9622B', '#C8102E', '#0E8A5F'] }
+        accentColor: '#5B8DEF',
+        visual: { type: 'palette', swatches: ['#13111C', '#553F83', '#A667E4', '#F6C85F', '#CE1126'] }
       }
     ]
   },
 
   whyDevSafe: {
+    eyebrow: '02 / Pourquoi nous',
     heading: 'Pourquoi nos clients font confiance à DevSafe',
     videoCaption:
       "En arrière-plan : Verla Berinyuy Ndey, notre fondateur, anime un atelier Git & GitHub en tant que Lead Organizer du GDG on Campus de l'ICT University.",
@@ -167,7 +209,7 @@ const fr: SiteContent = {
   },
 
   clientWork: {
-    eyebrow: 'Agence',
+    eyebrow: '03 / Travaux d’agence',
     heading: 'Réalisations clients',
     subtitle: 'Quatre projets clients en cours. Voici celui que nous pouvons montrer.',
     projects: [
@@ -197,7 +239,7 @@ const fr: SiteContent = {
   },
 
   products: {
-    eyebrow: 'Propriété de DevSafe',
+    eyebrow: '04 / Propriété de DevSafe',
     heading: 'Nos produits',
     subtitle: 'Des produits que nous concevons, développons, possédons et exploitons nous-mêmes.',
     projects: [
@@ -223,6 +265,7 @@ const fr: SiteContent = {
   },
 
   team: {
+    eyebrow: '05 / Fondateurs',
     heading: 'L’équipe derrière DevSafe',
     subtitle: 'Deux ingénieurs de Yaoundé qui conçoivent, sécurisent et livrent.',
     photoAlt: 'Les fondateurs de DevSafe, Verla Berinyuy Ndey et Engon Ken Morel',

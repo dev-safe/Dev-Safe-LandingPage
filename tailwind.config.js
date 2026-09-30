@@ -22,7 +22,7 @@ export default {
         'ds-danger': 'rgb(var(--ds-danger) / <alpha-value>)',
       },
       fontFamily: {
-        heading: ['Bricolage Grotesque', 'sans-serif'],
+        heading: ['IBM Plex Serif', 'Georgia', 'serif'],
         body: ['Inter', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },

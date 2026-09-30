@@ -72,12 +72,12 @@
       
       <!-- Text Column (Left) -->
       <div class="lg:col-span-5 text-left flex flex-col justify-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ds-accent/10 border border-ds-accent/30 text-ds-accent text-xs font-mono font-medium mb-6 w-fit" data-reveal use:reveal={{ y: 0 }}>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-ds-accent/10 border border-ds-accent/30 text-ds-accent text-xs font-mono font-medium mb-6 w-fit" data-reveal use:reveal={{ y: 0 }}>
           <span class="w-1.5 h-1.5 rounded-full bg-ds-accent animate-pulse"></span>
           {ctaBanner.badge}
         </div>
         <h2 
-          class="font-heading text-[1.75rem] sm:text-4xl lg:text-5xl font-bold tracking-tight text-ds-fg mb-6 leading-tight"
+          class="font-heading text-[1.75rem] sm:text-4xl lg:text-5xl font-medium tracking-tight text-ds-fg mb-6 leading-tight"
           data-reveal use:reveal={{ y: 20, duration: 600 }}
         >
           {ctaBanner.heading}
@@ -105,7 +105,7 @@
           target="_blank"
           rel="noopener noreferrer"
           aria-label={c.whatsapp.ariaLabel}
-          class="mt-8 inline-flex items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-fit px-5 py-3 sm:px-6 sm:py-3.5 rounded-full bg-[#25D366] text-[#052e1c] font-heading text-[15px] sm:text-base font-semibold hover:bg-[#1ebe5b] hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-[0_8px_24px_rgba(37,211,102,0.25)]"
+          class="mt-8 inline-flex items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-fit px-5 py-3 sm:px-6 sm:py-3.5 rounded-lg bg-[#25D366] text-[#052e1c] text-[14px] sm:text-[15px] font-semibold hover:bg-[#1ebe5b] hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-[0_8px_24px_rgba(37,211,102,0.25)]"
           data-reveal use:reveal={{ y: 20, duration: 600, delay: 400 }}
         >
           <BrandIcon name="whatsapp" class="w-5 h-5" />
@@ -130,7 +130,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 class="font-heading text-2xl font-bold text-ds-fg mb-3">{ctaBanner.success.heading}</h3>
+              <h3 class="font-heading text-2xl font-medium text-ds-fg mb-3">{ctaBanner.success.heading}</h3>
               <p class="font-body text-sm text-ds-fg-muted max-w-xs leading-relaxed mb-6">
                 {ctaBanner.success.thanks} <strong class="text-ds-fg">{name}</strong>. {ctaBanner.success.sent} <span class="text-ds-accent">{email}</span> {ctaBanner.success.within}
               </p>
@@ -174,7 +174,7 @@
                   id="form-service" 
                   bind:value={service}
                   class="w-full bg-ds-bg border border-ds-border focus:border-ds-accent focus:outline-none focus:ring-1 focus:ring-ds-accent/30 text-ds-fg rounded-lg p-3 text-sm transition-all duration-200 appearance-none cursor-pointer"
-                  style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2300D4FF%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpolyline points=%226 9 12 15 18 9%22%3E%3C/polyline%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px;"
+                  style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23A667E4%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpolyline points=%226 9 12 15 18 9%22%3E%3C/polyline%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px;"
                 >
                   {#each form.service.options as option (option.value)}
                     <option value={option.value}>{option.label}</option>
@@ -203,7 +203,7 @@
               <button 
                 type="submit" 
                 disabled={isSubmitting}
-                class="w-full flex items-center justify-center bg-ds-primary text-ds-on-primary px-4 py-3.5 text-center rounded-lg font-heading text-sm font-bold hover:bg-ds-primary-hover active:scale-95 disabled:opacity-50 disabled:pointer-events-none transition-all duration-200 shadow-[0_0_20px_rgb(var(--ds-accent)/0.15)]"
+                class="w-full flex items-center justify-center bg-ds-primary text-ds-on-primary px-4 py-3.5 text-center rounded-lg text-sm font-medium hover:bg-ds-primary-hover active:scale-95 disabled:opacity-50 disabled:pointer-events-none transition-all duration-200 shadow-[0_0_20px_rgb(var(--ds-accent)/0.15)]"
               >
                 {#if isSubmitting}
                   <svg class="animate-spin -ml-1 mr-3 h-4 w-4 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

@@ -15,8 +15,9 @@
   <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
 
     <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="eyebrow mb-3" data-reveal use:reveal={{ y: 20, duration: 600 }}>{services.eyebrow}</span>
       <h2
-        class="font-heading text-[1.75rem] sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
+        class="font-heading text-[1.75rem] sm:text-4xl font-medium tracking-tight text-ds-fg mb-4"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         {services.heading}
@@ -54,11 +55,11 @@
                 <Icon class="w-6 h-6 text-ds-accent" />
               </div>
               {#if item.featured}
-                <span class="px-2.5 py-1 rounded-full border border-ds-accent/30 text-[10px] font-mono font-bold uppercase tracking-wider text-ds-accent">{c.ui.specialty}</span>
+                <span class="px-2.5 py-1 rounded-md border border-ds-accent/30 text-[10px] font-mono font-bold uppercase tracking-wider text-ds-accent">{c.ui.specialty}</span>
               {/if}
             </div>
 
-            <h3 class="font-heading {item.featured ? 'text-[1.4rem] sm:text-3xl' : 'text-lg sm:text-xl'} font-bold text-ds-fg mb-3 group-hover:text-ds-accent transition-colors duration-200">
+            <h3 class="font-heading {item.featured ? 'text-[1.4rem] sm:text-3xl' : 'text-lg sm:text-xl'} font-medium text-ds-fg mb-3 group-hover:text-ds-accent transition-colors duration-200">
               {item.title}
             </h3>
             <p class="font-body text-ds-fg-muted {item.featured ? 'text-[15px] sm:text-base max-w-xl' : 'text-sm'} leading-relaxed mb-6">
@@ -107,7 +108,7 @@
                       ></span>
                     {/each}
                   </div>
-                  <span class="font-heading text-2xl font-bold text-ds-fg">Aa</span>
+                  <span class="font-heading text-2xl font-medium text-ds-fg">Aa</span>
                 </div>
               {/if}
             </div>

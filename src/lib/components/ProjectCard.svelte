@@ -8,7 +8,7 @@
 </script>
 
           <div 
-            class="bg-ds-bg/60 border border-ds-border/70 border-l-[4px] {project.isLive ? 'border-l-ds-accent' : 'border-l-ds-accent-2'} rounded-2xl p-6 sm:p-8 md:p-10 relative overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgb(var(--ds-accent)/0.08)] group"
+            class="bg-ds-bg/60 border border-ds-border/70 border-l-[4px] {project.isLive ? 'border-l-ds-accent' : 'border-l-ds-accent-2'} rounded-xl p-6 sm:p-8 md:p-10 relative overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgb(var(--ds-accent)/0.08)] group"
             data-reveal use:reveal={{ y: 30, duration: 700, delay: index * 150 + 300 }}
           >
             <!-- Decorative Glow in Background -->
@@ -27,7 +27,7 @@
                     {project.statusBadge}
                   </span>
                   <!-- Project Title -->
-                  <h3 class="font-heading text-2xl sm:text-3xl font-bold text-ds-fg tracking-tight">
+                  <h3 class="font-heading text-2xl sm:text-3xl font-medium text-ds-fg tracking-tight">
                     {project.title}
                   </h3>
                   <!-- Tagline -->
@@ -44,7 +44,7 @@
                 {#if project.highlights?.length}
                   <ul class="flex flex-wrap gap-2">
                     {#each project.highlights as highlight (highlight)}
-                      <li class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-ds-warning/10 border border-ds-warning/40 text-xs font-heading font-semibold text-ds-fg">
+                      <li class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-ds-warning/10 border border-ds-warning/40 text-xs font-body font-semibold text-ds-fg">
                         <Trophy class="w-3.5 h-3.5 text-ds-warning shrink-0" aria-hidden="true" />
                         {highlight}
                       </li>

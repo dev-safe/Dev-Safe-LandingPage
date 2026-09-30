@@ -22,7 +22,7 @@
             <img src={emblemDark} alt={c.ui.logoAlt} width="120" height="168" loading="lazy" class="logo-on-dark h-12 w-auto" />
             <img src={emblemLight} alt={c.ui.logoAlt} width="120" height="168" loading="lazy" class="logo-on-light h-12 w-auto" />
           </div>
-          <span class="font-heading text-lg font-bold tracking-tight">
+          <span class="font-body text-lg font-bold tracking-tight">
             <span class="text-ds-fg">DEV</span><span class="text-ds-accent">SAFE</span>
           </span>
         </a>
@@ -36,7 +36,7 @@
 
       <!-- Column 2: Navigation Links -->
       <div class="md:col-span-3 space-y-4">
-        <h2 class="font-heading text-sm font-bold text-ds-fg uppercase tracking-wider">
+        <h2 class="font-body text-sm font-bold text-ds-fg uppercase tracking-wider">
           {footer.quickLinks.heading}
         </h2>
         <ul class="font-body text-sm space-y-2.5">
@@ -52,7 +52,7 @@
 
       <!-- Column 3: Contact Info -->
       <div class="md:col-span-4 space-y-4">
-        <h2 class="font-heading text-sm font-bold text-ds-fg uppercase tracking-wider">
+        <h2 class="font-body text-sm font-bold text-ds-fg uppercase tracking-wider">
           {footer.contact.heading}
         </h2>
         <div class="flex flex-col gap-3">

@@ -10,9 +10,9 @@ The official landing page for **DevSafe**, a software development and cybersecur
 - **Styling:** Tailwind CSS v3 (using fluid grids, glassmorphism, and radial glows)
 - **Icons:** @lucide/svelte (packaged with custom brand SVGs for GitHub and WhatsApp)
 - **Fonts:** 
-  - `Bricolage Grotesque` (Headings)
-  - `Inter` (Body text)
-  - `JetBrains Mono` (Code blocks, technical tags, inputs)
+  - `IBM Plex Serif` (h1 and section headings)
+  - `Inter` (Body text, buttons, card titles)
+  - `JetBrains Mono` (Eyebrow labels, technical tags, the hero console)
 
 ---
 
@@ -106,12 +106,12 @@ Colours live as RGB-channel CSS variables in `src/app.css` (`--ds-*`, with overr
 
 Every text/background pairing meets WCAG AA (4.5:1) in both dark and light mode.
 
-The palette is Cameroonian: a warm-black "Toghu night" with gold accents in dark mode, and a Sahel sand background in light mode. `app.css` also has a few cultural motif utilities, all original SVGs:
+The look is "Yaoundé Dusk", inspired by railway.com: a deep purple-night background (`#13111C`), a lilac accent, a sun-yellow second accent and purple (`#553F83`) buttons, with IBM Plex Serif headings. Light mode uses a warm oatmeal background with a deeper purple. The hero is an inset rounded panel with a CSS dusk sky and twinkling stars (`sky`), an animated "DevSafe console" (`HeroDemo.svelte`: Audit, Build, Ship and Protect stages that cycle every 6.5s, pause on hover, off-screen or with the pause button, and stay static under reduced motion), the Cameroon hero photo as the landscape, and the proof grid plus a stack marquee (`TrustStrip.svelte`). Section headers use the `eyebrow` utility (glowing lilac dot plus a numbered mono label), and `ds-divider` draws a glowing node with a fading flag-coloured line. Other helpers: `dot-grid`, `marquee` / `marquee-track` and the `rise-in` keyframe. `app.css` also has a few cultural motif utilities, all original SVGs:
 
 | Class | What it draws |
 | --- | --- |
 | `pattern-bg` | Faint Ndop-cloth diamond lattice behind a section (content must be `relative z-10`) |
-| `toghu-band` | Toghu embroidery strip (black, red edges, gold braid) under the navbar and above the footer |
+| `toghu-band` | Toghu embroidery strip (black, red edges, yellow and green braid) under the navbar and above the footer |
 | `cm-rule` | Green, red and yellow flag rule under section headings |
 | `cm-flag` | Tiny Cameroon flag used in the hero badge and footer |
 

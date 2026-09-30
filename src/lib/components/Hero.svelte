@@ -69,8 +69,9 @@
         <HeroLandscape />
       </div>
 
-      <!-- The landscape: full-colour Yaoundé photo (man at work, Reunification monument, statue).
-           Mobile shows the whole 3:2 frame; wider screens crop a little from the bottom. -->
+      <!-- The landscape: Yaoundé photo (man at work, Reunification monument, statue), colour-graded
+           to dusk so it continues the painted horizon. Mobile shows the whole 3:2 frame; wider
+           screens crop a little from the bottom. -->
       <div class="hero-photo relative z-[2] -mt-10 sm:-mt-16 lg:-mt-24 aspect-[3/2] lg:aspect-[16/8]" aria-hidden="true">
         <picture>
           <source type="image/avif" srcset={heroSrcset('avif')} sizes={heroSizes} />
@@ -86,6 +87,7 @@
             class="h-full w-full object-cover object-[center_20%]"
           />
         </picture>
+        <div class="grade"></div>
       </div>
     </div>
 
@@ -108,6 +110,62 @@
     --fade: 2.5rem;
     -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade));
     mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade));
+  }
+
+  /* Dusk grade: a purple wash, a warm glow on the sun side (the painted sun sits at ~75% across)
+     and a darker sky and foot so the photo melts into the horizon above and the proof grid
+     below. Light mode keeps a gentler, daytime version. */
+  .hero-photo {
+    --grade-tint: 0.85;
+    --grade-sun: 0.55;
+    --grade-edge: 0.55;
+  }
+
+  :global(.light) .hero-photo {
+    --grade-tint: 0.4;
+    --grade-sun: 0.35;
+    --grade-edge: 0.3;
+  }
+
+  .hero-photo img {
+    filter: saturate(0.9) contrast(1.05) brightness(0.9);
+  }
+
+  :global(.light) .hero-photo img {
+    filter: saturate(0.95) contrast(1.02);
+  }
+
+  .grade {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .grade {
+    background: rgb(var(--ds-primary));
+    mix-blend-mode: soft-light;
+    opacity: var(--grade-tint);
+  }
+
+  .hero-photo::before,
+  .hero-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-photo::before {
+    background: radial-gradient(55% 60% at 76% 6%, var(--ls-glow), transparent 70%);
+    mix-blend-mode: screen;
+    opacity: var(--grade-sun);
+  }
+
+  .hero-photo::after {
+    background: linear-gradient(to bottom,
+      rgb(var(--ds-bg) / var(--grade-edge)) 0%, transparent 35%,
+      transparent 72%, rgb(var(--ds-bg) / var(--grade-edge)) 100%);
   }
 
   @media (min-width: 640px) {

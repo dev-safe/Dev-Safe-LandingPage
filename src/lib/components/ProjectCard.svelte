@@ -2,9 +2,11 @@
   import { reveal } from '$lib/actions/reveal';
   import { Trophy } from '@lucide/svelte';
   import PhoneFrame from './PhoneFrame.svelte';
-  import type { Project } from '$lib/data/content';
+  import { t, type Project } from '$lib/data/content';
+  import { localizePath } from '$lib/config/site';
 
   let { project, index = 0 }: { project: Project; index?: number } = $props();
+  const c = $derived(t());
 </script>
 
           <div 
@@ -61,9 +63,15 @@
                   {/each}
                 </div>
 
-                <!-- Link/CTA (Optional) -->
-                {#if project.link}
-                  <div class="pt-2">
+                <div class="pt-2 flex flex-wrap items-center gap-x-6 gap-y-3">
+                  <a
+                    href={localizePath(`/work/${project.slug}`, c.meta.lang)}
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-ds-border bg-ds-elevated/60 text-sm text-ds-fg font-semibold hover:border-ds-accent/50 hover:text-ds-accent transition-colors group/case"
+                  >
+                    {c.details.ui.readCaseStudy}<span class="sr-only">: {project.title}</span>
+                    <span aria-hidden="true" class="inline-block transition-transform duration-200 group-hover/case:translate-x-1">→</span>
+                  </a>
+                  {#if project.link}
                     <a 
                       href={project.link.href} 
                       target="_blank" 
@@ -73,8 +81,8 @@
                       {project.link.text}
                       <span class="inline-block transition-transform duration-200 group-hover/link:translate-x-1">→</span>
                     </a>
-                  </div>
-                {/if}
+                  {/if}
+                </div>
               </div>
 
               <!-- Right Side: Real product screenshot -->

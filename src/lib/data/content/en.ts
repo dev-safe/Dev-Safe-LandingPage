@@ -5,6 +5,7 @@ import backendImg from '$lib/assets/Backend.jpg';
 import eventraScreen from '$lib/assets/screens/eventra-home.webp';
 import bookbridgeScreen from '$lib/assets/screens/bookbridge-home.webp';
 import type { Lang } from '$lib/config/site';
+import details from './details/en';
 import type { ProjectSection, ServiceItem, ServiceOption } from './types';
 
 // English is the source of truth: `SiteContent` is inferred from this object and every
@@ -144,6 +145,7 @@ const en = {
     subtitle: 'Secure software and security testing, from the team that ships its own products.',
     items: [
       {
+        slug: 'cybersecurity',
         icon: ShieldCheck as unknown as Component,
         title: 'Cybersecurity Services',
         description:
@@ -164,6 +166,7 @@ const en = {
         }
       },
       {
+        slug: 'software-development',
         icon: Code2 as unknown as Component,
         title: 'Software Development',
         description: 'Websites, mobile apps and web platforms: fast, easy to manage and security-reviewed before launch.',
@@ -172,6 +175,7 @@ const en = {
         visual: { type: 'pipeline', steps: ['build', 'security review', 'deploy'] }
       },
       {
+        slug: 'design-branding',
         icon: Palette as unknown as Component,
         title: 'Design & Branding',
         description: 'Logos, interfaces and brand identities that make your institution look professional.',
@@ -217,6 +221,7 @@ const en = {
     subtitle: 'Four active client projects. Here is the one we can show.',
     projects: [
       {
+        slug: 'eventra',
         title: 'Eventra',
         tagline: 'Event ticketing & payments platform',
         description:
@@ -247,6 +252,7 @@ const en = {
     subtitle: 'Products we design, build, own, and operate ourselves.',
     projects: [
       {
+        slug: 'bookbridge',
         title: 'BookBridge',
         tagline: 'Peer-to-peer textbook marketplace',
         description:
@@ -351,6 +357,8 @@ const en = {
       again: '← Send another message'
     }
   },
+
+  details,
 
   footer: {
     tagline: 'Build. Secure. Protect.',

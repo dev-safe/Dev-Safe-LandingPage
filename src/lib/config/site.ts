@@ -62,3 +62,12 @@ export const localizePath = (path: string, lang: Lang) => {
 };
 
 export const absoluteUrl = (path = '/') => new URL(path, site.url).href;
+
+/**
+ * Homepage section links (`#services`) only work on the homepage; elsewhere they point back to it
+ * (`/#services`, `/fr#services`). `#contact` stays local because every page ends with the contact form.
+ */
+export const sectionHref = (href: string, lang: Lang, pathname: string) =>
+  href.startsWith('#') && href !== '#contact' && stripLangPrefix(pathname) !== '/'
+    ? `${localizePath('/', lang)}${href}`
+    : href;

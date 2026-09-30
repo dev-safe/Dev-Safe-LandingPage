@@ -4,6 +4,7 @@ import founderImg from '$lib/assets/Founder.jpg';
 import backendImg from '$lib/assets/Backend.jpg';
 import eventraScreen from '$lib/assets/screens/eventra-home.webp';
 import bookbridgeScreen from '$lib/assets/screens/bookbridge-home.webp';
+import details from './details/fr';
 import type { SiteContent } from './en';
 
 const fr: SiteContent = {
@@ -141,6 +142,7 @@ const fr: SiteContent = {
     subtitle: 'Logiciels sécurisés et tests de sécurité, par l’équipe qui lance ses propres produits.',
     items: [
       {
+        slug: 'cybersecurity',
         icon: ShieldCheck as unknown as Component,
         title: 'Services de cybersécurité',
         description:
@@ -161,6 +163,7 @@ const fr: SiteContent = {
         }
       },
       {
+        slug: 'software-development',
         icon: Code2 as unknown as Component,
         title: 'Développement logiciel',
         description: 'Sites web, applications mobiles et plateformes web : rapides, faciles à gérer et revus en sécurité avant le lancement.',
@@ -169,6 +172,7 @@ const fr: SiteContent = {
         visual: { type: 'pipeline', steps: ['développement', 'revue de sécurité', 'déploiement'] }
       },
       {
+        slug: 'design-branding',
         icon: Palette as unknown as Component,
         title: 'Design & identité visuelle',
         description: 'Logos, interfaces et identités de marque qui donnent à votre institution une image professionnelle.',
@@ -214,6 +218,7 @@ const fr: SiteContent = {
     subtitle: 'Quatre projets clients en cours. Voici celui que nous pouvons montrer.',
     projects: [
       {
+        slug: 'eventra',
         title: 'Eventra',
         tagline: 'Plateforme de billetterie et de paiement pour événements',
         description:
@@ -244,6 +249,7 @@ const fr: SiteContent = {
     subtitle: 'Des produits que nous concevons, développons, possédons et exploitons nous-mêmes.',
     projects: [
       {
+        slug: 'bookbridge',
         title: 'BookBridge',
         tagline: 'Marketplace de manuels scolaires entre particuliers',
         description:
@@ -348,6 +354,8 @@ const fr: SiteContent = {
       again: '← Envoyer un autre message'
     }
   },
+
+  details,
 
   footer: {
     tagline: 'Concevoir. Sécuriser. Protéger.',

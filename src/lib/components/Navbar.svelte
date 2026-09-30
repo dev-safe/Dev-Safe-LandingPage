@@ -3,7 +3,7 @@
   import { fade, fly } from 'svelte/transition';
   import { Menu, X, Sun, Moon, Languages } from '@lucide/svelte';
   import { page } from '$app/state';
-  import { localizePath, stripLangPrefix } from '$lib/config/site';
+  import { localizePath, sectionHref, stripLangPrefix } from '$lib/config/site';
   import { t } from '$lib/data/content';
   import logo from '$lib/assets/devsafe-logo.svg';
 
@@ -11,6 +11,7 @@
   const navigation = $derived(c.navigation);
   // Same page in the other language. Also lets the prerender crawler discover every /fr page.
   const switchHref = $derived(localizePath(stripLangPrefix(page.url.pathname), c.ui.languageSwitch.hreflang));
+  const linkHref = (href: string) => sectionHref(href, c.meta.lang, page.url.pathname);
 
   let scrolled = $state(false);
   let mobileOpen = $state(false);
@@ -68,7 +69,7 @@
     <div class="hidden lg:flex items-center gap-6 xl:gap-8">
       {#each navigation.links as link}
         <a 
-          href={link.href} 
+          href={linkHref(link.href)} 
           class="whitespace-nowrap text-sm font-body font-medium text-ds-fg-muted hover:text-ds-accent transition-colors duration-200 relative py-1.5 group/navlink"
         >
           {link.name}
@@ -107,13 +108,13 @@
       </button>
 
       <a 
-        href={navigation.actions.ghost.href} 
+        href={linkHref(navigation.actions.ghost.href)} 
         class="hidden xl:inline-flex whitespace-nowrap border border-ds-accent/60 text-ds-accent px-5 py-2 rounded-lg text-xs font-medium hover:bg-ds-accent/10 transition-all duration-200"
       >
         {navigation.actions.ghost.text}
       </a>
       <a 
-        href={navigation.actions.primary.href} 
+        href={linkHref(navigation.actions.primary.href)} 
         class="whitespace-nowrap bg-ds-primary text-ds-on-primary px-5 py-2 rounded-lg text-sm font-medium hover:bg-ds-primary-hover active:scale-95 transition-all duration-200 shadow-[0_0_16px_rgb(var(--ds-accent)/0.15)] hover:shadow-[0_0_24px_rgb(var(--ds-accent)/0.25)]"
       >
         {navigation.actions.primary.text}
@@ -186,7 +187,7 @@
     <div class="flex flex-col gap-4">
       {#each navigation.links as link}
         <a 
-          href={link.href} 
+          href={linkHref(link.href)} 
           class="text-base font-body font-medium text-ds-fg hover:text-ds-accent transition-colors py-2 border-b border-ds-border/30"
           onclick={closeMobile}
         >
@@ -197,14 +198,14 @@
     
     <div class="flex flex-col gap-3 pt-2">
       <a 
-        href={navigation.actions.ghost.href} 
+        href={linkHref(navigation.actions.ghost.href)} 
         class="w-full text-center border border-ds-accent text-ds-accent py-3 rounded-lg text-sm font-medium hover:bg-ds-accent/10 transition-colors"
         onclick={closeMobile}
       >
         {navigation.actions.ghost.text}
       </a>
       <a 
-        href={navigation.actions.primary.href} 
+        href={linkHref(navigation.actions.primary.href)} 
         class="w-full text-center bg-ds-primary text-ds-on-primary py-3 rounded-lg text-sm font-medium hover:bg-ds-primary-hover transition-all shadow-[0_0_16px_rgb(var(--ds-accent)/0.15)]"
         onclick={closeMobile}
       >

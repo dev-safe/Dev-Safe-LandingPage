@@ -3,6 +3,7 @@
   import type { Component } from 'svelte';
   import { CheckCircle2 } from '@lucide/svelte';
   import { t } from '$lib/data/content';
+  import { localizePath } from '$lib/config/site';
 
   const c = $derived(t());
   const services = $derived(c.services);
@@ -62,9 +63,16 @@
             <h3 class="font-heading {item.featured ? 'text-[1.4rem] sm:text-3xl' : 'text-lg sm:text-xl'} font-medium text-ds-fg mb-3 group-hover:text-ds-accent transition-colors duration-200">
               {item.title}
             </h3>
-            <p class="font-body text-ds-fg-muted {item.featured ? 'text-[15px] sm:text-base max-w-xl' : 'text-sm'} leading-relaxed mb-6">
+            <p class="font-body text-ds-fg-muted {item.featured ? 'text-[15px] sm:text-base max-w-xl' : 'text-sm'} leading-relaxed mb-4">
               {item.description}
             </p>
+            <a
+              href={localizePath(`/services/${item.slug}`, c.meta.lang)}
+              class="inline-flex items-center gap-1.5 w-fit mb-6 text-sm font-semibold text-ds-accent hover:underline underline-offset-4 group/link"
+            >
+              {c.details.ui.learnMore}<span class="sr-only">: {item.title}</span>
+              <span aria-hidden="true" class="inline-block transition-transform duration-200 group-hover/link:translate-x-1">→</span>
+            </a>
 
             {#if item.featured}
               <div class="flex flex-wrap gap-2 pt-4 border-t border-ds-border/30 mt-auto">

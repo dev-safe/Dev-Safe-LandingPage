@@ -24,6 +24,7 @@ The official landing page for **DevSafe**, a software development and cybersecur
 - **Sticky Glassmorphism Header:** Responsive navigation bar with dynamic borders, a language toggle, and a hamburger menu below the `lg` breakpoint.
 - **Client Work vs. Owned Products:** Separate showcase sections for agency client work (e.g. **Eventra**) and DevSafe-owned products (e.g. **BookBridge**), rendered by a shared `ProjectShowcase` component.
 - **Bilingual (English / French):** English lives at `/` and French at `/fr`, with an FR/EN toggle in the header. Each version has its own `<html lang>`, canonical, `hreflang` alternates, `og:locale` and JSON-LD `inLanguage`, and both are listed in the sitemap.
+- **Service & Case-Study Pages:** Each service has its own page at `/services/[slug]` (what's included, process, who it's for, FAQ) and each project has a case study at `/work/[slug]` (story, features, how it was built). Both come in English and French, with a consultation form that preselects the matching service, plus BreadcrumbList, Service/FAQPage or app JSON-LD.
 - **Centralized Data Layer:** All copy lives in `src/lib/data/content/` (one file per language), avoiding hardcoded strings inside markup.
 
 ---
@@ -41,7 +42,11 @@ src/
 │   │   └── screens/          # Product screenshots (WebP)
 │   ├── components/
 │   │   ├── BrandIcon.svelte  # GitHub / LinkedIn / WhatsApp SVG marks (Lucide has no brand icons)
-│   │   ├── CTABanner.svelte  # Consultation form banner + WhatsApp button
+│   │   ├── CTABanner.svelte  # Consultation form banner + WhatsApp button (defaultService prop)
+│   │   ├── detail/           # Building blocks for service and case-study pages
+│   │   │   ├── PageHeader.svelte    # Dusk-sky header panel with breadcrumb, H1, lead, optional aside
+│   │   │   ├── HeaderActions.svelte # Consultation + WhatsApp buttons
+│   │   │   └── DetailSection.svelte # Section with H2 + cm-rule, alternating backgrounds
 │   │   ├── Footer.svelte     # Footer links and WhatsApp integration
 │   │   ├── Hero.svelte       # Hero with the Cameroon hero photo (full colour)
 │   │   ├── Navbar.svelte     # Responsive glass header & mobile drawer
@@ -57,10 +62,11 @@ src/
 │   │   ├── WhatsAppButton.svelte  # Floating WhatsApp chat button
 │   │   └── WhyDevSafe.svelte # Corporate differentiator grids
 │   ├── config/
-│   │   └── site.ts           # Site URL, languages, locale helpers, indexable routes
+│   │   └── site.ts           # Site URL, languages, locale helpers (localizePath, sectionHref)
 │   ├── data/content/
 │   │   ├── en.ts             # English copy (source of truth for the content shape)
 │   │   ├── fr.ts             # French copy, typed as SiteContent
+│   │   ├── details/          # Long-form service and case-study page copy (en.ts, fr.ts)
 │   │   ├── types.ts          # Shared content types
 │   │   └── index.ts          # t() / getContent(lang) helpers
 │   └── seo/
@@ -70,9 +76,11 @@ src/
 ├── routes/
 │   ├── +layout.svelte        # Imports global CSS & favicon link
 │   ├── +layout.ts            # prerender = true for the whole site
-│   ├── [[lang=lang]]/        # Home page for / (en) and /fr (fr)
-│   │   ├── +page.svelte      # Main assembly page with SEO headers
-│   │   └── +page.ts          # Prerender entries for /fr
+│   ├── [[lang=lang]]/        # Pages for / (en) and /fr (fr)
+│   │   ├── +page.svelte      # Home page with SEO headers
+│   │   ├── +page.ts          # Prerender entries for /fr
+│   │   ├── services/[slug]/  # Service pages (cybersecurity, software-development, design-branding)
+│   │   └── work/[slug]/      # Case studies (bookbridge, eventra)
 │   ├── robots.txt/+server.ts # Prerendered robots.txt
 │   └── sitemap.xml/+server.ts# Prerendered sitemap (from sitemap-routes.ts)
 ├── params/lang.ts            # Route matcher: only "fr" is a valid prefix
@@ -143,6 +151,9 @@ English (`src/lib/data/content/en.ts`) defines the content shape. The French fil
 - **Add a string:** add it to `en.ts`, add the translation to `fr.ts`, then read it in a component with `const c = $derived(t())`.
 - **French typography:** use `’` for apostrophes and a non-breaking space (U+00A0) before `: ? !` and inside `« »`.
 
+- **Add a service or project page:** give the item a `slug` in `en.ts` and `fr.ts`, add the slug to `ServiceSlug` or `ProjectSlug` in `types.ts`, then add its page copy under `services` or `projects` in `details/en.ts` and `details/fr.ts`. The route, prerender entries, sitemap URLs and JSON-LD pick it up from the slug.
+- **Links to home sections:** use `sectionHref('#services', lang, pathname)` so `#anchor` links from a sub-page point back to `/#services` or `/fr#services`. `#contact` stays local because every page ends with the consultation form.
+
 Visitors are never redirected based on browser language; they choose with the toggle, and search engines pick the right version from the `hreflang` tags.
 
 ## 🗺️ Sitemap
@@ -152,7 +163,7 @@ Routes are registered in `src/lib/seo/sitemap-routes.ts`:
 - **Static pages:** add `{ path: '/services', changefreq: 'weekly', priority: 0.8 }` to `staticRoutes`.
 - **Collections** (case studies, docs, …): add a `dynamicSources` entry with the route pattern (e.g. `/work/[slug]`) and a `load()` that returns one entry per item. `load` may be async (CMS/API).
 
-A registered route is only published once its `+page.svelte` exists, so the sitemap never lists a 404. The build log prints `[sitemap] not yet published (no page): …` for routes still waiting on a page. `/services`, `/about`, `/contact` and `/work/[slug]` are pre-registered.
+A registered route is only published once its `+page.svelte` exists, so the sitemap never lists a 404. The build log prints `[sitemap] not yet published (no page): …` for routes still waiting on a page. `/services`, `/about` and `/contact` are pre-registered; `/services/[slug]` and `/work/[slug]` are published.
 
 Pages under `src/routes/[[lang=lang]]/` are published in English and French with hreflang alternates. Pages outside it are English-only. Give each page a `<Seo path="/your-path" lang={c.meta.lang} />`; because `prerender.origin` is set in `svelte.config.js`, its hreflang links make the prerenderer build the French version too.
 

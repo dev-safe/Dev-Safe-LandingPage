@@ -85,6 +85,46 @@ const en = {
     cta: {
       primary: { text: 'Book a Free Consultation →', href: '#contact' },
       secondary: { text: 'See Our Work', href: '#work' }
+    },
+    demo: {
+      windowTitle: 'devsafe / your-project',
+      label: 'Animated overview of how DevSafe runs a project: audit, build, ship, protect',
+      tabsLabel: 'Project stages',
+      live: 'Live',
+      secure: 'secure',
+      play: 'Play the animation',
+      pause: 'Pause the animation',
+      stackLabel: 'Our stack',
+      stages: [
+        {
+          id: 'audit',
+          tab: 'Audit',
+          command: 'devsafe audit ./your-app',
+          lines: ['Authentication & access control', 'Data protection & encryption', 'API & input validation', 'Server & hosting configuration'],
+          result: 'Plain-language report + prioritised fix plan'
+        },
+        {
+          id: 'build',
+          tab: 'Build',
+          command: 'devsafe build --secure',
+          lines: ['Website', 'Mobile app', 'API', 'Database'],
+          result: 'Security designed in from day one'
+        },
+        {
+          id: 'ship',
+          tab: 'Ship',
+          command: 'devsafe ship',
+          lines: ['Build', 'Security review', 'Deploy'],
+          result: 'Checked for vulnerabilities before handover'
+        },
+        {
+          id: 'protect',
+          tab: 'Protect',
+          command: 'devsafe protect',
+          lines: ['Encrypted data', 'Least-privilege access', 'Protected secrets', 'Confidential by default (NDA)'],
+          result: 'We protect your business the way we protect your data'
+        }
+      ]
     }
   },
 
@@ -109,7 +149,7 @@ const en = {
         description:
           'We test your systems the way an attacker would, then hand you a plain-language report and a prioritised plan to fix what matters first.',
         tags: ['Penetration Testing', 'Security Audits', 'Vulnerability Assessment', 'Data Protection'],
-        accentColor: '#3DC66C',
+        accentColor: '#A667E4',
         featured: true,
         visual: {
           type: 'checklist',
@@ -136,8 +176,8 @@ const en = {
         title: 'Design & Branding',
         description: 'Logos, interfaces and brand identities that make your institution look professional.',
         tags: ['Logo Design', 'UI/UX', 'Brand Identity'],
-        accentColor: '#72B7FF',
-        visual: { type: 'palette', swatches: ['#050706', '#3DC66C', '#F6C85F', '#CE1126', '#EEF4EF'] }
+        accentColor: '#5B8DEF',
+        visual: { type: 'palette', swatches: ['#13111C', '#553F83', '#A667E4', '#F6C85F', '#CE1126'] }
       }
     ] as ServiceItem[]
   },

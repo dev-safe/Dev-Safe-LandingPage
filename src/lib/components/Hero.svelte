@@ -1,118 +1,116 @@
 <script lang="ts">
-  import { reveal } from '$lib/actions/reveal';
   import { t } from '$lib/data/content';
   import { whatsappUrl } from '$lib/config/site';
   import BrandIcon from './BrandIcon.svelte';
+  import HeroDemo from './HeroDemo.svelte';
+  import TrustStrip from './TrustStrip.svelte';
 
   const c = $derived(t());
   const hero = $derived(c.hero);
 
   const heroSrcset = (ext: string) => `/images/hero-cameroon-768.${ext} 768w, /images/hero-cameroon-1536.${ext} 1536w`;
-  const heroSizes = '(min-width: 1024px) 62vw, 100vw';
+  const heroSizes = '(min-width: 1600px) 1600px, 100vw';
 </script>
 
-<section class="hero relative overflow-hidden bg-ds-bg pattern-bg lg:flex lg:items-center lg:min-h-[760px] pb-14 lg:pt-36 lg:pb-16">
-  <!-- Hero photo: full colour. Mobile shows the whole 3:2 image under the navbar
-       (no zoom); desktop places it on the right, keeping the Reunification
-       monument and statue in view while fading into the text column. -->
-  <div class="hero-photo absolute inset-x-0 top-[80px] aspect-[3/2] lg:bottom-0 lg:left-auto lg:w-[62%] lg:aspect-auto pointer-events-none z-0" aria-hidden="true">
-    <picture>
-      <source type="image/avif" srcset={heroSrcset('avif')} sizes={heroSizes} />
-      <source type="image/webp" srcset={heroSrcset('webp')} sizes={heroSizes} />
-      <img
-        src="/images/hero-cameroon-768.jpg"
-        alt=""
-        width="1536"
-        height="1024"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-        class="h-full w-full object-cover object-top lg:object-[72%_center]"
-      />
-    </picture>
-  </div>
+<!-- Railway-style inset panel: a Yaoundé dusk sky, the animated DevSafe console,
+     then the Cameroon photo as the landscape and the proof grid at the bottom. -->
+<section class="hero px-2.5 sm:px-4 pt-[72px] sm:pt-[84px] bg-ds-bg">
+  <div class="panel relative max-w-[1600px] mx-auto rounded-2xl overflow-hidden bg-ds-surface">
+    <div class="sky relative">
+      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 lg:pt-24 flex flex-col items-center text-center">
+        <p class="rise inline-flex items-center gap-2 px-3 py-1 rounded-full border border-ds-border bg-ds-bg/40 backdrop-blur mb-5 sm:mb-7">
+          <span class="cm-flag" aria-hidden="true"></span>
+          <span class="text-[11px] sm:text-xs font-mono text-ds-fg-muted">{hero.badge}</span>
+        </p>
 
-  <div class="hero-content relative max-w-7xl mx-auto px-5 sm:px-6 w-full z-10 grid grid-cols-1 lg:grid-cols-12 items-center">
+        <h1 class="rise font-heading font-medium text-[2.1rem] sm:text-5xl lg:text-[3.6rem] leading-[1.1] tracking-[-0.03em] text-ds-fg max-w-[820px]" style="animation-delay: 80ms">
+          {hero.headline.before}<span class="text-ds-accent italic">{hero.headline.highlight}</span>{hero.headline.after}
+        </h1>
 
-    <!-- Left — Offer, audience, outcome -->
-    <div class="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
-      <div
-        class="inline-flex items-center gap-2 px-3 py-1 bg-ds-elevated border border-ds-accent/30 rounded-md mb-5 sm:mb-6"
-        data-reveal use:reveal={{ y: 20, duration: 600 }}
-      >
-        <span class="cm-flag" aria-hidden="true"></span>
-        <span class="text-[11px] sm:text-xs font-mono font-medium text-ds-accent">{hero.badge}</span>
+        <p class="rise mt-4 sm:mt-6 text-[15px] sm:text-lg text-ds-fg-muted max-w-[620px] leading-relaxed" style="animation-delay: 160ms">
+          {hero.subheadline}
+        </p>
+
+        <div class="rise mt-7 sm:mt-9 flex flex-col sm:flex-row gap-3 w-full max-w-xs sm:max-w-none sm:w-auto" style="animation-delay: 240ms">
+          <a
+            href={hero.cta.primary.href}
+            class="flex items-center justify-center bg-ds-primary text-ds-on-primary px-6 py-3 text-[15px] rounded-lg font-medium hover:bg-ds-primary-hover active:scale-[0.98] transition-all duration-200 shadow-[0_8px_30px_-6px_rgb(var(--ds-primary)/0.7)]"
+          >
+            {hero.cta.primary.text}
+          </a>
+          <a
+            href={hero.cta.secondary.href}
+            class="flex items-center justify-center border border-ds-border bg-ds-bg/50 backdrop-blur text-ds-fg hover:bg-ds-elevated px-6 py-3 text-[15px] rounded-lg font-medium active:scale-[0.98] transition-all duration-200"
+          >
+            {hero.cta.secondary.text}
+          </a>
+        </div>
+
+        <a
+          href={whatsappUrl(c.whatsapp.message)}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={c.whatsapp.ariaLabel}
+          class="rise mt-5 text-[13px] sm:text-sm text-ds-fg-muted hover:text-ds-fg transition-colors"
+          style="animation-delay: 320ms"
+        >
+          <BrandIcon name="whatsapp" class="inline-block w-5 h-5 mr-1.5 -mt-0.5 align-middle text-[#25D366]" />{c.whatsapp.prompt}
+          <span class="font-mono text-ds-fg whitespace-nowrap">{c.footer.contact.whatsapp.text}</span>
+        </a>
+
+        <div class="rise w-full mt-12 sm:mt-16" style="animation-delay: 420ms">
+          <HeroDemo />
+        </div>
       </div>
 
-      <h1 class="font-heading text-[2rem] sm:text-5xl lg:text-6xl font-bold tracking-tight text-ds-fg mb-4 sm:mb-6 leading-[1.1] max-w-[640px]">
-        {hero.headline.before}<span class="text-ds-accent">{hero.headline.highlight}</span>{hero.headline.after}
-      </h1>
-
-      <p
-        class="font-body text-[15px] sm:text-lg text-ds-fg-muted max-w-[540px] mb-6 sm:mb-8 leading-relaxed"
-        data-reveal use:reveal={{ y: 20, duration: 600, delay: 200 }}
-      >
-        {hero.subheadline}
-      </p>
-
-      <div
-        class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none sm:w-auto"
-        data-reveal use:reveal={{ y: 20, duration: 600, delay: 350 }}
-      >
-        <a
-          href={hero.cta.primary.href}
-          class="flex items-center justify-center gap-2 bg-ds-primary text-ds-on-primary px-6 py-3 sm:px-8 sm:py-4 text-[15px] sm:text-base rounded-lg font-mono font-bold hover:bg-ds-primary-hover hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-[0_0_24px_rgb(var(--ds-accent)/0.2)]"
-        >
-          {hero.cta.primary.text}
-        </a>
-        <a
-          href={hero.cta.secondary.href}
-          class="flex items-center justify-center border border-ds-accent text-ds-accent hover:bg-ds-accent/10 px-6 py-3 sm:px-8 sm:py-4 text-[15px] sm:text-base rounded-lg font-mono font-bold active:scale-95 transition-all duration-200"
-        >
-          {hero.cta.secondary.text}
-        </a>
+      <!-- The landscape: full-colour Yaoundé photo (man at work, Reunification monument, statue).
+           Mobile shows the whole 3:2 frame; wider screens crop a little from the bottom. -->
+      <div class="hero-photo relative -mt-6 sm:-mt-10 aspect-[3/2] lg:aspect-[16/8]" aria-hidden="true">
+        <picture>
+          <source type="image/avif" srcset={heroSrcset('avif')} sizes={heroSizes} />
+          <source type="image/webp" srcset={heroSrcset('webp')} sizes={heroSizes} />
+          <img
+            src="/images/hero-cameroon-768.jpg"
+            alt=""
+            width="1536"
+            height="1024"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            class="h-full w-full object-cover object-[center_20%]"
+          />
+        </picture>
       </div>
-
-      <a
-        href={whatsappUrl(c.whatsapp.message)}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={c.whatsapp.ariaLabel}
-        class="mt-5 max-w-[540px] text-[13px] sm:text-sm font-body text-ds-fg-muted hover:text-ds-fg transition-colors"
-        data-reveal use:reveal={{ y: 20, duration: 600, delay: 450 }}
-      >
-        <BrandIcon name="whatsapp" class="inline-block w-5 h-5 mr-1.5 -mt-0.5 align-middle text-[#25D366]" />{c.whatsapp.prompt}
-        <span class="font-mono text-ds-fg whitespace-nowrap">{c.footer.contact.whatsapp.text}</span>
-      </a>
     </div>
+
+    <div class="toghu-band" aria-hidden="true"></div>
+    <TrustStrip />
   </div>
 </section>
 
 <style>
-  /* Mobile: text starts over the faded lower part of the photo. */
-  .hero-content {
-    padding-top: calc(80px + 100vw * 0.6);
+  .panel {
+    box-shadow: inset 0 0 0 1.5px rgb(255 255 255 / 0.12);
+  }
+
+  :global(.light) .panel {
+    box-shadow: inset 0 0 0 1.5px rgb(0 0 0 / 0.08);
   }
 
   .hero-photo {
-    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 98%);
-    mask-image: linear-gradient(to bottom, #000 62%, transparent 98%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
   }
 
-  @media (min-width: 1024px) {
-    .hero-content {
-      padding-top: 0;
-    }
+  .rise {
+    opacity: 0;
+    animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
 
-    .hero-photo {
-      -webkit-mask-image:
-        linear-gradient(to right, transparent 0%, #000 28%),
-        linear-gradient(to bottom, #000 82%, transparent 100%);
-      -webkit-mask-composite: source-in;
-      mask-image:
-        linear-gradient(to right, transparent 0%, #000 28%),
-        linear-gradient(to bottom, #000 82%, transparent 100%);
-      mask-composite: intersect;
+  @media (prefers-reduced-motion: reduce) {
+    .rise {
+      opacity: 1;
+      animation: none;
     }
   }
 </style>

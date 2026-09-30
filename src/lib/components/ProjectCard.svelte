@@ -27,7 +27,7 @@
                     {project.statusBadge}
                   </span>
                   <!-- Project Title -->
-                  <h3 class="font-heading text-2xl sm:text-3xl font-bold text-ds-fg tracking-tight">
+                  <h3 class="font-heading text-2xl sm:text-3xl font-medium text-ds-fg tracking-tight">
                     {project.title}
                   </h3>
                   <!-- Tagline -->
@@ -44,7 +44,7 @@
                 {#if project.highlights?.length}
                   <ul class="flex flex-wrap gap-2">
                     {#each project.highlights as highlight (highlight)}
-                      <li class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-ds-warning/10 border border-ds-warning/40 text-xs font-heading font-semibold text-ds-fg">
+                      <li class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-ds-warning/10 border border-ds-warning/40 text-xs font-body font-semibold text-ds-fg">
                         <Trophy class="w-3.5 h-3.5 text-ds-warning shrink-0" aria-hidden="true" />
                         {highlight}
                       </li>

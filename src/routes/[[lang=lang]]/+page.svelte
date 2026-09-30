@@ -1,7 +1,6 @@
 <script lang="ts">
   import Navbar from '$lib/components/Navbar.svelte';
   import Hero from '$lib/components/Hero.svelte';
-  import TrustStrip from '$lib/components/TrustStrip.svelte';
   import Services from '$lib/components/Services.svelte';
   import WhyDevSafe from '$lib/components/WhyDevSafe.svelte';
   import ProjectShowcase from '$lib/components/ProjectShowcase.svelte';
@@ -21,7 +20,6 @@
 <Navbar />
 <main>
   <Hero />
-  <TrustStrip />
   <Services />
   <WhyDevSafe />
   <ProjectShowcase id="work" section={c.clientWork} />

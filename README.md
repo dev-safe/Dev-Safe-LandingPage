@@ -10,8 +10,9 @@ The official landing page for **DevSafe**, a software development and cybersecur
 - **Styling:** Tailwind CSS v3 (using fluid grids, glassmorphism, and radial glows)
 - **Icons:** @lucide/svelte (packaged with custom brand SVGs for GitHub and WhatsApp)
 - **Fonts:** 
-  - `Geist` (Headings and body text)
-  - `JetBrains Mono` (Buttons, eyebrow labels, technical tags, inputs)
+  - `IBM Plex Serif` (h1 and section headings)
+  - `Inter` (Body text, buttons, card titles)
+  - `JetBrains Mono` (Eyebrow labels, technical tags, the hero console)
 
 ---
 
@@ -105,7 +106,7 @@ Colours live as RGB-channel CSS variables in `src/app.css` (`--ds-*`, with overr
 
 Every text/background pairing meets WCAG AA (4.5:1) in both dark and light mode.
 
-The look is a green-on-black engineering theme ("Cameroon Circuit"): a near-black background with a faint 52px grid, a Cameroon-flag green primary and a flag-yellow secondary accent, 8px corners and mono buttons. Light mode uses an off-white background with a deeper green. Section headers use the `eyebrow` utility (glowing square plus a numbered mono label), and `ds-divider` draws a glowing node with a fading flag-coloured line. `app.css` also has a few cultural motif utilities, all original SVGs:
+The look is "Yaoundé Dusk", inspired by railway.com: a deep purple-night background (`#13111C`), a lilac accent, a sun-yellow second accent and purple (`#553F83`) buttons, with IBM Plex Serif headings. Light mode uses a warm oatmeal background with a deeper purple. The hero is an inset rounded panel with a CSS dusk sky and twinkling stars (`sky`), an animated "DevSafe console" (`HeroDemo.svelte`: Audit, Build, Ship and Protect stages that cycle every 6.5s, pause on hover, off-screen or with the pause button, and stay static under reduced motion), the Cameroon hero photo as the landscape, and the proof grid plus a stack marquee (`TrustStrip.svelte`). Section headers use the `eyebrow` utility (glowing lilac dot plus a numbered mono label), and `ds-divider` draws a glowing node with a fading flag-coloured line. Other helpers: `dot-grid`, `marquee` / `marquee-track` and the `rise-in` keyframe. `app.css` also has a few cultural motif utilities, all original SVGs:
 
 | Class | What it draws |
 | --- | --- |

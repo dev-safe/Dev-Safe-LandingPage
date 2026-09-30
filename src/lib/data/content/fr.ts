@@ -82,6 +82,46 @@ const fr: SiteContent = {
     cta: {
       primary: { text: 'Réserver une consultation gratuite →', href: '#contact' },
       secondary: { text: 'Voir nos réalisations', href: '#work' }
+    },
+    demo: {
+      windowTitle: 'devsafe / votre-projet',
+      label: 'Aperçu animé de la conduite d’un projet chez DevSafe : audit, développement, mise en ligne, protection',
+      tabsLabel: 'Étapes du projet',
+      live: 'En ligne',
+      secure: 'sécurisé',
+      play: 'Lancer l’animation',
+      pause: 'Mettre l’animation en pause',
+      stackLabel: 'Notre stack',
+      stages: [
+        {
+          id: 'audit',
+          tab: 'Audit',
+          command: 'devsafe audit ./votre-app',
+          lines: ['Authentification & contrôle d’accès', 'Protection & chiffrement des données', 'API & validation des entrées', 'Configuration serveur & hébergement'],
+          result: 'Rapport clair + plan de correction priorisé'
+        },
+        {
+          id: 'build',
+          tab: 'Développer',
+          command: 'devsafe build --secure',
+          lines: ['Site web', 'App mobile', 'API', 'Base de données'],
+          result: 'La sécurité pensée dès le premier jour'
+        },
+        {
+          id: 'ship',
+          tab: 'Livrer',
+          command: 'devsafe ship',
+          lines: ['Build', 'Revue de sécurité', 'Déploiement'],
+          result: 'Vérifié contre les vulnérabilités avant la livraison'
+        },
+        {
+          id: 'protect',
+          tab: 'Protéger',
+          command: 'devsafe protect',
+          lines: ['Données chiffrées', 'Accès au strict nécessaire', 'Secrets protégés', 'Confidentialité par défaut (NDA)'],
+          result: 'Nous protégeons votre entreprise comme vos données'
+        }
+      ]
     }
   },
 
@@ -106,7 +146,7 @@ const fr: SiteContent = {
         description:
           'Nous testons vos systèmes comme le ferait un attaquant, puis vous remettons un rapport clair et un plan priorisé pour corriger l’essentiel en premier.',
         tags: ['Tests d’intrusion', 'Audits de sécurité', 'Évaluation des vulnérabilités', 'Protection des données'],
-        accentColor: '#3DC66C',
+        accentColor: '#A667E4',
         featured: true,
         visual: {
           type: 'checklist',
@@ -133,8 +173,8 @@ const fr: SiteContent = {
         title: 'Design & identité visuelle',
         description: 'Logos, interfaces et identités de marque qui donnent à votre institution une image professionnelle.',
         tags: ['Création de logo', 'UI/UX', 'Identité de marque'],
-        accentColor: '#72B7FF',
-        visual: { type: 'palette', swatches: ['#050706', '#3DC66C', '#F6C85F', '#CE1126', '#EEF4EF'] }
+        accentColor: '#5B8DEF',
+        visual: { type: 'palette', swatches: ['#13111C', '#553F83', '#A667E4', '#F6C85F', '#CE1126'] }
       }
     ]
   },

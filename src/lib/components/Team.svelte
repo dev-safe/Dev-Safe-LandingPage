@@ -18,7 +18,7 @@
     <div class="text-center max-w-2xl mx-auto mb-16">
       <span class="eyebrow mb-3" data-reveal use:reveal={{ y: 20, duration: 600 }}>{team.eyebrow}</span>
       <h2 
-        class="font-heading text-[1.75rem] sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
+        class="font-heading text-[1.75rem] sm:text-4xl font-medium tracking-tight text-ds-fg mb-4"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         {team.heading}
@@ -66,7 +66,7 @@
 
             <!-- Portrait: 240px sources, so 160px max keeps them sharp on 1.5x screens -->
             <div 
-              class="w-36 h-36 sm:w-40 sm:h-40 rounded-xl overflow-hidden flex items-center justify-center font-heading text-3xl font-bold text-[#fff] mb-5 shadow-[0_8px_24px_rgba(0,0,0,0.25)] ring-1 ring-ds-border/60 group-hover:ring-ds-accent/50 transition-shadow duration-300"
+              class="w-36 h-36 sm:w-40 sm:h-40 rounded-xl overflow-hidden flex items-center justify-center font-heading text-3xl font-medium text-[#fff] mb-5 shadow-[0_8px_24px_rgba(0,0,0,0.25)] ring-1 ring-ds-border/60 group-hover:ring-ds-accent/50 transition-shadow duration-300"
               style="background-color: {member.bg}; border: {member.borderCyan ? '2px solid rgb(var(--ds-accent))' : 'none'};"
             >
               {#if member.image}
@@ -77,7 +77,7 @@
             </div>
 
             <!-- Name -->
-            <h3 class="font-heading text-base font-bold text-ds-fg mb-1 group-hover:text-ds-accent transition-colors duration-200">
+            <h3 class="font-body text-base font-bold text-ds-fg mb-1 group-hover:text-ds-accent transition-colors duration-200">
               {member.name}
             </h3>
 

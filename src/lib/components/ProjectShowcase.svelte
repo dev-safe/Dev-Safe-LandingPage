@@ -26,7 +26,7 @@
         {section.eyebrow}
       </span>
       <h2 
-        class="font-heading text-[1.75rem] sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
+        class="font-heading text-[1.75rem] sm:text-4xl font-medium tracking-tight text-ds-fg mb-4"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         {section.heading}
@@ -57,10 +57,10 @@
           <span class="w-12 h-12 rounded-xl bg-ds-accent/10 border border-ds-accent/30 flex items-center justify-center">
             <FileLock class="w-6 h-6 text-ds-accent" aria-hidden="true" />
           </span>
-          <span class="font-heading text-4xl sm:text-5xl font-bold text-ds-fg tabular-nums">{nda.count}</span>
+          <span class="font-heading text-4xl sm:text-5xl font-medium text-ds-fg tabular-nums">{nda.count}</span>
         </div>
         <div class="flex-1">
-          <h3 class="font-heading text-lg font-bold text-ds-fg">{nda.title}</h3>
+          <h3 class="font-body text-lg font-bold text-ds-fg">{nda.title}</h3>
           <p class="font-body text-sm text-ds-fg-muted leading-relaxed mt-1">{nda.text}</p>
         </div>
         <a href={nda.link.href} class="shrink-0 text-sm text-ds-accent font-semibold hover:underline">

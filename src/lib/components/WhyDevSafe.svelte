@@ -19,7 +19,7 @@
     <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-20">
       <span class="eyebrow mb-3" data-reveal use:reveal={{ y: 20, duration: 600 }}>{whyDevSafe.eyebrow}</span>
       <h2 
-        class="font-heading text-[1.75rem] sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
+        class="font-heading text-[1.75rem] sm:text-4xl font-medium tracking-tight text-ds-fg mb-4"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         {whyDevSafe.heading}
@@ -42,7 +42,7 @@
 
           <!-- Text Content -->
           <div class="space-y-2">
-            <h3 class="font-heading text-base sm:text-lg font-bold text-ds-fg tracking-wide group-hover:text-ds-accent transition-colors duration-200">
+            <h3 class="font-body text-base sm:text-lg font-bold text-ds-fg tracking-wide group-hover:text-ds-accent transition-colors duration-200">
               {item.title}
             </h3>
             <p class="font-body text-ds-fg-muted text-sm leading-relaxed">

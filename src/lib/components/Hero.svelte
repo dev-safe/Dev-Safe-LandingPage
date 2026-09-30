@@ -15,7 +15,7 @@
 
 <!-- Railway-style inset panel: a Yaoundé dusk sky, the animated DevSafe console,
      then the Cameroon photo as the landscape and the proof grid at the bottom. -->
-<section class="hero px-2.5 sm:px-4 pt-[72px] sm:pt-[84px] bg-ds-bg">
+<section class="hero px-2.5 sm:px-4 pt-[82px] sm:pt-[94px] bg-ds-bg">
   <div class="panel relative max-w-[1600px] mx-auto rounded-2xl overflow-hidden bg-ds-surface">
     <div class="sky relative">
       <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 lg:pt-24 flex flex-col items-center text-center">
@@ -51,12 +51,12 @@
           href={whatsappUrl(c.whatsapp.message)}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={c.whatsapp.ariaLabel}
           class="rise mt-5 text-[13px] sm:text-sm text-ds-fg-muted hover:text-ds-fg transition-colors"
           style="animation-delay: 320ms"
         >
           <BrandIcon name="whatsapp" class="inline-block w-5 h-5 mr-1.5 -mt-0.5 align-middle text-[#25D366]" />{c.whatsapp.prompt}
           <span class="font-mono text-ds-fg whitespace-nowrap">{c.footer.contact.whatsapp.text}</span>
+          <span class="sr-only">{c.whatsapp.newTab}</span>
         </a>
 
         <div class="rise w-full mt-12 sm:mt-16" style="animation-delay: 420ms">

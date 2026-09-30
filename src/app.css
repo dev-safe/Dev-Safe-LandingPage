@@ -35,6 +35,13 @@
   --sky-mid: #231c3a;
   --sky-low: #4a3257;
   --star-alpha: 1;
+  /* Hero landscape (Mount Cameroon at dusk): sun, glow and three ridge layers. */
+  --ls-sun: #f6c85f;
+  --ls-glow: #f59e6b;
+  --ls-far: #3b2c56;
+  --ls-mid: #2a2140;
+  --ls-near: #1d1a2b;
+  --ls-cloud: #bf92ec;
   --font-heading: 'IBM Plex Serif', Georgia, Cambria, serif;
   --font-body: 'Inter', -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -64,6 +71,12 @@
   --sky-mid: #e7ddea;
   --sky-low: #f3dccb;
   --star-alpha: 0;
+  --ls-sun: #fbd87a;
+  --ls-glow: #f7b98c;
+  --ls-far: #c9c2e0;
+  --ls-mid: #aca3cf;
+  --ls-near: #8e84b8;
+  --ls-cloud: #ffffff;
   color-scheme: light;
 }
 
@@ -267,12 +280,6 @@ h3, h4 {
   height: 1px;
   background: linear-gradient(90deg, var(--cm-green) 0%, var(--cm-red) 30%, var(--cm-yellow) 55%, transparent 95%);
   opacity: 0.6;
-}
-
-/* Theme-specific logo files (the emblem has white strokes that vanish on sand). */
-.light .logo-on-dark,
-:root:not(.light) .logo-on-light {
-  display: none;
 }
 
 /* Scroll reveal (see $lib/actions/reveal.ts). Scoped to html.js so content stays visible

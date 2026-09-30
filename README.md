@@ -36,8 +36,7 @@ src/
 │   ├── actions/
 │   │   └── reveal.ts         # SSR-safe scroll reveal action
 │   ├── assets/
-│   │   ├── devsafe-emblem.webp       # DS mask emblem (dark theme)
-│   │   ├── devsafe-emblem-light.webp # Same emblem with dark strokes (light theme)
+│   │   ├── devsafe-logo.svg  # DS shield logo (one file for both themes)
 │   │   ├── Founder.jpg       # Profile picture for founder profile
 │   │   └── screens/          # Product screenshots (WebP)
 │   ├── components/
@@ -82,7 +81,8 @@ src/
 ├── app.html                  # HTML shell template
 static/
 ├── apple-touch-icon.png      # iOS home-screen icon
-├── favicon.png               # 64px emblem favicon
+├── favicon.svg               # Vector favicon (same as devsafe-logo.svg)
+├── favicon.png               # 64px PNG fallback favicon
 ├── images/                   # Hero photo + grayscale section photos (AVIF/WebP/JPEG)
 ├── videos/                   # Silent grayscale loop (WebM/MP4) + poster used by SectionVideo.svelte
 │                             #   hero-cameroon-* (full-colour hero photo), cta-code-* (contact section)
@@ -106,20 +106,22 @@ Colours live as RGB-channel CSS variables in `src/app.css` (`--ds-*`, with overr
 
 Every text/background pairing meets WCAG AA (4.5:1) in both dark and light mode.
 
-The look is "Yaoundé Dusk", inspired by railway.com: a deep purple-night background (`#13111C`), a lilac accent, a sun-yellow second accent and purple (`#553F83`) buttons, with IBM Plex Serif headings. Light mode uses a warm oatmeal background with a deeper purple. The hero is an inset rounded panel with a CSS dusk sky and twinkling stars (`sky`), an animated "DevSafe console" (`HeroDemo.svelte`: Audit, Build, Ship and Protect stages that cycle every 6.5s, pause on hover, off-screen or with the pause button, and stay static under reduced motion), the Cameroon hero photo as the landscape, and the proof grid plus a stack marquee (`TrustStrip.svelte`). Section headers use the `eyebrow` utility (glowing lilac dot plus a numbered mono label), and `ds-divider` draws a glowing node with a fading flag-coloured line. Other helpers: `dot-grid`, `marquee` / `marquee-track` and the `rise-in` keyframe. `app.css` also has a few cultural motif utilities, all original SVGs:
+The look is "Yaoundé Dusk", inspired by railway.com: a deep purple-night background (`#13111C`), a lilac accent, a sun-yellow second accent and purple (`#553F83`) buttons, with IBM Plex Serif headings. Light mode uses a warm oatmeal background with a deeper purple. The hero is an inset rounded panel with a CSS dusk sky and twinkling stars (`sky`), a painted Mount Cameroon sunset (`HeroLandscape.svelte`, an inline SVG coloured by the `--ls-*` tokens, so light mode shows a daytime version), an animated "DevSafe console" (`HeroDemo.svelte`: Audit, Build, Ship and Protect stages that cycle every 6.5s, pause on hover, off-screen or with the pause button, and stay static under reduced motion), the Cameroon hero photo as the landscape, and the proof grid plus a stack marquee (`TrustStrip.svelte`). Section headers use the `eyebrow` utility (glowing lilac dot plus a numbered mono label), and `ds-divider` draws a glowing node with a fading lilac line. Other helpers: `dot-grid`, `marquee` / `marquee-track` and the `rise-in` keyframe. `app.css` also has a few cultural motif utilities, all original SVGs:
 
 | Class | What it draws |
 | --- | --- |
 | `pattern-bg` | Faint Ndop-cloth diamond lattice behind a section (content must be `relative z-10`) |
-| `toghu-band` | Toghu embroidery strip (black, red edges, yellow and green braid) under the navbar and above the footer |
-| `cm-rule` | Green, red and yellow flag rule under section headings |
+| `toghu-band` | Toghu embroidery strip in dusk tones (lilac braid with green, red and yellow stitches), used once above the footer |
+| `cm-rule` | Lilac rule ending in a small green, red and yellow tick under section headings; draws in on scroll where supported |
 | `cm-flag` | Tiny Cameroon flag used in the hero badge and footer |
 
-The flag colours (`--cm-green`, `--cm-red`, `--cm-yellow`) are decorative only; never use them for text.
+The logo (`src/lib/assets/devsafe-logo.svg`) is a hand-built SVG: a purple shield with a dark core, the DS monogram crossed by a circuit trace, a Cameroon flag ribbon and a Toghu zigzag at the point. It works on both themes, so there is a single file. `static/favicon.svg`, `favicon.png`, `apple-touch-icon.png`, `logo-512.png` and `og-image.png` are all rendered from it; regenerate them if the logo changes.
+
+The flag colours (`--cm-green`, `--cm-red`, `--cm-yellow`) are decorative only; never use them for text. Keep them scarce (logo, hero badge, heading ticks, footer stitches, OG stripe) so they read as a signature rather than decoration.
 
 The site defaults to dark mode; light mode only applies after a visitor picks it with the theme toggle (saved in `localStorage` and applied in `app.html` before first paint).
 
-The hero photo (`hero-cameroon-*`) is shown in full colour: on mobile it sits under the navbar at its natural 3:2 ratio, on desktop it fills the right 62% of the hero with the Reunification monument and statue in view. Other photos stay on-palette by shipping them in grayscale and tinting them in CSS with `mix-blend-mode: luminosity` over `ds-bg` (`src/lib/components/SectionPhoto.svelte`, used by the contact section; on mobile it is shown at its natural ratio instead of cropped). To add or replace a photo, export `{name}-{width}.avif|webp` for two widths plus `{name}-{smallWidth}.jpg`:
+The hero photo (`hero-cameroon-*`) is shown in full colour below the painted horizon: 3:2 on mobile and 16:8 on desktop, with the Reunification monument and statue in view. Other photos stay on-palette by shipping them in grayscale and tinting them in CSS with `mix-blend-mode: luminosity` over `ds-bg` (`src/lib/components/SectionPhoto.svelte`, used by the contact section; on mobile it is shown at its natural ratio instead of cropped). To add or replace a photo, export `{name}-{width}.avif|webp` for two widths plus `{name}-{smallWidth}.jpg`:
 
 ```bash
 vips thumbnail source.jpg tmp.v 2400 && vips colourspace tmp.v gray.png b-w

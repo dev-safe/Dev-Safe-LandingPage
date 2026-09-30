@@ -5,8 +5,7 @@
   import { page } from '$app/state';
   import { localizePath, stripLangPrefix } from '$lib/config/site';
   import { t } from '$lib/data/content';
-  import emblemDark from '$lib/assets/devsafe-emblem.webp';
-  import emblemLight from '$lib/assets/devsafe-emblem-light.webp';
+  import logo from '$lib/assets/devsafe-logo.svg';
 
   const c = $derived(t());
   const navigation = $derived(c.navigation);
@@ -58,8 +57,7 @@
     <!-- Logo -->
     <a href={c.meta.home} class="flex items-center gap-2.5 group focus:outline-none" onclick={closeMobile}>
       <div class="relative flex items-center justify-center">
-        <img src={emblemDark} alt={c.ui.logoAlt} width="120" height="168" class="logo-on-dark h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
-        <img src={emblemLight} alt={c.ui.logoAlt} width="120" height="168" class="logo-on-light h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
+        <img src={logo} alt={c.ui.logoAlt} width="208" height="228" class="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
       </div>
       <span class="font-body text-xl font-bold tracking-tight">
         <span class="text-ds-fg">{navigation.logo.textDev}</span><span class="text-ds-accent">{navigation.logo.textSafe}</span>
@@ -166,7 +164,7 @@
       </button>
     </div>
   </div>
-  <div class="toghu-band absolute top-full left-0 w-full" aria-hidden="true"></div>
+  <div class="absolute top-full left-0 w-full h-px bg-gradient-to-r from-transparent via-ds-accent/50 to-transparent" aria-hidden="true"></div>
 </nav>
 
 <!-- Mobile Navigation Menu Overlay -->

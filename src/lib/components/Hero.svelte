@@ -3,6 +3,7 @@
   import { whatsappUrl } from '$lib/config/site';
   import BrandIcon from './BrandIcon.svelte';
   import HeroDemo from './HeroDemo.svelte';
+  import HeroLandscape from './HeroLandscape.svelte';
   import TrustStrip from './TrustStrip.svelte';
 
   const c = $derived(t());
@@ -63,9 +64,14 @@
         </div>
       </div>
 
+      <!-- Painted horizon (Mount Cameroon at sunset) rising behind the lower half of the console. -->
+      <div class="relative z-[1] h-[230px] sm:h-[320px] lg:h-auto lg:aspect-[1600/520] -mt-[170px] sm:-mt-[230px] lg:-mt-[300px] pointer-events-none" aria-hidden="true">
+        <HeroLandscape />
+      </div>
+
       <!-- The landscape: full-colour Yaoundé photo (man at work, Reunification monument, statue).
            Mobile shows the whole 3:2 frame; wider screens crop a little from the bottom. -->
-      <div class="hero-photo relative -mt-6 sm:-mt-10 aspect-[3/2] lg:aspect-[16/8]" aria-hidden="true">
+      <div class="hero-photo relative z-[2] -mt-10 sm:-mt-16 lg:-mt-24 aspect-[3/2] lg:aspect-[16/8]" aria-hidden="true">
         <picture>
           <source type="image/avif" srcset={heroSrcset('avif')} sizes={heroSizes} />
           <source type="image/webp" srcset={heroSrcset('webp')} sizes={heroSizes} />
@@ -83,7 +89,7 @@
       </div>
     </div>
 
-    <div class="toghu-band" aria-hidden="true"></div>
+    <div class="h-px bg-ds-border" aria-hidden="true"></div>
     <TrustStrip />
   </div>
 </section>
@@ -97,9 +103,19 @@
     box-shadow: inset 0 0 0 1.5px rgb(0 0 0 / 0.08);
   }
 
+  /* The fade matches the overlap with the painted horizon, so no bare sky shows between them. */
   .hero-photo {
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
+    --fade: 2.5rem;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade));
+    mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade));
+  }
+
+  @media (min-width: 640px) {
+    .hero-photo { --fade: 4rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-photo { --fade: 6rem; }
   }
 
   .rise {

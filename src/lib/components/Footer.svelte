@@ -2,8 +2,7 @@
   import { Mail, Globe } from '@lucide/svelte';
   import { t } from '$lib/data/content';
   import { whatsappUrl } from '$lib/config/site';
-  import emblemDark from '$lib/assets/devsafe-emblem.webp';
-  import emblemLight from '$lib/assets/devsafe-emblem-light.webp';
+  import logo from '$lib/assets/devsafe-logo.svg';
   import BrandIcon from './BrandIcon.svelte';
 
   const c = $derived(t());
@@ -19,8 +18,7 @@
       <div class="md:col-span-5 space-y-4">
         <a href={c.meta.home} class="flex items-center gap-2.5 focus:outline-none">
           <div class="relative flex items-center justify-center">
-            <img src={emblemDark} alt={c.ui.logoAlt} width="120" height="168" loading="lazy" class="logo-on-dark h-12 w-auto" />
-            <img src={emblemLight} alt={c.ui.logoAlt} width="120" height="168" loading="lazy" class="logo-on-light h-12 w-auto" />
+            <img src={logo} alt={c.ui.logoAlt} width="208" height="228" loading="lazy" class="h-12 w-auto" />
           </div>
           <span class="font-body text-lg font-bold tracking-tight">
             <span class="text-ds-fg">DEV</span><span class="text-ds-accent">SAFE</span>

@@ -37,7 +37,7 @@
     <!-- Left — Offer, audience, outcome -->
     <div class="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
       <div
-        class="inline-flex items-center gap-2 px-3 py-1 bg-ds-elevated border border-ds-accent/30 rounded-full mb-5 sm:mb-6"
+        class="inline-flex items-center gap-2 px-3 py-1 bg-ds-elevated border border-ds-accent/30 rounded-md mb-5 sm:mb-6"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         <span class="cm-flag" aria-hidden="true"></span>
@@ -61,13 +61,13 @@
       >
         <a
           href={hero.cta.primary.href}
-          class="flex items-center justify-center gap-2 bg-ds-primary text-ds-on-primary px-6 py-3 sm:px-8 sm:py-4 text-[15px] sm:text-base rounded-full font-heading font-semibold hover:bg-ds-primary-hover hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-[0_0_24px_rgb(var(--ds-accent)/0.2)]"
+          class="flex items-center justify-center gap-2 bg-ds-primary text-ds-on-primary px-6 py-3 sm:px-8 sm:py-4 text-[15px] sm:text-base rounded-lg font-mono font-bold hover:bg-ds-primary-hover hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-[0_0_24px_rgb(var(--ds-accent)/0.2)]"
         >
           {hero.cta.primary.text}
         </a>
         <a
           href={hero.cta.secondary.href}
-          class="flex items-center justify-center border border-ds-accent text-ds-accent hover:bg-ds-accent/10 px-6 py-3 sm:px-8 sm:py-4 text-[15px] sm:text-base rounded-full font-heading font-semibold active:scale-95 transition-all duration-200"
+          class="flex items-center justify-center border border-ds-accent text-ds-accent hover:bg-ds-accent/10 px-6 py-3 sm:px-8 sm:py-4 text-[15px] sm:text-base rounded-lg font-mono font-bold active:scale-95 transition-all duration-200"
         >
           {hero.cta.secondary.text}
         </a>

@@ -22,8 +22,8 @@ export default {
         'ds-danger': 'rgb(var(--ds-danger) / <alpha-value>)',
       },
       fontFamily: {
-        heading: ['Bricolage Grotesque', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
+        heading: ['Geist', 'sans-serif'],
+        body: ['Geist', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
     }

@@ -10,9 +10,8 @@ The official landing page for **DevSafe**, a software development and cybersecur
 - **Styling:** Tailwind CSS v3 (using fluid grids, glassmorphism, and radial glows)
 - **Icons:** @lucide/svelte (packaged with custom brand SVGs for GitHub and WhatsApp)
 - **Fonts:** 
-  - `Bricolage Grotesque` (Headings)
-  - `Inter` (Body text)
-  - `JetBrains Mono` (Code blocks, technical tags, inputs)
+  - `Geist` (Headings and body text)
+  - `JetBrains Mono` (Buttons, eyebrow labels, technical tags, inputs)
 
 ---
 
@@ -106,12 +105,12 @@ Colours live as RGB-channel CSS variables in `src/app.css` (`--ds-*`, with overr
 
 Every text/background pairing meets WCAG AA (4.5:1) in both dark and light mode.
 
-The palette is Cameroonian: a warm-black "Toghu night" with gold accents in dark mode, and a Sahel sand background in light mode. `app.css` also has a few cultural motif utilities, all original SVGs:
+The look is a green-on-black engineering theme ("Cameroon Circuit"): a near-black background with a faint 52px grid, a Cameroon-flag green primary and a flag-yellow secondary accent, 8px corners and mono buttons. Light mode uses an off-white background with a deeper green. Section headers use the `eyebrow` utility (glowing square plus a numbered mono label), and `ds-divider` draws a glowing node with a fading flag-coloured line. `app.css` also has a few cultural motif utilities, all original SVGs:
 
 | Class | What it draws |
 | --- | --- |
 | `pattern-bg` | Faint Ndop-cloth diamond lattice behind a section (content must be `relative z-10`) |
-| `toghu-band` | Toghu embroidery strip (black, red edges, gold braid) under the navbar and above the footer |
+| `toghu-band` | Toghu embroidery strip (black, red edges, yellow and green braid) under the navbar and above the footer |
 | `cm-rule` | Green, red and yellow flag rule under section headings |
 | `cm-flag` | Tiny Cameroon flag used in the hero badge and footer |
 

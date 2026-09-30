@@ -99,6 +99,7 @@ const en = {
   },
 
   services: {
+    eyebrow: '01 / Services',
     heading: 'Agency Services',
     subtitle: 'Secure software and security testing, from the team that ships its own products.',
     items: [
@@ -108,7 +109,7 @@ const en = {
         description:
           'We test your systems the way an attacker would, then hand you a plain-language report and a prioritised plan to fix what matters first.',
         tags: ['Penetration Testing', 'Security Audits', 'Vulnerability Assessment', 'Data Protection'],
-        accentColor: '#E0A020',
+        accentColor: '#3DC66C',
         featured: true,
         visual: {
           type: 'checklist',
@@ -127,7 +128,7 @@ const en = {
         title: 'Software Development',
         description: 'Websites, mobile apps and web platforms: fast, easy to manage and security-reviewed before launch.',
         tags: ['Websites', 'Mobile Apps', 'Web Platforms'],
-        accentColor: '#D9622B',
+        accentColor: '#F6C85F',
         visual: { type: 'pipeline', steps: ['build', 'security review', 'deploy'] }
       },
       {
@@ -135,13 +136,14 @@ const en = {
         title: 'Design & Branding',
         description: 'Logos, interfaces and brand identities that make your institution look professional.',
         tags: ['Logo Design', 'UI/UX', 'Brand Identity'],
-        accentColor: '#0E8A5F',
-        visual: { type: 'palette', swatches: ['#0F0B07', '#F5B53D', '#D9622B', '#C8102E', '#0E8A5F'] }
+        accentColor: '#72B7FF',
+        visual: { type: 'palette', swatches: ['#050706', '#3DC66C', '#F6C85F', '#CE1126', '#EEF4EF'] }
       }
     ] as ServiceItem[]
   },
 
   whyDevSafe: {
+    eyebrow: '02 / Why us',
     heading: 'Why Clients Trust DevSafe',
     videoCaption:
       'In the background: Verla Berinyuy Ndey, our founder, leading a Git & GitHub workshop as GDG on Campus Lead Organizer at ICT University.',
@@ -170,7 +172,7 @@ const en = {
   },
 
   clientWork: {
-    eyebrow: 'Agency',
+    eyebrow: '03 / Agency work',
     heading: 'Client Work',
     subtitle: 'Four active client projects. Here is the one we can show.',
     projects: [
@@ -200,7 +202,7 @@ const en = {
   } as ProjectSection,
 
   products: {
-    eyebrow: 'Owned by DevSafe',
+    eyebrow: '04 / Owned by DevSafe',
     heading: 'Our Products',
     subtitle: 'Products we design, build, own, and operate ourselves.',
     projects: [
@@ -226,6 +228,7 @@ const en = {
   } as ProjectSection,
 
   team: {
+    eyebrow: '05 / Founders',
     heading: 'The Team Behind DevSafe',
     subtitle: 'Two engineers from Yaoundé who build, secure and ship.',
     photoAlt: 'DevSafe founders Verla Berinyuy Ndey and Engon Ken Morel',

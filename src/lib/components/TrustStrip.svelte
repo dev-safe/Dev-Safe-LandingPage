@@ -10,7 +10,7 @@
   <div class="max-w-7xl mx-auto px-6 py-12">
     <h2
       id="trust-heading"
-      class="text-center lg:text-left font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ds-accent mb-8"
+      class="text-center lg:text-left eyebrow justify-center lg:justify-start mb-8 w-full"
       data-reveal use:reveal={{ y: 10, duration: 500 }}
     >
       {trustStrip.heading}

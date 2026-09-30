@@ -17,6 +17,7 @@
     
     <!-- Centered Header -->
     <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-20">
+      <span class="eyebrow mb-3" data-reveal use:reveal={{ y: 20, duration: 600 }}>{whyDevSafe.eyebrow}</span>
       <h2 
         class="font-heading text-[1.75rem] sm:text-4xl font-bold tracking-tight text-ds-fg mb-4"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
@@ -31,7 +32,7 @@
       {#each whyDevSafe.items as item, index}
         {@const Icon = item.icon as Component<{ class?: string }>}
         <div 
-          class="flex items-start gap-4 sm:gap-5 p-3 sm:p-6 rounded-2xl hover:bg-ds-surface/30 border border-transparent hover:border-ds-border/30 transition-all duration-300 hover:-translate-y-1 group"
+          class="flex items-start gap-4 sm:gap-5 p-3 sm:p-6 rounded-xl hover:bg-ds-surface/30 border border-transparent hover:border-ds-border/30 transition-all duration-300 hover:-translate-y-1 group"
           data-reveal use:reveal={{ y: 35, duration: 600, delay: index * 100 + 200 }}
         >
           <!-- Icon Box -->

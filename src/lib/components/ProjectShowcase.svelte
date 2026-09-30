@@ -20,7 +20,7 @@
     <!-- Centered Header -->
     <div class="text-center max-w-2xl mx-auto mb-16">
       <span
-        class="inline-block font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ds-accent mb-3"
+        class="eyebrow mb-3"
         data-reveal use:reveal={{ y: 20, duration: 600 }}
       >
         {section.eyebrow}
@@ -50,7 +50,7 @@
     {#if section.confidential}
       {@const nda = section.confidential}
       <aside
-        class="mt-8 glass-card border border-dashed border-ds-border/80 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8"
+        class="mt-8 glass-card border border-dashed border-ds-border/80 rounded-xl p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8"
         data-reveal use:reveal={{ y: 15, duration: 500, delay: 400 }}
       >
         <div class="flex items-center gap-4 shrink-0">

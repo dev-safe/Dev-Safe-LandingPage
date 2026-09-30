@@ -96,6 +96,7 @@ const fr: SiteContent = {
   },
 
   services: {
+    eyebrow: '01 / Services',
     heading: 'Services de l’agence',
     subtitle: 'Logiciels sécurisés et tests de sécurité, par l’équipe qui lance ses propres produits.',
     items: [
@@ -105,7 +106,7 @@ const fr: SiteContent = {
         description:
           'Nous testons vos systèmes comme le ferait un attaquant, puis vous remettons un rapport clair et un plan priorisé pour corriger l’essentiel en premier.',
         tags: ['Tests d’intrusion', 'Audits de sécurité', 'Évaluation des vulnérabilités', 'Protection des données'],
-        accentColor: '#E0A020',
+        accentColor: '#3DC66C',
         featured: true,
         visual: {
           type: 'checklist',
@@ -124,7 +125,7 @@ const fr: SiteContent = {
         title: 'Développement logiciel',
         description: 'Sites web, applications mobiles et plateformes web : rapides, faciles à gérer et revus en sécurité avant le lancement.',
         tags: ['Sites web', 'Applications mobiles', 'Plateformes web'],
-        accentColor: '#D9622B',
+        accentColor: '#F6C85F',
         visual: { type: 'pipeline', steps: ['développement', 'revue de sécurité', 'déploiement'] }
       },
       {
@@ -132,13 +133,14 @@ const fr: SiteContent = {
         title: 'Design & identité visuelle',
         description: 'Logos, interfaces et identités de marque qui donnent à votre institution une image professionnelle.',
         tags: ['Création de logo', 'UI/UX', 'Identité de marque'],
-        accentColor: '#0E8A5F',
-        visual: { type: 'palette', swatches: ['#0F0B07', '#F5B53D', '#D9622B', '#C8102E', '#0E8A5F'] }
+        accentColor: '#72B7FF',
+        visual: { type: 'palette', swatches: ['#050706', '#3DC66C', '#F6C85F', '#CE1126', '#EEF4EF'] }
       }
     ]
   },
 
   whyDevSafe: {
+    eyebrow: '02 / Pourquoi nous',
     heading: 'Pourquoi nos clients font confiance à DevSafe',
     videoCaption:
       "En arrière-plan : Verla Berinyuy Ndey, notre fondateur, anime un atelier Git & GitHub en tant que Lead Organizer du GDG on Campus de l'ICT University.",
@@ -167,7 +169,7 @@ const fr: SiteContent = {
   },
 
   clientWork: {
-    eyebrow: 'Agence',
+    eyebrow: '03 / Travaux d’agence',
     heading: 'Réalisations clients',
     subtitle: 'Quatre projets clients en cours. Voici celui que nous pouvons montrer.',
     projects: [
@@ -197,7 +199,7 @@ const fr: SiteContent = {
   },
 
   products: {
-    eyebrow: 'Propriété de DevSafe',
+    eyebrow: '04 / Propriété de DevSafe',
     heading: 'Nos produits',
     subtitle: 'Des produits que nous concevons, développons, possédons et exploitons nous-mêmes.',
     projects: [
@@ -223,6 +225,7 @@ const fr: SiteContent = {
   },
 
   team: {
+    eyebrow: '05 / Fondateurs',
     heading: 'L’équipe derrière DevSafe',
     subtitle: 'Deux ingénieurs de Yaoundé qui conçoivent, sécurisent et livrent.',
     photoAlt: 'Les fondateurs de DevSafe, Verla Berinyuy Ndey et Engon Ken Morel',

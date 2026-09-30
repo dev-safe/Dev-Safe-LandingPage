@@ -222,17 +222,27 @@
 
 <style>
   .typed {
+    position: relative;
     display: inline-block;
     box-sizing: content-box;
-    padding-right: 1px;
+    padding-right: 3px;
     overflow: hidden;
     white-space: nowrap;
     max-width: 100%;
     width: calc(var(--n) * 1ch);
-    border-right: 2px solid rgb(var(--ds-accent));
-    animation:
-      type 0.8s steps(var(--n)) 0.1s both,
-      caret 0.9s step-end infinite;
+    animation: type 0.8s steps(var(--n)) 0.1s both;
+  }
+
+  /* The caret blinks with opacity (not border-color) so it stays on the compositor. */
+  .typed::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgb(var(--ds-accent));
+    animation: caret 0.9s step-end infinite;
   }
 
   @keyframes type {
@@ -240,7 +250,7 @@
   }
 
   @keyframes caret {
-    50% { border-color: transparent; }
+    50% { opacity: 0; }
   }
 
   .rise {
@@ -271,22 +281,35 @@
   }
 
   .pulse {
-    box-shadow: 0 0 0 0 rgb(var(--ds-success) / 0.6);
+    position: relative;
+  }
+
+  .pulse::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgb(var(--ds-success) / 0.6);
     animation: pulse 1.6s ease-out infinite;
   }
 
   @keyframes pulse {
-    to { box-shadow: 0 0 0 8px rgb(var(--ds-success) / 0); }
+    to { opacity: 0; transform: scale(3); }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .typed,
     .rise,
     .draw-x,
-    .pulse {
+    .typed::after,
+    .pulse::after {
       animation: none;
       opacity: 1;
-      border-right: 0;
+    }
+
+    .typed::after,
+    .pulse::after {
+      display: none;
     }
   }
 </style>

@@ -83,7 +83,7 @@
     {#snippet aside()}
       {#if project.screenshot}
         <div class="mx-auto lg:mx-0">
-          <PhoneFrame screenshot={project.screenshot} />
+          <PhoneFrame screenshot={project.screenshot} priority />
         </div>
       {/if}
     {/snippet}

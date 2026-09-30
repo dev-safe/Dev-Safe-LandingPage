@@ -52,6 +52,7 @@ const en = {
     short: 'WhatsApp',
     prompt: 'Prefer to chat? Message us on WhatsApp',
     ariaLabel: 'Chat with DevSafe on WhatsApp (opens in a new tab)',
+    newTab: '(opens in a new tab)',
     message: 'Hello DevSafe, I would like to discuss a project.'
   },
 

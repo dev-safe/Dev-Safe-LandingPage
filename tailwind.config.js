@@ -23,8 +23,8 @@ export default {
       },
       fontFamily: {
         heading: ['IBM Plex Serif', 'Georgia', 'serif'],
-        body: ['Inter', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        body: ['Inter Variable', 'Inter', 'sans-serif'],
+        mono: ['JetBrains Mono Variable', 'JetBrains Mono', 'monospace'],
       },
     }
   },

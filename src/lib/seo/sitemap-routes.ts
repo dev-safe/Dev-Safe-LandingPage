@@ -46,24 +46,25 @@ type DynamicSource = {
   load: () => SitemapEntry[] | Promise<SitemapEntry[]>;
 };
 
-const slugify = (value: string) =>
-  value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
-
 export const dynamicSources: DynamicSource[] = [
   {
+    // One page per agency service (cybersecurity, software development, design & branding).
+    route: '/services/[slug]',
+    load: () =>
+      en.services.items.map((service): SitemapEntry => ({
+        path: `/services/${service.slug}`,
+        changefreq: 'monthly',
+        priority: 0.8
+      }))
+  },
+  {
     // Case studies: one page per client project and owned product (Eventra, BookBridge, …).
-    // Starts appearing in the sitemap once src/routes/[[lang=lang]]/work/[slug]/+page.svelte exists.
     route: '/work/[slug]',
     load: () =>
-      [...en.clientWork.projects, ...en.products.projects].map((project): SitemapEntry => ({
-        path: `/work/${slugify(project.title)}`,
+      [...en.products.projects, ...en.clientWork.projects].map((project): SitemapEntry => ({
+        path: `/work/${project.slug}`,
         changefreq: 'monthly',
-        priority: 0.6
+        priority: 0.7
       }))
   }
 ];

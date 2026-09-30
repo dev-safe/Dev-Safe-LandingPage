@@ -1,12 +1,14 @@
 <script lang="ts">
   import { Mail, Globe } from '@lucide/svelte';
   import { t } from '$lib/data/content';
-  import { whatsappUrl } from '$lib/config/site';
+  import { page } from '$app/state';
+  import { localizePath, sectionHref, whatsappUrl } from '$lib/config/site';
   import logo from '$lib/assets/devsafe-logo.svg';
   import BrandIcon from './BrandIcon.svelte';
 
   const c = $derived(t());
   const footer = $derived(c.footer);
+  const linkHref = (href: string) => sectionHref(href, c.meta.lang, page.url.pathname);
 </script>
 
 <footer class="bg-ds-bg">
@@ -15,7 +17,7 @@
     <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
       
       <!-- Column 1: Logo & Tagline -->
-      <div class="md:col-span-5 space-y-4">
+      <div class="md:col-span-4 space-y-4">
         <a href={c.meta.home} class="flex items-center gap-2.5 focus:outline-none">
           <div class="relative flex items-center justify-center">
             <img src={logo} alt={c.ui.logoAlt} width="208" height="228" loading="lazy" class="h-12 w-auto" />
@@ -33,14 +35,14 @@
       </div>
 
       <!-- Column 2: Navigation Links -->
-      <div class="md:col-span-3 space-y-4">
+      <div class="md:col-span-2 space-y-4">
         <h2 class="font-body text-sm font-bold text-ds-fg uppercase tracking-wider">
           {footer.quickLinks.heading}
         </h2>
         <ul class="font-body text-sm space-y-2.5">
           {#each footer.quickLinks.links as link}
             <li>
-              <a href={link.href} class="text-ds-fg-muted hover:text-ds-accent transition-colors">
+              <a href={linkHref(link.href)} class="text-ds-fg-muted hover:text-ds-accent transition-colors">
                 {link.name}
               </a>
             </li>
@@ -48,8 +50,36 @@
         </ul>
       </div>
 
-      <!-- Column 3: Contact Info -->
-      <div class="md:col-span-4 space-y-4">
+      <!-- Column 3: Service and case-study pages -->
+      <div class="md:col-span-3 space-y-4">
+        <h2 class="font-body text-sm font-bold text-ds-fg uppercase tracking-wider">
+          {c.details.ui.services}
+        </h2>
+        <ul class="font-body text-sm space-y-2.5">
+          {#each c.services.items as item (item.slug)}
+            <li>
+              <a href={localizePath(`/services/${item.slug}`, c.meta.lang)} class="text-ds-fg-muted hover:text-ds-accent transition-colors">
+                {item.title}
+              </a>
+            </li>
+          {/each}
+        </ul>
+        <h2 class="font-body text-sm font-bold text-ds-fg uppercase tracking-wider pt-3">
+          {c.details.ui.caseStudies}
+        </h2>
+        <ul class="font-body text-sm space-y-2.5">
+          {#each [...c.products.projects, ...c.clientWork.projects] as project (project.slug)}
+            <li>
+              <a href={localizePath(`/work/${project.slug}`, c.meta.lang)} class="text-ds-fg-muted hover:text-ds-accent transition-colors">
+                {project.title}
+              </a>
+            </li>
+          {/each}
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact Info -->
+      <div class="md:col-span-3 space-y-4">
         <h2 class="font-body text-sm font-bold text-ds-fg uppercase tracking-wider">
           {footer.contact.heading}
         </h2>

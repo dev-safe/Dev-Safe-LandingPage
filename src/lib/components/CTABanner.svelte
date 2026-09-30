@@ -1,10 +1,13 @@
 <script lang="ts">
   import { reveal } from '$lib/actions/reveal';
   import { fade } from 'svelte/transition';
-  import { t } from '$lib/data/content';
+  import { t, type ServiceOption } from '$lib/data/content';
   import { whatsappUrl } from '$lib/config/site';
   import SectionPhoto from './SectionPhoto.svelte';
   import BrandIcon from './BrandIcon.svelte';
+
+  /** Pre-selects the service in the form, e.g. on a service page. */
+  let { defaultService = 'general' }: { defaultService?: ServiceOption } = $props();
 
   const c = $derived(t());
   const ctaBanner = $derived(c.ctaBanner);
@@ -13,7 +16,12 @@
   // Form State
   let name = $state('');
   let email = $state('');
-  let service = $state('general');
+  // svelte-ignore state_referenced_locally
+  let service = $state<ServiceOption>(defaultService);
+  // Follow the prop when navigating between service pages (the component is reused).
+  $effect(() => {
+    service = defaultService;
+  });
   let message = $state('');
   
   let isSubmitting = $state(false);

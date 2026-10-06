@@ -2,7 +2,7 @@
   import { Mail, Globe } from '@lucide/svelte';
   import { t } from '$lib/data/content';
   import { page } from '$app/state';
-  import { localizePath, sectionHref, whatsappUrl } from '$lib/config/site';
+  import { localizePath, sectionHref, site, whatsappUrl } from '$lib/config/site';
   import logo from '$lib/assets/devsafe-logo.svg';
   import BrandIcon from './BrandIcon.svelte';
 
@@ -110,7 +110,16 @@
             </a>
           {/if}
           <a 
-            href="https://{footer.contact.github.text}" 
+            href={site.social.linkedin} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="flex items-center gap-2.5 text-sm text-ds-fg-muted hover:text-ds-accent transition-colors w-fit"
+          >
+            <BrandIcon name="linkedin" class="w-4 h-4 text-ds-accent shrink-0" />
+            <span>{footer.contact.linkedin.text}</span>
+          </a>
+          <a 
+            href={site.social.github} 
             target="_blank" 
             rel="noopener noreferrer" 
             class="flex items-center gap-2.5 text-sm text-ds-fg-muted hover:text-ds-accent transition-colors w-fit"

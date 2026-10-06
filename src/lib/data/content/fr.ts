@@ -377,6 +377,7 @@ const fr: SiteContent = {
       email: { text: 'contact@devsafe.cm', icon: Mail as unknown as Component },
       website: { text: 'devsafe.cm', icon: Globe as unknown as Component },
       whatsapp: { text: '+237 680 001 677' },
+      linkedin: { text: 'DevSafe sur LinkedIn' },
       github: { text: 'github.com/Dev-Safe' }
     },
     bottom: {

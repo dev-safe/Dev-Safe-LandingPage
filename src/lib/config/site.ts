@@ -1,3 +1,8 @@
+const social = {
+  linkedin: 'https://www.linkedin.com/company/146681423/',
+  github: 'https://github.com/Dev-Safe'
+} as const;
+
 export const site = {
   name: 'DevSafe',
   legalName: 'DevSafe',
@@ -16,7 +21,8 @@ export const site = {
     region: 'Centre',
     country: 'CM'
   },
-  sameAs: ['https://github.com/Dev-Safe'],
+  social,
+  sameAs: Object.values(social),
   /** Topics the organisation is expert in (JSON-LD `knowsAbout`). */
   expertise: [
     'Cybersecurity',

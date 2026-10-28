@@ -11,6 +11,7 @@
   import Seo from '$lib/components/Seo.svelte';
   import WhatsAppButton from '$lib/components/WhatsAppButton.svelte';
   import PhoneFrame from '$lib/components/PhoneFrame.svelte';
+  import StoreBadgeLink from '$lib/components/StoreBadgeLink.svelte';
   import PageHeader from '$lib/components/detail/PageHeader.svelte';
   import HeaderActions from '$lib/components/detail/HeaderActions.svelte';
   import DetailSection from '$lib/components/detail/DetailSection.svelte';
@@ -64,17 +65,21 @@
     <HeaderActions />
 
     {#if detail.links?.length}
-      <ul class="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+      <ul class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
         {#each detail.links as link (link.href)}
           <li>
-            <a
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 text-sm font-semibold text-ds-accent hover:underline underline-offset-4"
-            >
-              {link.text}<span aria-hidden="true">↗</span>
-            </a>
+            {#if link.badge}
+              <StoreBadgeLink {link} badge={link.badge} />
+            {:else}
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-sm font-semibold text-ds-accent hover:underline underline-offset-4"
+              >
+                {link.text}<span aria-hidden="true">↗</span>
+              </a>
+            {/if}
           </li>
         {/each}
       </ul>

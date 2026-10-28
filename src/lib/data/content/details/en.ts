@@ -1,4 +1,5 @@
 import type { DetailContent } from '../types';
+import { bookbridgePlayUrl, googlePlayBadge } from '../store';
 
 // Long-form copy for /services/[slug] and /work/[slug].
 // Every statement here must be true: reuse facts already published on the site
@@ -123,7 +124,7 @@ const details: DetailContent = {
         },
         {
           q: 'Do you build Android apps?',
-          a: 'Yes. We build mobile apps with Flutter; our own product BookBridge is a lightweight Android app designed for low data use.'
+          a: 'Yes. We build mobile apps with Flutter; our own product BookBridge is a lightweight Android app on Google Play, designed for low data use.'
         },
         {
           q: 'How do you keep what you build secure?',
@@ -189,7 +190,7 @@ const details: DetailContent = {
     bookbridge: {
       seoTitle: 'BookBridge: Peer-to-Peer Textbook Marketplace | DevSafe',
       seoDescription:
-        'BookBridge helps Cameroonian students buy and sell textbooks nearby with Mobile Money escrow and seller ratings. An award-winning Android app built by DevSafe.',
+        'BookBridge helps Cameroonian students buy and sell textbooks nearby with Mobile Money escrow and seller ratings. Award-winning, now on Google Play.',
       kind: 'product',
       story: {
         heading: 'Why we built it',
@@ -218,6 +219,7 @@ const details: DetailContent = {
         ]
       },
       links: [
+        { text: 'Get it on Google Play', href: bookbridgePlayUrl, badge: googlePlayBadge.en },
         { text: 'Visit the BookBridge website', href: 'https://book-bridge-three.vercel.app/' },
         { text: 'Source code on GitHub', href: 'https://github.com/DCT-Berinyuy/book-bridge' }
       ]

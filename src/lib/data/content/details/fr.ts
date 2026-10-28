@@ -1,4 +1,5 @@
 import type { DetailContent } from '../types';
+import { bookbridgePlayUrl, googlePlayBadge } from '../store';
 
 // Version française de details/en.ts : mêmes faits, aucun chiffre inventé.
 const details: DetailContent = {
@@ -121,7 +122,7 @@ const details: DetailContent = {
         },
         {
           q: 'Développez-vous des applications Android ?',
-          a: 'Oui. Nous développons des applications mobiles en Flutter ; notre produit BookBridge est une application Android légère, pensée pour consommer peu de données.'
+          a: 'Oui. Nous développons des applications mobiles en Flutter ; notre produit BookBridge est une application Android légère, disponible sur Google Play et pensée pour consommer peu de données.'
         },
         {
           q: 'Comment sécurisez-vous ce que vous développez ?',
@@ -187,7 +188,7 @@ const details: DetailContent = {
     bookbridge: {
       seoTitle: 'BookBridge : marketplace de manuels entre étudiants | DevSafe',
       seoDescription:
-        'BookBridge aide les étudiants camerounais à acheter et vendre des manuels près de chez eux, avec séquestre Mobile Money et notes vendeurs. Une app primée signée DevSafe.',
+        'BookBridge aide les étudiants camerounais à acheter et vendre des manuels près de chez eux, avec séquestre Mobile Money et notes vendeurs. App primée, disponible sur Google Play.',
       kind: 'product',
       story: {
         heading: 'Pourquoi nous l’avons créé',
@@ -216,6 +217,7 @@ const details: DetailContent = {
         ]
       },
       links: [
+        { text: 'Disponible sur Google Play', href: bookbridgePlayUrl, badge: googlePlayBadge.fr },
         { text: 'Visiter le site de BookBridge', href: 'https://book-bridge-three.vercel.app/' },
         { text: 'Code source sur GitHub', href: 'https://github.com/DCT-Berinyuy/book-bridge' }
       ]

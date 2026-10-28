@@ -5,6 +5,7 @@ import backendImg from '$lib/assets/Backend.jpg';
 import eventraScreen from '$lib/assets/screens/eventra-home.webp';
 import bookbridgeScreen from '$lib/assets/screens/bookbridge-home.webp';
 import type { Lang } from '$lib/config/site';
+import { bookbridgePlayUrl, googlePlayBadge } from './store';
 import details from './details/en';
 import type { ProjectSection, ServiceItem, ServiceOption } from './types';
 
@@ -259,8 +260,8 @@ const en = {
         description:
           'Students find, buy and sell textbooks nearby, with escrow-protected payments and seller ratings.',
         highlights: ['3rd place · ICT for Africa Summit', 'Top 5 · PROMOTE 2026', 'Featured on CRTV'],
-        statusBadge: 'Coming to Play Store',
-        isLive: false,
+        statusBadge: 'Live on Google Play',
+        isLive: true,
         tags: ['Flutter', 'Escrow payments', 'Android'],
         screenshot: {
           src: bookbridgeScreen,
@@ -269,7 +270,7 @@ const en = {
           height: 1074,
           caption: 'BookBridge · Android app'
         },
-        link: { text: 'Visit Website', href: 'https://book-bridge-three.vercel.app/' }
+        link: { text: 'Get it on Google Play', href: bookbridgePlayUrl, badge: googlePlayBadge.en }
       }
     ]
   } as ProjectSection,

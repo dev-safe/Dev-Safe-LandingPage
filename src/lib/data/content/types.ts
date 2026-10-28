@@ -28,6 +28,15 @@ export type Screenshot = {
   caption: string;
 };
 
+export type ImageAsset = { src: string; width: number; height: number };
+
+export type ExternalLink = {
+  text: string;
+  href: string;
+  /** Store badge shown in place of the text; `text` becomes its alt text. */
+  badge?: ImageAsset;
+};
+
 export type Project = {
   /** URL segment of the project page (`/work/{slug}`); identical in every language. */
   slug: ProjectSlug;
@@ -40,7 +49,7 @@ export type Project = {
   /** Awards or press, shown as badges on the card. */
   highlights?: string[];
   screenshot?: Screenshot;
-  link?: { text: string; href: string };
+  link?: ExternalLink;
 };
 
 export type ProjectSection = {
@@ -81,7 +90,7 @@ export type ProjectDetail = {
   story?: { heading: string; paragraphs: string[] };
   features: { heading: string; items: TitledText[] };
   build: { heading: string; items: string[] };
-  links?: { text: string; href: string }[];
+  links?: ExternalLink[];
 };
 
 /** Everything the dedicated service and project pages need, per language. */

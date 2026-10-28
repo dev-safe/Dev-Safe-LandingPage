@@ -256,8 +256,8 @@ const fr: SiteContent = {
         description:
           'Les élèves et étudiants trouvent, achètent et vendent des manuels près de chez eux, avec paiement protégé par séquestre et notation des vendeurs.',
         highlights: ['3e place · ICT for Africa Summit', 'Top 5 · PROMOTE 2026', 'Présenté sur la CRTV'],
-        statusBadge: 'Bientôt sur le Play Store',
-        isLive: false,
+        statusBadge: 'Disponible sur Google Play',
+        isLive: true,
         tags: ['Flutter', 'Paiement sous séquestre', 'Android'],
         screenshot: {
           src: bookbridgeScreen,
@@ -266,7 +266,7 @@ const fr: SiteContent = {
           height: 1074,
           caption: 'BookBridge · application Android'
         },
-        link: { text: 'Visiter le site', href: 'https://book-bridge-three.vercel.app/' }
+        link: { text: 'Télécharger sur Google Play', href: 'https://play.google.com/store/apps/details?id=cm.devsafe.bookbridge' }
       }
     ]
   },

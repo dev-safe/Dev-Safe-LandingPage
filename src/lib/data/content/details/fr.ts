@@ -121,7 +121,7 @@ const details: DetailContent = {
         },
         {
           q: 'Développez-vous des applications Android ?',
-          a: 'Oui. Nous développons des applications mobiles en Flutter ; notre produit BookBridge est une application Android légère, pensée pour consommer peu de données.'
+          a: 'Oui. Nous développons des applications mobiles en Flutter ; notre produit BookBridge est une application Android légère, disponible sur Google Play et pensée pour consommer peu de données.'
         },
         {
           q: 'Comment sécurisez-vous ce que vous développez ?',
@@ -187,7 +187,7 @@ const details: DetailContent = {
     bookbridge: {
       seoTitle: 'BookBridge : marketplace de manuels entre étudiants | DevSafe',
       seoDescription:
-        'BookBridge aide les étudiants camerounais à acheter et vendre des manuels près de chez eux, avec séquestre Mobile Money et notes vendeurs. Une app primée signée DevSafe.',
+        'BookBridge aide les étudiants camerounais à acheter et vendre des manuels près de chez eux, avec séquestre Mobile Money et notes vendeurs. App primée, disponible sur Google Play.',
       kind: 'product',
       story: {
         heading: 'Pourquoi nous l’avons créé',
@@ -216,6 +216,7 @@ const details: DetailContent = {
         ]
       },
       links: [
+        { text: 'Télécharger sur Google Play', href: 'https://play.google.com/store/apps/details?id=cm.devsafe.bookbridge' },
         { text: 'Visiter le site de BookBridge', href: 'https://book-bridge-three.vercel.app/' },
         { text: 'Code source sur GitHub', href: 'https://github.com/DCT-Berinyuy/book-bridge' }
       ]

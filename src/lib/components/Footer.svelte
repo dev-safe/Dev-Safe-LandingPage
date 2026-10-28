@@ -146,6 +146,9 @@
         </a>
       </div>
     </div>
+    <p class="mt-4 text-[11px] font-body text-ds-fg-subtle text-center sm:text-left">
+      {footer.bottom.trademark}
+    </p>
 
   </div>
 </footer>

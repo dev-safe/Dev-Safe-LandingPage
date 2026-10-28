@@ -5,6 +5,7 @@ import backendImg from '$lib/assets/Backend.jpg';
 import eventraScreen from '$lib/assets/screens/eventra-home.webp';
 import bookbridgeScreen from '$lib/assets/screens/bookbridge-home.webp';
 import type { Lang } from '$lib/config/site';
+import { bookbridgePlayUrl, googlePlayBadge } from './store';
 import details from './details/en';
 import type { ProjectSection, ServiceItem, ServiceOption } from './types';
 
@@ -269,7 +270,7 @@ const en = {
           height: 1074,
           caption: 'BookBridge · Android app'
         },
-        link: { text: 'Get it on Google Play', href: 'https://play.google.com/store/apps/details?id=cm.devsafe.bookbridge' }
+        link: { text: 'Get it on Google Play', href: bookbridgePlayUrl, badge: googlePlayBadge.en }
       }
     ]
   } as ProjectSection,

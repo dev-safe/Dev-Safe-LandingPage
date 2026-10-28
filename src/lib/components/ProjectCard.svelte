@@ -2,6 +2,7 @@
   import { reveal } from '$lib/actions/reveal';
   import { Trophy } from '@lucide/svelte';
   import PhoneFrame from './PhoneFrame.svelte';
+  import StoreBadgeLink from './StoreBadgeLink.svelte';
   import { t, type Project } from '$lib/data/content';
   import { localizePath } from '$lib/config/site';
 
@@ -71,7 +72,9 @@
                     {c.details.ui.readCaseStudy}<span class="sr-only">: {project.title}</span>
                     <span aria-hidden="true" class="inline-block transition-transform duration-200 group-hover/case:translate-x-1">→</span>
                   </a>
-                  {#if project.link}
+                  {#if project.link?.badge}
+                    <StoreBadgeLink link={project.link} badge={project.link.badge} />
+                  {:else if project.link}
                     <a 
                       href={project.link.href} 
                       target="_blank" 

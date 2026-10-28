@@ -1,4 +1,5 @@
 import type { DetailContent } from '../types';
+import { bookbridgePlayUrl, googlePlayBadge } from '../store';
 
 // Version française de details/en.ts : mêmes faits, aucun chiffre inventé.
 const details: DetailContent = {
@@ -216,7 +217,7 @@ const details: DetailContent = {
         ]
       },
       links: [
-        { text: 'Télécharger sur Google Play', href: 'https://play.google.com/store/apps/details?id=cm.devsafe.bookbridge' },
+        { text: 'Disponible sur Google Play', href: bookbridgePlayUrl, badge: googlePlayBadge.fr },
         { text: 'Visiter le site de BookBridge', href: 'https://book-bridge-three.vercel.app/' },
         { text: 'Code source sur GitHub', href: 'https://github.com/DCT-Berinyuy/book-bridge' }
       ]

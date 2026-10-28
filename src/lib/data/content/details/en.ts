@@ -1,4 +1,5 @@
 import type { DetailContent } from '../types';
+import { bookbridgePlayUrl, googlePlayBadge } from '../store';
 
 // Long-form copy for /services/[slug] and /work/[slug].
 // Every statement here must be true: reuse facts already published on the site
@@ -218,7 +219,7 @@ const details: DetailContent = {
         ]
       },
       links: [
-        { text: 'Get it on Google Play', href: 'https://play.google.com/store/apps/details?id=cm.devsafe.bookbridge' },
+        { text: 'Get it on Google Play', href: bookbridgePlayUrl, badge: googlePlayBadge.en },
         { text: 'Visit the BookBridge website', href: 'https://book-bridge-three.vercel.app/' },
         { text: 'Source code on GitHub', href: 'https://github.com/DCT-Berinyuy/book-bridge' }
       ]

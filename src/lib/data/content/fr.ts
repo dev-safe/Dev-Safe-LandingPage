@@ -4,6 +4,7 @@ import founderImg from '$lib/assets/Founder.jpg';
 import backendImg from '$lib/assets/Backend.jpg';
 import eventraScreen from '$lib/assets/screens/eventra-home.webp';
 import bookbridgeScreen from '$lib/assets/screens/bookbridge-home.webp';
+import { bookbridgePlayUrl, googlePlayBadge } from './store';
 import details from './details/fr';
 import type { SiteContent } from './en';
 
@@ -266,7 +267,7 @@ const fr: SiteContent = {
           height: 1074,
           caption: 'BookBridge · application Android'
         },
-        link: { text: 'Télécharger sur Google Play', href: 'https://play.google.com/store/apps/details?id=cm.devsafe.bookbridge' }
+        link: { text: 'Disponible sur Google Play', href: bookbridgePlayUrl, badge: googlePlayBadge.fr }
       }
     ]
   },

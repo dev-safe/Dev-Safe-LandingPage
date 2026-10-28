@@ -387,7 +387,8 @@ const en = {
     bottom: {
       copyright: `© ${new Date().getFullYear()} DevSafe. All rights reserved.`,
       domain: 'devsafe.cm',
-      pride: 'Proudly built in Yaoundé, Cameroon, for Africa.'
+      pride: 'Proudly built in Yaoundé, Cameroon, for Africa.',
+      trademark: 'Google Play and the Google Play logo are trademarks of Google LLC.'
     }
   }
 };

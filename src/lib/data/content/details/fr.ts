@@ -212,14 +212,12 @@ const details: DetailContent = {
         heading: 'Comment nous l’avons construit',
         items: [
           'Application Android en Flutter',
-          'Circuit de paiement mobile multipartite automatisé, construit par notre CTO',
-          'Code source ouvert sur GitHub'
+          'Circuit de paiement mobile multipartite automatisé, construit par notre CTO'
         ]
       },
       links: [
         { text: 'Disponible sur Google Play', href: bookbridgePlayUrl, badge: googlePlayBadge.fr },
-        { text: 'Visiter le site de BookBridge', href: 'https://book-bridge-three.vercel.app/' },
-        { text: 'Code source sur GitHub', href: 'https://github.com/DCT-Berinyuy/book-bridge' }
+        { text: 'Visiter le site de BookBridge', href: 'https://bookbridge.devsafe.cm/' }
       ]
     },
 

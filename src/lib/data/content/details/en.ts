@@ -214,14 +214,12 @@ const details: DetailContent = {
         heading: 'How we built it',
         items: [
           'Flutter Android app',
-          'Automated multi-party mobile payment pipeline, built by our CTO',
-          'Open source on GitHub'
+          'Automated multi-party mobile payment pipeline, built by our CTO'
         ]
       },
       links: [
         { text: 'Get it on Google Play', href: bookbridgePlayUrl, badge: googlePlayBadge.en },
-        { text: 'Visit the BookBridge website', href: 'https://book-bridge-three.vercel.app/' },
-        { text: 'Source code on GitHub', href: 'https://github.com/DCT-Berinyuy/book-bridge' }
+        { text: 'Visit the BookBridge website', href: 'https://bookbridge.devsafe.cm/' }
       ]
     },
 

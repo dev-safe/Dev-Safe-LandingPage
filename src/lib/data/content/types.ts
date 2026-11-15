@@ -113,4 +113,13 @@ export type DetailContent = {
   };
   services: Record<ServiceSlug, ServiceDetail>;
   projects: Record<ProjectSlug, ProjectDetail>;
+  /** Shown by `src/routes/+error.svelte` for missing pages (404) and unexpected errors. */
+  errorPage: {
+    eyebrow: string;
+    notFoundTitle: string;
+    notFoundLead: string;
+    errorTitle: string;
+    errorLead: string;
+    backHome: string;
+  };
 };

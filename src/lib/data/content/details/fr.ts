@@ -240,6 +240,15 @@ const details: DetailContent = {
         items: ['Application web SvelteKit', 'Backend en Rust', 'API gRPC', 'Intégration MTN et Orange Mobile Money']
       }
     }
+  },
+
+  errorPage: {
+    eyebrow: 'Erreur',
+    notFoundTitle: 'Cette page n’existe pas',
+    notFoundLead: 'Le lien est peut-être erroné, ou la page a été déplacée. Revenez à l’accueil pour découvrir nos services et nos réalisations.',
+    errorTitle: 'Une erreur est survenue',
+    errorLead: 'Veuillez réessayer dans un instant. Si le problème persiste, contactez-nous sur WhatsApp ou par e-mail.',
+    backHome: 'Retour à l’accueil'
   }
 };
 

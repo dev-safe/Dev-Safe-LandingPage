@@ -1,5 +1,22 @@
 import en from '$lib/data/content/en';
+import type { ProjectSlug, ServiceSlug } from '$lib/data/content';
 import type { SitemapEntry } from './sitemap';
+
+/**
+ * Last meaningful change to each page's main content (`YYYY-MM-DD`). Bump the date when you edit a
+ * page's copy or visuals; shared chrome (navbar, footer) doesn't count. Keyed by slug, so
+ * `npm run check` fails until a new service or project gets a date.
+ */
+const homeUpdated = '2026-11-15';
+const serviceUpdated: Record<ServiceSlug, string> = {
+  cybersecurity: '2026-09-30',
+  'software-development': '2026-09-30',
+  'design-branding': '2026-09-30'
+};
+const projectUpdated: Record<ProjectSlug, string> = {
+  bookbridge: '2026-11-07',
+  eventra: '2026-09-30'
+};
 
 /**
  * Every `+page.svelte` in the app, discovered at build time. Only the keys (file paths) are used,
@@ -27,7 +44,7 @@ const existingRoutes = new Map(pageFiles.map(toRoute).map((r) => [r.path, r]));
 
 /** Static pages and their crawl hints. Add a route here when you create its page. */
 export const staticRoutes: SitemapEntry[] = [
-  { path: '/', changefreq: 'daily', priority: 1.0 },
+  { path: '/', changefreq: 'daily', priority: 1.0, lastmod: homeUpdated },
   { path: '/services', changefreq: 'weekly', priority: 0.8 },
   { path: '/about', changefreq: 'monthly', priority: 0.7 },
   { path: '/contact', changefreq: 'monthly', priority: 0.7 }
@@ -54,7 +71,8 @@ export const dynamicSources: DynamicSource[] = [
       en.services.items.map((service): SitemapEntry => ({
         path: `/services/${service.slug}`,
         changefreq: 'monthly',
-        priority: 0.8
+        priority: 0.8,
+        lastmod: serviceUpdated[service.slug]
       }))
   },
   {
@@ -64,7 +82,8 @@ export const dynamicSources: DynamicSource[] = [
       [...en.products.projects, ...en.clientWork.projects].map((project): SitemapEntry => ({
         path: `/work/${project.slug}`,
         changefreq: 'monthly',
-        priority: 0.7
+        priority: 0.7,
+        lastmod: projectUpdated[project.slug]
       }))
   }
 ];

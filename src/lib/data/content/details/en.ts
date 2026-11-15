@@ -242,6 +242,15 @@ const details: DetailContent = {
         items: ['SvelteKit web app', 'Rust backend', 'gRPC APIs', 'MTN and Orange Mobile Money integration']
       }
     }
+  },
+
+  errorPage: {
+    eyebrow: 'Error',
+    notFoundTitle: 'This page doesn’t exist',
+    notFoundLead: 'The link may be broken, or the page may have moved. Head back to the homepage to find our services and work.',
+    errorTitle: 'Something went wrong',
+    errorLead: 'Please try again in a moment. If it keeps happening, contact us on WhatsApp or by email.',
+    backHome: 'Back to the homepage'
   }
 };
 

@@ -166,6 +166,8 @@ Routes are registered in `src/lib/seo/sitemap-routes.ts`:
 
 A registered route is only published once its `+page.svelte` exists, so the sitemap never lists a 404. The build log prints `[sitemap] not yet published (no page): …` for routes still waiting on a page. `/services`, `/about` and `/contact` are pre-registered; `/services/[slug]` and `/work/[slug]` are published.
 
+`<lastmod>` is the date a page's main content last changed, set by hand at the top of `sitemap-routes.ts` (`homeUpdated`, `serviceUpdated`, `projectUpdated`). Bump it when you edit a page's copy or visuals; navbar or footer changes don't count. Never use the build date: Google stops trusting `lastmod` for the whole site when every page claims to change on every deploy. A new service or project slug won't type-check until it has a date.
+
 Pages under `src/routes/[[lang=lang]]/` are published in English and French with hreflang alternates. Pages outside it are English-only. Give each page a `<Seo path="/your-path" lang={c.meta.lang} />`; because `prerender.origin` is set in `svelte.config.js`, its hreflang links make the prerenderer build the French version too.
 
 ## 💻 Local Development

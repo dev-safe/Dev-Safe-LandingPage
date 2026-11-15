@@ -1,13 +1,29 @@
 import { absoluteUrl, languages, localeConfig, localizePath, site } from '$lib/config/site';
 import type { Lang } from '$lib/config/site';
 import type { Project, ProjectSlug, ServiceSlug, SiteContent } from '$lib/data/content';
+import { bookbridgePlayUrl } from '$lib/data/content/store';
 
 const orgId = absoluteUrl('/#organization');
 const websiteId = absoluteUrl('/#website');
 
+type AppMeta = {
+  id: string;
+  type: 'MobileApplication' | 'WebApplication';
+  category: string;
+  os: string;
+  /** Store listing the app installs from. Price and currency must match the listing. */
+  store?: { url: string; price: string; currency: string };
+};
+
 /** Schema.org details for each showcased project, keyed by `Project.slug` (identical in every language). */
-const appSchema: Record<ProjectSlug, { id: string; type: 'MobileApplication' | 'WebApplication'; category: string; os: string }> = {
-  bookbridge: { id: absoluteUrl('/#bookbridge'), type: 'MobileApplication', category: 'ShoppingApplication', os: 'Android' },
+const appSchema: Record<ProjectSlug, AppMeta> = {
+  bookbridge: {
+    id: absoluteUrl('/#bookbridge'),
+    type: 'MobileApplication',
+    category: 'ShoppingApplication',
+    os: 'Android',
+    store: { url: bookbridgePlayUrl, price: '0', currency: 'XAF' }
+  },
   eventra: { id: absoluteUrl('/#eventra'), type: 'WebApplication', category: 'BusinessApplication', os: 'Web' }
 };
 
@@ -31,6 +47,16 @@ function appJsonLd(project: Project, owned: boolean, inLanguage: string) {
     operatingSystem: meta.os,
     keywords: project.tags.join(', '),
     ...(project.link && { url: project.link.href }),
+    ...(meta.store && {
+      downloadUrl: meta.store.url,
+      offers: {
+        '@type': 'Offer',
+        price: meta.store.price,
+        priceCurrency: meta.store.currency,
+        availability: 'https://schema.org/InStock',
+        url: meta.store.url
+      }
+    }),
     creator: { '@id': orgId },
     ...(owned && { publisher: { '@id': orgId } }),
     inLanguage

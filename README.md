@@ -94,7 +94,7 @@ static/
 ├── favicon.png               # 64px PNG fallback favicon
 ├── images/                   # Hero photo + grayscale section photos (AVIF/WebP/JPEG)
 ├── videos/                   # Silent grayscale loop (WebM/MP4) + poster used by SectionVideo.svelte
-│                             #   hero-cameroon-* (full-colour hero photo), cta-code-* (contact section)
+│                             #   hero-yaounde-* (full-colour hero photo), cta-code-* (contact section)
 ├── logo-512.png              # Logo referenced by JSON-LD
 └── og-image.png              # 1200x630 social share image
 ```
@@ -115,7 +115,7 @@ Colours live as RGB-channel CSS variables in `src/app.css` (`--ds-*`, with overr
 
 Every text/background pairing meets WCAG AA (4.5:1) in both dark and light mode.
 
-The look is "Yaoundé Dusk", inspired by railway.com: a deep purple-night background (`#13111C`), a lilac accent, a sun-yellow second accent and purple (`#553F83`) buttons, with IBM Plex Serif headings. Light mode uses a warm oatmeal background with a deeper purple. The hero is an inset rounded panel with a CSS dusk sky and twinkling stars (`sky`), a painted Mount Cameroon sunset (`HeroLandscape.svelte`, inline SVGs coloured by the `--ls-*` tokens, so light mode shows a daytime version; the animated glow, clouds and birds are separate stacked `<svg>` layers so their animations run on the compositor), an animated "DevSafe console" (`HeroDemo.svelte`: Audit, Build, Ship and Protect stages that cycle every 6.5s, pause on hover, off-screen or with the pause button, and stay static under reduced motion), the Cameroon hero photo as the landscape, and the proof grid plus a stack marquee (`TrustStrip.svelte`). Section headers use the `eyebrow` utility (glowing lilac dot plus a numbered mono label), and `ds-divider` draws a glowing node with a fading lilac line. Other helpers: `dot-grid`, `marquee` / `marquee-track` and the `rise-in` keyframe. `app.css` also has a few cultural motif utilities, all original SVGs:
+The look is "Yaoundé Dusk", inspired by railway.com: a deep purple-night background (`#13111C`), a lilac accent, a sun-yellow second accent and purple (`#553F83`) buttons, with IBM Plex Serif headings. Light mode uses a warm oatmeal background with a deeper purple. The hero is an inset rounded panel with a CSS dusk sky and twinkling stars (`sky`), a painted Mount Cameroon sunset (`HeroLandscape.svelte`, inline SVGs coloured by the `--ls-*` tokens, so light mode shows a daytime version; the animated glow, clouds and birds are separate stacked `<svg>` layers so their animations run on the compositor), an animated "DevSafe console" (`HeroDemo.svelte`: Audit, Build, Ship and Protect stages that cycle every 6.5s, pause on hover, off-screen or with the pause button, and stay static under reduced motion), the Yaoundé hero photo as the landscape, and the proof grid plus a stack marquee (`TrustStrip.svelte`). Section headers use the `eyebrow` utility (glowing lilac dot plus a numbered mono label), and `ds-divider` draws a glowing node with a fading lilac line. Other helpers: `dot-grid`, `marquee` / `marquee-track` and the `rise-in` keyframe. `app.css` also has a few cultural motif utilities, all original SVGs:
 
 | Class | What it draws |
 | --- | --- |
@@ -130,7 +130,7 @@ The flag colours (`--cm-green`, `--cm-red`, `--cm-yellow`) are decorative only; 
 
 The site defaults to dark mode; light mode only applies after a visitor picks it with the theme toggle (saved in `localStorage` and applied in `app.html` before first paint).
 
-The hero photo (`hero-cameroon-*`) sits below the painted horizon: 3:2 on mobile and 16:8 on desktop, with the Reunification monument and statue in view. CSS colour-grades it to dusk (a soft-light purple wash, a warm glow on the sun side and darker top and bottom edges; gentler in light mode), so the original files stay untouched. Other photos stay on-palette by shipping them in grayscale and tinting them in CSS with `mix-blend-mode: luminosity` over `ds-bg` (`src/lib/components/SectionPhoto.svelte`, used by the contact section; on mobile it is shown at its natural ratio instead of cropped). To add or replace a photo, export `{name}-{width}.avif|webp` for two widths plus `{name}-{smallWidth}.jpg`:
+The hero photo (`hero-yaounde-*`) is a real golden-hour photo of a Yaoundé neighbourhood and its hills by [Edouard TAMBA](https://unsplash.com/photos/XvnwhH6PMk8) (Unsplash License). It sits below the painted horizon: 3:2 on mobile and 16:8 on desktop. CSS colour-grades it to dusk (a soft-light purple wash, a warm glow on the sun side and darker top and bottom edges; gentler in light mode), so the original files stay untouched. Other photos stay on-palette by shipping them in grayscale and tinting them in CSS with `mix-blend-mode: luminosity` over `ds-bg` (`src/lib/components/SectionPhoto.svelte`, used by the contact section; on mobile it is shown at its natural ratio instead of cropped). To add or replace a photo, export `{name}-{width}.avif|webp` for two widths plus `{name}-{smallWidth}.jpg`:
 
 ```bash
 vips thumbnail source.jpg tmp.v 2400 && vips colourspace tmp.v gray.png b-w

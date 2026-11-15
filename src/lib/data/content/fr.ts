@@ -384,7 +384,8 @@ const fr: SiteContent = {
     bottom: {
       copyright: `© ${new Date().getFullYear()} DevSafe. Tous droits réservés.`,
       domain: 'devsafe.cm',
-      pride: 'Fièrement conçu à Yaoundé, au Cameroun, pour l’Afrique.'
+      pride: 'Fièrement conçu à Yaoundé, au Cameroun, pour l’Afrique.',
+      trademark: 'Google Play et le logo Google Play sont des marques de Google LLC.'
     }
   }
 };

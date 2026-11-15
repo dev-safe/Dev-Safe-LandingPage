@@ -9,7 +9,7 @@
   const c = $derived(t());
   const hero = $derived(c.hero);
 
-  const heroSrcset = (ext: string) => `/images/hero-cameroon-768.${ext} 768w, /images/hero-cameroon-1536.${ext} 1536w`;
+  const heroSrcset = (ext: string) => `/images/hero-yaounde-768.${ext} 768w, /images/hero-yaounde-1536.${ext} 1536w`;
   const heroSizes = '(min-width: 1600px) 1600px, 100vw';
 </script>
 
@@ -69,15 +69,15 @@
         <HeroLandscape />
       </div>
 
-      <!-- The landscape: Yaoundé photo (man at work, Reunification monument, statue), colour-graded
-           to dusk so it continues the painted horizon. Mobile shows the whole 3:2 frame; wider
-           screens crop a little from the bottom. -->
+      <!-- The landscape: a real photo of a Yaoundé neighbourhood under its hills at golden hour
+           (Edouard TAMBA, Unsplash License), colour-graded to dusk so it continues the painted
+           horizon. Mobile shows the whole 3:2 frame; wider screens crop a little from the bottom. -->
       <div class="hero-photo relative z-[2] -mt-10 sm:-mt-16 lg:-mt-24 aspect-[3/2] lg:aspect-[16/8]" aria-hidden="true">
         <picture>
           <source type="image/avif" srcset={heroSrcset('avif')} sizes={heroSizes} />
           <source type="image/webp" srcset={heroSrcset('webp')} sizes={heroSizes} />
           <img
-            src="/images/hero-cameroon-768.jpg"
+            src="/images/hero-yaounde-768.jpg"
             alt=""
             width="1536"
             height="1024"
